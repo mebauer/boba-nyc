@@ -6,7 +6,7 @@ Details: https://www.open-data.nyc/
 
 The analysis can be found in the [boba-analysis-nyc.ipynb](https://github.com/mebauer/boba-nyc/blob/master/boba-analysis-nyc.ipynb) notebook. 
 
-![cover-photo]('busineses-per-neighborhood.png')
+![cover-photo](busineses-per-neighborhood.png)
 
 ## Table of Contents
 

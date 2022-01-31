@@ -3,7 +3,7 @@
 | #     | To do                     | In Progress   | Done  |
 | :--:  | ------------------------- | :-----------: | :---: |
 | 1     | Add TODO.md               | [X]           | [X]   |
-| 2     | Setup JupyterBook         | [ ]           | [ ]   |
+| 2     | Setup JupyterBook         | [X]           | [ ]   |
 | 3     | Setup Google Cloud        | [ ]           | [ ]   |
 | 4     | Develop Geospatial Maps   | [ ]           | [ ]   |
 | 5     | Create Streamlit App      | [ ]           | [ ]   |
@@ -17,3 +17,4 @@
 | 13    | Configure for Docker      | [ ]           | [ ]   |
 | 14    | Consider Jupyter Server   | [ ]           | [ ]   |
 | 15    | Update .gitignore file    | [X]           | [X]   |
+| 16    | Include LICENSE file      | [ ]           | [ ]   |

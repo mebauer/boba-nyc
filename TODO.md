@@ -13,7 +13,7 @@
 | 9     | Restructure Folders       | [ ]           | [ ]   |
 | 10    | Update Requirements       | [ ]           | [ ]   |
 | 11    | Setup GitHub Actions      | [ ]           | [ ]   |
-| 12    | Create .env file          | [ ]           | [ ]   |
+| 12    | Create .env file          | [X]           | [X]   |
 | 13    | Configure for Docker      | [ ]           | [ ]   |
 | 14    | Consider Jupyter Server   | [ ]           | [ ]   |
-| 15    | Update gitignore file     | [X]           | [X]   |
+| 15    | Update .gitignore file    | [X]           | [X]   |

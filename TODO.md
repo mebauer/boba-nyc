@@ -16,3 +16,4 @@
 | 12    | Create .env file          | [ ]           | [ ]   |
 | 13    | Configure for Docker      | [ ]           | [ ]   |
 | 14    | Consider Jupyter Server   | [ ]           | [ ]   |
+| 15    | Update gitignore file     | [X]           | [X]   |

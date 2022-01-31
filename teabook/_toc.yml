@@ -1,0 +1,9 @@
+format: jb-book
+root: intro
+parts:
+  - caption: Data Cleaning
+    chapters:
+    - file: data-wrangling
+  - caption: Exploratory Data Analysis
+    chapters:
+    - file: boba-analysis-nyc

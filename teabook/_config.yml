@@ -1,0 +1,7 @@
+title: Searching for Boba
+author: Mark Bauer, Nathan Williamson, Chidi Ezeolu
+repository:
+  url: https://github.com/datalifenyc/boba-nyc
+html:
+  use_repository_button: true
+  use_issues_button: true

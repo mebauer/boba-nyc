@@ -1,58 +1,58 @@
 # Searching for Boba: Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API
 
-Author: Mark Bauer  
-Event: NYC Open Data Week 2022  
-Details: https://www.open-data.nyc/  
+__Presenters__: Mark Bauer, Nathan Williamson, Chidi Ezeolu  
+__Event__: NYC Open Data Week 2022  
+__Details__: https://www.open-data.nyc/  
 
-The analysis can be found in the [boba-analysis-nyc.ipynb](https://github.com/mebauer/boba-nyc/blob/master/boba-analysis-nyc.ipynb) notebook. 
+The analysis can be found in the [boba-analysis-nyc.ipynb](https://github.com/mebauer/boba-nyc/blob/master/teabook/boba-analysis-nyc.ipynb) notebook. 
 
 ![cover-photo](busineses-per-neighborhood.png)
 
 ## Table of Contents
 
-   * [Introduction](#Introduction)
-   * [Prerequisites](#Prerequisites)
-   * [Data](#Data) 
-   * [Analysis](#Analysis)
-   * [Open Source Applications Used in Project](#Open-Source-Applications-Used-in-Project)
-   * [Resources](#Resources)
-   * [Say Hello!](#Say-Hello)
-   
+* [Introduction](#Introduction)
+* [Prerequisites](#Prerequisites)
+* [Data](#Data)
+* [Analysis](#Analysis)
+* [Open Source Applications Used in Project](#Open-Source-Applications-Used-in-Project)
+* [Resources](#Resources)
+* [Say Hello!](#Say-Hello)
+
 ## Introduction
 
-TBD... 
+TBD...
 
 In this project, I explore NYC's Bubble Tea Shops using the Yelp Fusion API. Specifically, I attempt to answer the following questions:
-1. TBD 
-2. TBD 
+
+1. TBD
+2. TBD
 3. TBD  
 4. TBD  
 
 ## Prerequisites
 
-- Basics of Python or other programming languages (R, SQL, etc.)
-- Knowledge of Data Analysis
-- Basics of Jupyter Notebooks
+* Basics of Python or other programming languages (R, SQL, etc.)
+* Knowledge of Data Analysis
+* Basics of Jupyter Notebooks
 
 This project recommends beginner-level proficiency with Python and is focused on applying Python to data analysis.
 
-
-## Data 
+## Data
 
 ### Yelp Fusion API
 
-Note: the Yelp Fusion API is a **free** API on Yelp's Developer Site. Details from the Yelp Fusion page: 
+Note: the Yelp Fusion API is a __free__ API on Yelp's Developer Site. Details from the Yelp Fusion page:
 
-> **Create an app on Yelp's Developers site**    
+> __Create an app on Yelp's Developers site__
 In order to set up your access to Yelp Fusion API, you need to create an app with Yelp. This app represents the application you'll build using our API and includes the credentials you'll need to gain access. Here are the steps for creating an app:  
 >
 > 1. Go to [Create App](https://www.yelp.com/developers/v3/manage_app)  
 > 2. In the create new app form, enter information about your app, then agree to Yelp API Terms of Use and Display Requirements. Then click the Submit button.  
 > 3. You will now have an API Key.  
 >
-> **Please keep the API Key to yourself since it is the credential for your call to Yelp's API.**  
+> __Please keep the API Key 🔑 to yourself since it is the credential for your call to Yelp's API.__  
 
-Source: https://www.yelp.com/developers/documentation/v3/get_started
+Source: [Get started with the Yelp Fusion API](https://www.yelp.com/developers/documentation/v3/get_started)
 
 ### Datasets
 
@@ -61,10 +61,9 @@ Source: https://www.yelp.com/developers/documentation/v3/get_started
 | [Yelp Fusion API - Business Search](https://www.yelp.com/developers/documentation/v3/business_search) | This endpoint returns up to 1000 businesses based on the provided search criteria. |
 | [NYC Borough Boundaries](https://data.cityofnewyork.us/City-Government/Borough-Boundaries/tqmj-j8zm) | GIS data of NYC boroughs. |
 
-### Output Data 
+### Output Data
 
 The output data retrieved from the Yelp Fusion API query is titled [boba-nyc.csv](https://github.com/mebauer/boba-nyc/blob/master/boba-nyc.csv) and is saved as a CSV file.
- 
 
 ## Analysis
 

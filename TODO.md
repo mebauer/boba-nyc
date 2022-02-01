@@ -17,4 +17,4 @@
 | 13    | Configure for Docker      | [ ]           | [ ]   |
 | 14    | Consider Jupyter Server   | [ ]           | [ ]   |
 | 15    | Update .gitignore file    | [X]           | [X]   |
-| 16    | Include LICENSE file      | [ ]           | [ ]   |
+| 16    | Include LICENSE file      | [X]           | [X]   |

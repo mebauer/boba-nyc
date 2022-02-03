@@ -70,8 +70,8 @@ You can view these notebooks through your browser by clicking *View* under the *
 
 | File Name | Description | Static Webpage |
 | :-------- | :---------- | :------------- |
-| [boba-analysis-nyc.ipynb](https://github.com/mebauer/boba-nyc/blob/master/boba-analysis-nyc.ipynb) | Analyzing Bubble Tea shops in NYC. | [Demo](https://boba-nyc.datalife.nyc/boba-analysis-nyc.html) |
-| [data-wrangling.ipynb](https://github.com/mebauer/boba-nyc/blob/master/data-wrangling.ipynb) | Query and data cleaning workflow from the Yelp Fusion API's Business Search endpoint. | [Demo](https://boba-nyc.datalife.nyc/data-wrangling.html) |
+| [boba-analysis-nyc.ipynb](boba-analysis-nyc.ipynb) | Analyzing Bubble Tea shops in NYC. | [Demo](https://boba-nyc.datalife.nyc/boba-analysis-nyc.html) |
+| [data-wrangling.ipynb](data-wrangling.ipynb) | Query and data cleaning workflow from the Yelp Fusion API's Business Search endpoint. | [Demo](https://boba-nyc.datalife.nyc/data-wrangling.html) |
 
 ## Open Source Applications Used in Project
 

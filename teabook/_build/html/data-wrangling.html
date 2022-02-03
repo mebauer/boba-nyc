@@ -390,11 +390,11 @@
 query includes 543 rows and 16 columns.
 row id is unique: False.
 
-duplicates found: [&#39;Tea Time&#39;, &#39;Drunk Tea&#39;].
+duplicates found: [&#39;D&amp;M Bakery Inc.&#39;].
 dropping duplicates...
 
 row id is unique: True.
-query includes 541 rows and 16 columns.
+query includes 542 rows and 16 columns.
 </pre></div>
 </div>
 </div>
@@ -587,7 +587,7 @@ query includes 541 rows and 16 columns.
   </thead>
   <tbody>
     <tr>
-      <th>536</th>
+      <th>537</th>
       <td>Vz6hbICqQfyMWq9wzAKakw</td>
       <td>tbaar-flushing-4</td>
       <td>TBaar</td>
@@ -606,7 +606,7 @@ query includes 541 rows and 16 columns.
       <td>NaN</td>
     </tr>
     <tr>
-      <th>537</th>
+      <th>538</th>
       <td>2_TEOFG1P_wz9ZRbkggJZg</td>
       <td>hummus-grill-edison</td>
       <td>Hummus Grill</td>
@@ -625,7 +625,7 @@ query includes 541 rows and 16 columns.
       <td>$</td>
     </tr>
     <tr>
-      <th>538</th>
+      <th>539</th>
       <td>YBgAPbviWYtVP2gAUhc7_A</td>
       <td>t-baar-flushing</td>
       <td>T Baar</td>
@@ -644,7 +644,7 @@ query includes 541 rows and 16 columns.
       <td>$</td>
     </tr>
     <tr>
-      <th>539</th>
+      <th>540</th>
       <td>7apqk24GsFC9dptoD5dDZg</td>
       <td>uncleman-cafe-new-york</td>
       <td>Uncleman Cafe</td>
@@ -663,7 +663,7 @@ query includes 541 rows and 16 columns.
       <td>NaN</td>
     </tr>
     <tr>
-      <th>540</th>
+      <th>541</th>
       <td>f5UVQXvDpOrrIZdCjsw47w</td>
       <td>maxins-cafe-flushing</td>
       <td>Maxin's Cafe</td>
@@ -693,28 +693,28 @@ query includes 541 rows and 16 columns.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 541 entries, 0 to 540
+RangeIndex: 542 entries, 0 to 541
 Data columns (total 16 columns):
  #   Column         Non-Null Count  Dtype  
 ---  ------         --------------  -----  
- 0   id             541 non-null    object 
- 1   alias          541 non-null    object 
- 2   name           541 non-null    object 
- 3   image_url      541 non-null    object 
- 4   is_closed      541 non-null    bool   
- 5   url            541 non-null    object 
- 6   review_count   541 non-null    int64  
- 7   categories     541 non-null    object 
- 8   rating         541 non-null    float64
- 9   coordinates    541 non-null    object 
- 10  transactions   541 non-null    object 
- 11  location       541 non-null    object 
- 12  phone          541 non-null    object 
- 13  display_phone  541 non-null    object 
- 14  distance       541 non-null    float64
- 15  price          327 non-null    object 
+ 0   id             542 non-null    object 
+ 1   alias          542 non-null    object 
+ 2   name           542 non-null    object 
+ 3   image_url      542 non-null    object 
+ 4   is_closed      542 non-null    bool   
+ 5   url            542 non-null    object 
+ 6   review_count   542 non-null    int64  
+ 7   categories     542 non-null    object 
+ 8   rating         542 non-null    float64
+ 9   coordinates    542 non-null    object 
+ 10  transactions   542 non-null    object 
+ 11  location       542 non-null    object 
+ 12  phone          542 non-null    object 
+ 13  display_phone  542 non-null    object 
+ 14  distance       542 non-null    float64
+ 15  price          329 non-null    object 
 dtypes: bool(1), float64(2), int64(1), object(12)
-memory usage: 64.1+ KB
+memory usage: 64.2+ KB
 </pre></div>
 </div>
 </div>
@@ -737,7 +737,7 @@ ABC Eats Food Hall              1
 Cocohodo                        1
 Gong Cha - Ridgewood            1
 Maxin&#39;s Cafe                    1
-Name: name, Length: 361, dtype: int64
+Name: name, Length: 360, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -757,18 +757,18 @@ CoCo Fresh Tea &amp; Juice          8
 Coco Fresh Tea &amp; Juice          6
 Vivi Bubble Tea                 6
 Tiger Sugar                     5
-Real Fruit Bubble Tea           4
 Banhmigos                       4
-Chun Yang Tea                   4
+Real Fruit Bubble Tea           4
 Hawa Smoothies &amp; Bubble Tea     4
 TBaar                           4
-Teazzi Tea Shop                 3
+Chun Yang Tea                   4
+Yifang Taiwan Fruit Tea         3
+Hanco&#39;s                         3
+Mr. Wish                        3
+Mi Tea                          3
+Tornado Crepe                   3
 Yaya Tea Garden                 3
 Meet Fresh                      3
-Yi Fang Taiwan Fruit Tea        3
-Jupioca                         3
-Waffle &amp; Bubble                 3
-Mr. Wish                        3
 Name: name, dtype: int64
 </pre></div>
 </div>
@@ -1058,7 +1058,7 @@ Name: name, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\datal\AppData\Local\Temp\ipykernel_80852\2316523936.py:1: UserWarning: CRS mismatch between the CRS of left geometries and the CRS of right geometries.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\datal\AppData\Local\Temp\ipykernel_75088\2316523936.py:1: UserWarning: CRS mismatch between the CRS of left geometries and the CRS of right geometries.
 Use `to_crs()` to reproject one of the input geometries to match the CRS of the other.
 
 Left CRS: EPSG:4326
@@ -1067,7 +1067,7 @@ Right CRS: GEOGCS[&quot;WGS84(DD)&quot;,DATUM[&quot;WGS84&quot;,SPHEROID[&quot;W
   gdf = gpd.clip(gdf, boro_gdf)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(403, 19)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(404, 19)
 </pre></div>
 </div>
 </div>
@@ -1175,7 +1175,7 @@ Right CRS: GEOGCS[&quot;WGS84(DD)&quot;,DATUM[&quot;WGS84&quot;,SPHEROID[&quot;W
       <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
       <td>4.0</td>
       <td>{'latitude': 40.69123, 'longitude': -73.86614}</td>
-      <td>[pickup, delivery]</td>
+      <td>[delivery, pickup]</td>
       <td>{'address1': '7508 Jamaica Ave', 'address2': N...</td>
       <td></td>
       <td></td>
@@ -1197,7 +1197,7 @@ Right CRS: GEOGCS[&quot;WGS84(DD)&quot;,DATUM[&quot;WGS84&quot;,SPHEROID[&quot;W
       <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
       <td>4.5</td>
       <td>{'latitude': 40.7043147, 'longitude': -73.8091...</td>
-      <td>[pickup, delivery]</td>
+      <td>[delivery, pickup]</td>
       <td>{'address1': '88-38 Sutphin Blvd', 'address2':...</td>
       <td>+17182972935</td>
       <td>(718) 297-2935</td>

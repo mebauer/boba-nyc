@@ -1,0 +1,2377 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Searching for Boba: Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API &#8212; Searching for Boba</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Retrieving Bubble Tea Shops in NYC Using Yelp Fusion API" href="data-wrangling.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Searching for Boba</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Searching for Boba: Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Cleaning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data-wrangling.html">
+   Retrieving Bubble Tea Shops in NYC Using Yelp Fusion API
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Exploratory Data Analysis
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Searching for Boba: Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/boba-analysis-nyc.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/datalifenyc/boba-nyc"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/datalifenyc/boba-nyc/issues/new?title=Issue%20on%20page%20%2Fboba-analysis-nyc.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/datalifenyc/boba-nyc/master?urlpath=tree/boba-analysis-nyc.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Searching for Boba: Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="searching-for-boba-analyzing-bubble-tea-shops-in-nyc-using-the-yelp-fusion-api">
+<h1>Searching for Boba: Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API<a class="headerlink" href="#searching-for-boba-analyzing-bubble-tea-shops-in-nyc-using-the-yelp-fusion-api" title="Permalink to this headline">¶</a></h1>
+<p>Mark Bauer</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">color_codes</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;boba-nyc.csv&#39;</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>alias</th>
+      <th>name</th>
+      <th>image_url</th>
+      <th>is_closed</th>
+      <th>url</th>
+      <th>review_count</th>
+      <th>categories</th>
+      <th>rating</th>
+      <th>coordinates</th>
+      <th>transactions</th>
+      <th>price</th>
+      <th>location</th>
+      <th>phone</th>
+      <th>display_phone</th>
+      <th>distance</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Q3fmTHT7zilDWtfzLK9lMA</td>
+      <td>truedan-new-york-3</td>
+      <td>Truedan</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/BmUZXO...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/truedan-new-york-3?ad...</td>
+      <td>96</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
+      <td>['delivery', 'pickup']</td>
+      <td>$$</td>
+      <td>{'address1': '208 Grand St', 'address2': None,...</td>
+      <td>1.646559e+10</td>
+      <td>(646) 559-2886</td>
+      <td>1535.241614</td>
+      <td>40.719174</td>
+      <td>-73.996220</td>
+      <td>POINT (-73.9962197 40.7191742)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>bVJQEeRNi34-3XN_F1AZEg</td>
+      <td>xing-fu-tang-new-york</td>
+      <td>Xing Fu Tang</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/RzKMKS...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/xing-fu-tang-new-york...</td>
+      <td>58</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7288, 'longitude': -73.98775}</td>
+      <td>['delivery', 'pickup']</td>
+      <td>NaN</td>
+      <td>{'address1': '133 2nd Ave', 'address2': '', 'a...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2656.450427</td>
+      <td>40.728800</td>
+      <td>-73.987750</td>
+      <td>POINT (-73.98775000000001 40.7288)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3aypSFXLfkAL4dhHVFobKg</td>
+      <td>lazy-sundaes-new-york-6</td>
+      <td>Lazy Sundaes</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/kEfCYC...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/lazy-sundaes-new-york...</td>
+      <td>28</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.720597, 'longitude': -73.984539}</td>
+      <td>['delivery', 'pickup']</td>
+      <td>$$</td>
+      <td>{'address1': '23 Clinton St', 'address2': None...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1877.016204</td>
+      <td>40.720597</td>
+      <td>-73.984539</td>
+      <td>POINT (-73.984539 40.720597)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>zupVwJAFYkHDwrsQd2ktXA</td>
+      <td>fiftylan-union-square-new-york-3</td>
+      <td>FIFTYLAN Union Square</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/UIwR20...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/fiftylan-union-square...</td>
+      <td>54</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.0</td>
+      <td>{'latitude': 40.735516, 'longitude': -73.989191}</td>
+      <td>['delivery', 'pickup']</td>
+      <td>NaN</td>
+      <td>{'address1': '32 Union Square E', 'address2': ...</td>
+      <td>1.646767e+10</td>
+      <td>(646) 767-0085</td>
+      <td>3367.900728</td>
+      <td>40.735516</td>
+      <td>-73.989191</td>
+      <td>POINT (-73.98919100000001 40.735516)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7-bx74TooPuZKZDNW4WFcQ</td>
+      <td>chun-yang-tea-new-york</td>
+      <td>Chun Yang Tea</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/JrGwrZ...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/chun-yang-tea-new-yor...</td>
+      <td>83</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.71617, 'longitude': -73.9971}</td>
+      <td>['delivery', 'pickup']</td>
+      <td>$$</td>
+      <td>{'address1': '26B Elizabeth St', 'address2': '...</td>
+      <td>1.212420e+10</td>
+      <td>(212) 420-0123</td>
+      <td>1212.877370</td>
+      <td>40.716170</td>
+      <td>-73.997100</td>
+      <td>POINT (-73.9971 40.71617)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>alias</th>
+      <th>name</th>
+      <th>image_url</th>
+      <th>is_closed</th>
+      <th>url</th>
+      <th>review_count</th>
+      <th>categories</th>
+      <th>rating</th>
+      <th>coordinates</th>
+      <th>transactions</th>
+      <th>price</th>
+      <th>location</th>
+      <th>phone</th>
+      <th>display_phone</th>
+      <th>distance</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>392</th>
+      <td>QBebLBqhiuDlWasPgp6s4Q</td>
+      <td>tbaar-flushing-5</td>
+      <td>Tbaar</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/bgao-b...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/tbaar-flushing-5?adju...</td>
+      <td>2</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>3.5</td>
+      <td>{'latitude': 40.759357, 'longitude': -73.830396}</td>
+      <td>['pickup', 'delivery']</td>
+      <td>NaN</td>
+      <td>{'address1': '135-52 Roosevelt Ave', 'address2...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>15054.917573</td>
+      <td>40.759357</td>
+      <td>-73.830396</td>
+      <td>POINT (-73.83039599999999 40.759357)</td>
+    </tr>
+    <tr>
+      <th>393</th>
+      <td>Vz6hbICqQfyMWq9wzAKakw</td>
+      <td>tbaar-flushing-4</td>
+      <td>TBaar</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/phUYWa...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/tbaar-flushing-4?adju...</td>
+      <td>6</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.0</td>
+      <td>{'latitude': 40.7613116, 'longitude': -73.8308...</td>
+      <td>[]</td>
+      <td>NaN</td>
+      <td>{'address1': '37-11 Main St', 'address2': '', ...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>15147.410738</td>
+      <td>40.761312</td>
+      <td>-73.830812</td>
+      <td>POINT (-73.8308122 40.7613116)</td>
+    </tr>
+    <tr>
+      <th>394</th>
+      <td>7apqk24GsFC9dptoD5dDZg</td>
+      <td>uncleman-cafe-new-york</td>
+      <td>Uncleman Cafe</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/uncleman-cafe-new-yor...</td>
+      <td>1</td>
+      <td>[{'alias': 'desserts', 'title': 'Desserts'}, {...</td>
+      <td>1.0</td>
+      <td>{'latitude': 40.71781, 'longitude': -73.99795}</td>
+      <td>[]</td>
+      <td>NaN</td>
+      <td>{'address1': '122 Mulberry St', 'address2': No...</td>
+      <td>1.212967e+10</td>
+      <td>(212) 966-6206</td>
+      <td>1414.238245</td>
+      <td>40.717810</td>
+      <td>-73.997950</td>
+      <td>POINT (-73.99795 40.71781)</td>
+    </tr>
+    <tr>
+      <th>395</th>
+      <td>YBgAPbviWYtVP2gAUhc7_A</td>
+      <td>t-baar-flushing</td>
+      <td>T Baar</td>
+      <td>https://s3-media4.fl.yelpcdn.com/bphoto/8pk-_Q...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/t-baar-flushing?adjus...</td>
+      <td>8</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>3.5</td>
+      <td>{'latitude': 40.7587509, 'longitude': -73.830162}</td>
+      <td>[]</td>
+      <td>$</td>
+      <td>{'address1': '135-36 40th Rd', 'address2': '',...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>15045.970192</td>
+      <td>40.758751</td>
+      <td>-73.830162</td>
+      <td>POINT (-73.830162 40.7587509)</td>
+    </tr>
+    <tr>
+      <th>396</th>
+      <td>f5UVQXvDpOrrIZdCjsw47w</td>
+      <td>maxins-cafe-flushing</td>
+      <td>Maxin's Cafe</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/S3vWvD...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/maxins-cafe-flushing?...</td>
+      <td>15</td>
+      <td>[{'alias': 'bakeries', 'title': 'Bakeries'}, {...</td>
+      <td>3.5</td>
+      <td>{'latitude': 40.7585, 'longitude': -73.83064}</td>
+      <td>[]</td>
+      <td>$</td>
+      <td>{'address1': '135-24 40th Rd', 'address2': '',...</td>
+      <td>1.718887e+10</td>
+      <td>(718) 886-9200</td>
+      <td>14997.842205</td>
+      <td>40.758500</td>
+      <td>-73.830640</td>
+      <td>POINT (-73.83064 40.7585)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rows</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number of rows: </span><span class="si">{}</span><span class="se">\n</span><span class="s1">number of columns: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">columns</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of rows: 397
+number of columns: 19
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 397 entries, 0 to 396
+Data columns (total 19 columns):
+ #   Column         Non-Null Count  Dtype  
+---  ------         --------------  -----  
+ 0   id             397 non-null    object 
+ 1   alias          397 non-null    object 
+ 2   name           397 non-null    object 
+ 3   image_url      392 non-null    object 
+ 4   is_closed      397 non-null    bool   
+ 5   url            397 non-null    object 
+ 6   review_count   397 non-null    int64  
+ 7   categories     397 non-null    object 
+ 8   rating         397 non-null    float64
+ 9   coordinates    397 non-null    object 
+ 10  transactions   397 non-null    object 
+ 11  price          254 non-null    object 
+ 12  location       397 non-null    object 
+ 13  phone          350 non-null    float64
+ 14  display_phone  350 non-null    object 
+ 15  distance       397 non-null    float64
+ 16  latitude       397 non-null    float64
+ 17  longitude      397 non-null    float64
+ 18  geometry       397 non-null    object 
+dtypes: bool(1), float64(5), int64(1), object(12)
+memory usage: 56.3+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>price            143
+display_phone     47
+phone             47
+image_url          5
+id                 0
+transactions       0
+longitude          0
+latitude           0
+distance           0
+location           0
+coordinates        0
+alias              0
+rating             0
+categories         0
+review_count       0
+url                0
+is_closed          0
+name               0
+geometry           0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>review_count</th>
+      <th>rating</th>
+      <th>phone</th>
+      <th>distance</th>
+      <th>latitude</th>
+      <th>longitude</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>397.000000</td>
+      <td>397.000000</td>
+      <td>3.500000e+02</td>
+      <td>397.000000</td>
+      <td>397.000000</td>
+      <td>397.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>91.947103</td>
+      <td>3.989924</td>
+      <td>1.610915e+10</td>
+      <td>8842.775539</td>
+      <td>40.716455</td>
+      <td>-73.943691</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>117.369828</td>
+      <td>0.588097</td>
+      <td>2.396727e+09</td>
+      <td>5531.159717</td>
+      <td>0.058249</td>
+      <td>0.081600</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.201432e+10</td>
+      <td>953.875131</td>
+      <td>40.537609</td>
+      <td>-74.166080</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>20.000000</td>
+      <td>3.500000</td>
+      <td>1.347731e+10</td>
+      <td>4040.343973</td>
+      <td>40.689812</td>
+      <td>-73.994710</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>52.000000</td>
+      <td>4.000000</td>
+      <td>1.718275e+10</td>
+      <td>8210.929458</td>
+      <td>40.732567</td>
+      <td>-73.973940</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>117.000000</td>
+      <td>4.500000</td>
+      <td>1.718887e+10</td>
+      <td>12579.578944</td>
+      <td>40.757323</td>
+      <td>-73.883093</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>739.000000</td>
+      <td>5.000000</td>
+      <td>1.934235e+10</td>
+      <td>25132.157979</td>
+      <td>40.886959</td>
+      <td>-73.702410</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;O&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>unique</th>
+      <th>top</th>
+      <th>freq</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>id</th>
+      <td>397</td>
+      <td>397</td>
+      <td>Q3fmTHT7zilDWtfzLK9lMA</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>alias</th>
+      <td>397</td>
+      <td>397</td>
+      <td>truedan-new-york-3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>name</th>
+      <td>397</td>
+      <td>259</td>
+      <td>Kung Fu Tea</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>image_url</th>
+      <td>392</td>
+      <td>392</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/BmUZXO...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>url</th>
+      <td>397</td>
+      <td>397</td>
+      <td>https://www.yelp.com/biz/truedan-new-york-3?ad...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>categories</th>
+      <td>397</td>
+      <td>172</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>110</td>
+    </tr>
+    <tr>
+      <th>coordinates</th>
+      <td>397</td>
+      <td>391</td>
+      <td>{'latitude': 40.60413, 'longitude': -73.99715}</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>transactions</th>
+      <td>397</td>
+      <td>5</td>
+      <td>['delivery', 'pickup']</td>
+      <td>171</td>
+    </tr>
+    <tr>
+      <th>price</th>
+      <td>254</td>
+      <td>3</td>
+      <td>$</td>
+      <td>170</td>
+    </tr>
+    <tr>
+      <th>location</th>
+      <td>397</td>
+      <td>394</td>
+      <td>{'address1': '90-15 Queens Blvd', 'address2': ...</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>display_phone</th>
+      <td>350</td>
+      <td>345</td>
+      <td>(718) 395-8297</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>geometry</th>
+      <td>397</td>
+      <td>391</td>
+      <td>POINT (-73.99715 40.60413)</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;id is unique: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">is_unique</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id is unique: True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>alias</th>
+      <th>name</th>
+      <th>image_url</th>
+      <th>is_closed</th>
+      <th>url</th>
+      <th>review_count</th>
+      <th>categories</th>
+      <th>rating</th>
+      <th>coordinates</th>
+      <th>transactions</th>
+      <th>price</th>
+      <th>location</th>
+      <th>phone</th>
+      <th>display_phone</th>
+      <th>distance</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Q3fmTHT7zilDWtfzLK9lMA</td>
+      <td>truedan-new-york-3</td>
+      <td>Truedan</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/BmUZXO...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/truedan-new-york-3?ad...</td>
+      <td>96</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
+      <td>['delivery', 'pickup']</td>
+      <td>$$</td>
+      <td>{'address1': '208 Grand St', 'address2': None,...</td>
+      <td>1.646559e+10</td>
+      <td>(646) 559-2886</td>
+      <td>1535.241614</td>
+      <td>40.719174</td>
+      <td>-73.996220</td>
+      <td>POINT (-73.9962197 40.7191742)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>bVJQEeRNi34-3XN_F1AZEg</td>
+      <td>xing-fu-tang-new-york</td>
+      <td>Xing Fu Tang</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/RzKMKS...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/xing-fu-tang-new-york...</td>
+      <td>58</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7288, 'longitude': -73.98775}</td>
+      <td>['delivery', 'pickup']</td>
+      <td>NaN</td>
+      <td>{'address1': '133 2nd Ave', 'address2': '', 'a...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2656.450427</td>
+      <td>40.728800</td>
+      <td>-73.987750</td>
+      <td>POINT (-73.98775000000001 40.7288)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3aypSFXLfkAL4dhHVFobKg</td>
+      <td>lazy-sundaes-new-york-6</td>
+      <td>Lazy Sundaes</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/kEfCYC...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/lazy-sundaes-new-york...</td>
+      <td>28</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.720597, 'longitude': -73.984539}</td>
+      <td>['delivery', 'pickup']</td>
+      <td>$$</td>
+      <td>{'address1': '23 Clinton St', 'address2': None...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1877.016204</td>
+      <td>40.720597</td>
+      <td>-73.984539</td>
+      <td>POINT (-73.984539 40.720597)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>zupVwJAFYkHDwrsQd2ktXA</td>
+      <td>fiftylan-union-square-new-york-3</td>
+      <td>FIFTYLAN Union Square</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/UIwR20...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/fiftylan-union-square...</td>
+      <td>54</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.0</td>
+      <td>{'latitude': 40.735516, 'longitude': -73.989191}</td>
+      <td>['delivery', 'pickup']</td>
+      <td>NaN</td>
+      <td>{'address1': '32 Union Square E', 'address2': ...</td>
+      <td>1.646767e+10</td>
+      <td>(646) 767-0085</td>
+      <td>3367.900728</td>
+      <td>40.735516</td>
+      <td>-73.989191</td>
+      <td>POINT (-73.98919100000001 40.735516)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7-bx74TooPuZKZDNW4WFcQ</td>
+      <td>chun-yang-tea-new-york</td>
+      <td>Chun Yang Tea</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/JrGwrZ...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/chun-yang-tea-new-yor...</td>
+      <td>83</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.71617, 'longitude': -73.9971}</td>
+      <td>['delivery', 'pickup']</td>
+      <td>$$</td>
+      <td>{'address1': '26B Elizabeth St', 'address2': '...</td>
+      <td>1.212420e+10</td>
+      <td>(212) 420-0123</td>
+      <td>1212.877370</td>
+      <td>40.716170</td>
+      <td>-73.997100</td>
+      <td>POINT (-73.9971 40.71617)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">names</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;counts&#39;</span><span class="p">]</span>
+
+<span class="n">names</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>counts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Kung Fu Tea</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Gong Cha</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Vivi Bubble Tea</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Möge Tee</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CoCo Fresh Tea &amp; Juice</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;counts&quot;</span><span class="p">,</span> 
+            <span class="n">y</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> 
+            <span class="n">data</span><span class="o">=</span><span class="n">names</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span> 
+            <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;number of bubble tea shops by business in nyc&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/boba-analysis-nyc_12_0.png" src="_images/boba-analysis-nyc_12_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">review_count_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">)[</span><span class="s1">&#39;review_count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">review_count_df</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">review_count_df</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">review_count_df</span> <span class="o">=</span> <span class="n">review_count_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="n">review_count_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>review_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ten Ren's Tea Time</td>
+      <td>651.00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Hanco's</td>
+      <td>517.33</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Ajisen Ramen</td>
+      <td>431.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Teado Tea Shop</td>
+      <td>423.00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>520iFCha Dessert Bar</td>
+      <td>352.00</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;review_count&quot;</span><span class="p">,</span> 
+            <span class="n">y</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> 
+            <span class="n">data</span><span class="o">=</span><span class="n">review_count_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span> 
+            <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;average number of reviews per business in nyc&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/boba-analysis-nyc_14_0.png" src="_images/boba-analysis-nyc_14_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">most_reviewed</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;review_count&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">most_reviewed</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>alias</th>
+      <th>name</th>
+      <th>image_url</th>
+      <th>is_closed</th>
+      <th>url</th>
+      <th>review_count</th>
+      <th>categories</th>
+      <th>rating</th>
+      <th>coordinates</th>
+      <th>transactions</th>
+      <th>price</th>
+      <th>location</th>
+      <th>phone</th>
+      <th>display_phone</th>
+      <th>distance</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>178</th>
+      <td>bn0zZ9nT_j1INOwfpxWmEw</td>
+      <td>tiger-sugar-flushing</td>
+      <td>Tiger Sugar</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/Psre6b...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/tiger-sugar-flushing?...</td>
+      <td>739</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.0</td>
+      <td>{'latitude': 40.75922023369396, 'longitude': -...</td>
+      <td>['pickup', 'delivery']</td>
+      <td>$$</td>
+      <td>{'address1': '40-10 Main St', 'address2': 'Ste...</td>
+      <td>1.347732e+10</td>
+      <td>(347) 732-4001</td>
+      <td>15055.920826</td>
+      <td>40.759220</td>
+      <td>-73.830305</td>
+      <td>POINT (-73.83030496537685 40.75922023369396)</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>NqnYnZtajJ4Y-Lmxa26VdA</td>
+      <td>hancos-brooklyn</td>
+      <td>Hanco's</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/ggIqWD...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/hancos-brooklyn?adjus...</td>
+      <td>702</td>
+      <td>[{'alias': 'vietnamese', 'title': 'Vietnamese'...</td>
+      <td>4.0</td>
+      <td>{'latitude': 40.6870318621828, 'longitude': -7...</td>
+      <td>['pickup', 'delivery']</td>
+      <td>$</td>
+      <td>{'address1': '134 Smith St', 'address2': '', '...</td>
+      <td>1.718859e+10</td>
+      <td>(718) 858-6818</td>
+      <td>2073.182530</td>
+      <td>40.687032</td>
+      <td>-73.990429</td>
+      <td>POINT (-73.9904292380982 40.6870318621828)</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>WxNlqGSsj_2TCodkx9Sa4A</td>
+      <td>vivi-bubble-tea-new-york-6</td>
+      <td>Vivi Bubble Tea</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/Fw3SYB...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/vivi-bubble-tea-new-y...</td>
+      <td>658</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.0</td>
+      <td>{'latitude': 40.715099, 'longitude': -73.997535}</td>
+      <td>['pickup', 'delivery']</td>
+      <td>$</td>
+      <td>{'address1': '49 Bayard St', 'address2': '', '...</td>
+      <td>1.212567e+10</td>
+      <td>(212) 566-6833</td>
+      <td>1114.073275</td>
+      <td>40.715099</td>
+      <td>-73.997535</td>
+      <td>POINT (-73.997535 40.715099)</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>SqVHETmH6bf3rPKmdftvvw</td>
+      <td>ten-rens-tea-time-new-york-2</td>
+      <td>Ten Ren's Tea Time</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/UChdn5...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/ten-rens-tea-time-new...</td>
+      <td>651</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.0</td>
+      <td>{'latitude': 40.7163819, 'longitude': -73.9982...</td>
+      <td>['delivery']</td>
+      <td>$$</td>
+      <td>{'address1': '73 Mott St', 'address2': '', 'ad...</td>
+      <td>1.212733e+10</td>
+      <td>(212) 732-7178</td>
+      <td>1261.450313</td>
+      <td>40.716382</td>
+      <td>-73.998268</td>
+      <td>POINT (-73.99826830000001 40.7163819)</td>
+    </tr>
+    <tr>
+      <th>298</th>
+      <td>ZLo3HRSSvN--Mw4eCBLxCg</td>
+      <td>mango-mango-dessert-flushing-3</td>
+      <td>Mango Mango Dessert</td>
+      <td>https://s3-media4.fl.yelpcdn.com/bphoto/9zl6pk...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/mango-mango-dessert-f...</td>
+      <td>617</td>
+      <td>[{'alias': 'desserts', 'title': 'Desserts'}, {...</td>
+      <td>4.0</td>
+      <td>{'latitude': 40.7603809317017, 'longitude': -7...</td>
+      <td>['delivery', 'pickup']</td>
+      <td>$</td>
+      <td>{'address1': '136-28 39th Ave', 'address2': ''...</td>
+      <td>1.917563e+10</td>
+      <td>(917) 563-1847</td>
+      <td>15199.500511</td>
+      <td>40.760381</td>
+      <td>-73.829452</td>
+      <td>POINT (-73.8294516357502 40.7603809317017)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;review_count&quot;</span><span class="p">,</span> 
+            <span class="n">y</span><span class="o">=</span><span class="s2">&quot;alias&quot;</span><span class="p">,</span> 
+            <span class="n">data</span><span class="o">=</span><span class="n">most_reviewed</span><span class="p">,</span> 
+            <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;most reviews per business location in nyc&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/boba-analysis-nyc_16_0.png" src="_images/boba-analysis-nyc_16_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;rating&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    397.000000
+mean       3.989924
+std        0.588097
+min        1.000000
+25%        3.500000
+50%        4.000000
+75%        4.500000
+max        5.000000
+Name: rating, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> 
+             <span class="n">x</span><span class="o">=</span><span class="s2">&quot;rating&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;distribution of ratings per business location in nyc&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/boba-analysis-nyc_18_0.png" src="_images/boba-analysis-nyc_18_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> 
+                <span class="n">x</span><span class="o">=</span><span class="s2">&quot;review_count&quot;</span><span class="p">,</span> 
+                <span class="n">y</span><span class="o">=</span><span class="s2">&quot;rating&quot;</span><span class="p">,</span> 
+                <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;rating vs. review count per business location in nyc&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/boba-analysis-nyc_19_0.png" src="_images/boba-analysis-nyc_19_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">price_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">price_df</span> <span class="o">=</span> <span class="n">price_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">price_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="s1">&#39;counts&#39;</span><span class="p">]</span>
+
+<span class="n">price_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>price</th>
+      <th>counts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>$</td>
+      <td>170</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>$$</td>
+      <td>83</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>$$$$</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">price_df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">price_df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">$&#39;</span><span class="p">)</span>
+
+<span class="n">price_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>price</th>
+      <th>counts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>170</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>83</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;counts&quot;</span><span class="p">,</span> 
+            <span class="n">x</span><span class="o">=</span><span class="s2">&quot;price&quot;</span><span class="p">,</span> 
+            <span class="n">data</span><span class="o">=</span><span class="n">price_df</span><span class="p">,</span> 
+            <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;price level (1 = $) per business location in nyc&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/boba-analysis-nyc_22_0.png" src="_images/boba-analysis-nyc_22_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://data.cityofnewyork.us/api/geospatial/cpf4-rkhq?method=export&amp;format=Shapefile&#39;</span>
+<span class="n">neighborhoods</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="n">neighborhoods</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>boro_code</th>
+      <th>boro_name</th>
+      <th>county_fip</th>
+      <th>ntacode</th>
+      <th>ntaname</th>
+      <th>shape_area</th>
+      <th>shape_leng</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4.0</td>
+      <td>Queens</td>
+      <td>081</td>
+      <td>QN51</td>
+      <td>Murray Hill</td>
+      <td>5.248828e+07</td>
+      <td>33266.904856</td>
+      <td>POLYGON ((-73.80379 40.77561, -73.80099 40.775...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.0</td>
+      <td>Queens</td>
+      <td>081</td>
+      <td>QN27</td>
+      <td>East Elmhurst</td>
+      <td>1.972685e+07</td>
+      <td>19816.711894</td>
+      <td>POLYGON ((-73.86110 40.76366, -73.85993 40.762...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.0</td>
+      <td>Queens</td>
+      <td>081</td>
+      <td>QN41</td>
+      <td>Fresh Meadows-Utopia</td>
+      <td>2.777485e+07</td>
+      <td>22106.431272</td>
+      <td>POLYGON ((-73.77758 40.73019, -73.77849 40.729...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.0</td>
+      <td>Manhattan</td>
+      <td>061</td>
+      <td>MN17</td>
+      <td>Midtown-Midtown South</td>
+      <td>3.019153e+07</td>
+      <td>27032.700375</td>
+      <td>POLYGON ((-73.97301 40.76428, -73.97141 40.763...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.0</td>
+      <td>Bronx</td>
+      <td>005</td>
+      <td>BX09</td>
+      <td>Soundview-Castle Hill-Clason Point-Harding Park</td>
+      <td>5.198380e+07</td>
+      <td>67340.977626</td>
+      <td>MULTIPOLYGON (((-73.88064 40.81852, -73.88098 ...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">neighborhoods</span><span class="o">.</span><span class="n">crs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Geographic 2D CRS: GEOGCS[&quot;WGS84(DD)&quot;,DATUM[&quot;WGS84&quot;,SPHEROID[&quot;WGS84&quot;, ...&gt;
+Name: WGS84(DD)
+Axis Info [ellipsoidal]:
+- lon[east]: Longitude (degree)
+- lat[north]: Latitude (degree)
+Area of Use:
+- undefined
+Datum: WGS84
+- Ellipsoid: WGS84
+- Prime Meridian: Greenwich
+</pre></div>
+</div>
+</div>
+</div>
+<p>Transform CRS coordinates to avoid the following warning during spatial join:<br />
+<code class="docutils literal notranslate"><span class="pre">UserWarning:</span> <span class="pre">CRS</span> <span class="pre">mismatch</span> <span class="pre">between</span> <span class="pre">the</span> <span class="pre">CRS</span> <span class="pre">of</span> <span class="pre">left</span> <span class="pre">geometries</span> <span class="pre">and</span> <span class="pre">the</span> <span class="pre">CRS</span> <span class="pre">of</span> <span class="pre">right</span> <span class="pre">geometries.</span></code></p>
+<p><em>References</em>:</p>
+<p><a class="reference external" href="https://gis.stackexchange.com/questions/347732/finding-distance-of-consecutive-points-in-a-geopandas-data-frame">Finding distance of consecutive points in a GeoPandas data frame</a></p>
+<p><a class="reference external" href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.to_crs.html">geopandas.GeoDataFrame.to_crs</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">neighborhoods</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s1">&#39;EPSG:4326&#39;</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">neighborhoods</span><span class="o">.</span><span class="n">crs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Geographic 2D CRS: EPSG:4326&gt;
+Name: WGS 84
+Axis Info [ellipsoidal]:
+- Lat[north]: Geodetic latitude (degree)
+- Lon[east]: Geodetic longitude (degree)
+Area of Use:
+- name: World.
+- bounds: (-180.0, -90.0, 180.0, 90.0)
+Datum: World Geodetic System 1984 ensemble
+- Ellipsoid: WGS 84
+- Prime Meridian: Greenwich
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>alias</th>
+      <th>name</th>
+      <th>image_url</th>
+      <th>is_closed</th>
+      <th>url</th>
+      <th>review_count</th>
+      <th>categories</th>
+      <th>rating</th>
+      <th>coordinates</th>
+      <th>transactions</th>
+      <th>price</th>
+      <th>location</th>
+      <th>phone</th>
+      <th>display_phone</th>
+      <th>distance</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Q3fmTHT7zilDWtfzLK9lMA</td>
+      <td>truedan-new-york-3</td>
+      <td>Truedan</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/BmUZXO...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/truedan-new-york-3?ad...</td>
+      <td>96</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
+      <td>['delivery', 'pickup']</td>
+      <td>$$</td>
+      <td>{'address1': '208 Grand St', 'address2': None,...</td>
+      <td>1.646559e+10</td>
+      <td>(646) 559-2886</td>
+      <td>1535.241614</td>
+      <td>40.719174</td>
+      <td>-73.996220</td>
+      <td>POINT (-73.9962197 40.7191742)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>bVJQEeRNi34-3XN_F1AZEg</td>
+      <td>xing-fu-tang-new-york</td>
+      <td>Xing Fu Tang</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/RzKMKS...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/xing-fu-tang-new-york...</td>
+      <td>58</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7288, 'longitude': -73.98775}</td>
+      <td>['delivery', 'pickup']</td>
+      <td>NaN</td>
+      <td>{'address1': '133 2nd Ave', 'address2': '', 'a...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2656.450427</td>
+      <td>40.728800</td>
+      <td>-73.987750</td>
+      <td>POINT (-73.98775000000001 40.7288)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3aypSFXLfkAL4dhHVFobKg</td>
+      <td>lazy-sundaes-new-york-6</td>
+      <td>Lazy Sundaes</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/kEfCYC...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/lazy-sundaes-new-york...</td>
+      <td>28</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.720597, 'longitude': -73.984539}</td>
+      <td>['delivery', 'pickup']</td>
+      <td>$$</td>
+      <td>{'address1': '23 Clinton St', 'address2': None...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1877.016204</td>
+      <td>40.720597</td>
+      <td>-73.984539</td>
+      <td>POINT (-73.984539 40.720597)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>zupVwJAFYkHDwrsQd2ktXA</td>
+      <td>fiftylan-union-square-new-york-3</td>
+      <td>FIFTYLAN Union Square</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/UIwR20...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/fiftylan-union-square...</td>
+      <td>54</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.0</td>
+      <td>{'latitude': 40.735516, 'longitude': -73.989191}</td>
+      <td>['delivery', 'pickup']</td>
+      <td>NaN</td>
+      <td>{'address1': '32 Union Square E', 'address2': ...</td>
+      <td>1.646767e+10</td>
+      <td>(646) 767-0085</td>
+      <td>3367.900728</td>
+      <td>40.735516</td>
+      <td>-73.989191</td>
+      <td>POINT (-73.98919100000001 40.735516)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7-bx74TooPuZKZDNW4WFcQ</td>
+      <td>chun-yang-tea-new-york</td>
+      <td>Chun Yang Tea</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/JrGwrZ...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/chun-yang-tea-new-yor...</td>
+      <td>83</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.71617, 'longitude': -73.9971}</td>
+      <td>['delivery', 'pickup']</td>
+      <td>$$</td>
+      <td>{'address1': '26B Elizabeth St', 'address2': '...</td>
+      <td>1.212420e+10</td>
+      <td>(212) 420-0123</td>
+      <td>1212.877370</td>
+      <td>40.716170</td>
+      <td>-73.997100</td>
+      <td>POINT (-73.9971 40.71617)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="mi">4326</span><span class="p">,</span>
+      <span class="n">geometry</span><span class="o">=</span><span class="n">gpd</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">latitude</span><span class="p">))</span>
+
+<span class="n">gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>alias</th>
+      <th>name</th>
+      <th>image_url</th>
+      <th>is_closed</th>
+      <th>url</th>
+      <th>review_count</th>
+      <th>categories</th>
+      <th>rating</th>
+      <th>coordinates</th>
+      <th>transactions</th>
+      <th>price</th>
+      <th>location</th>
+      <th>phone</th>
+      <th>display_phone</th>
+      <th>distance</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Q3fmTHT7zilDWtfzLK9lMA</td>
+      <td>truedan-new-york-3</td>
+      <td>Truedan</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/BmUZXO...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/truedan-new-york-3?ad...</td>
+      <td>96</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
+      <td>['delivery', 'pickup']</td>
+      <td>$$</td>
+      <td>{'address1': '208 Grand St', 'address2': None,...</td>
+      <td>1.646559e+10</td>
+      <td>(646) 559-2886</td>
+      <td>1535.241614</td>
+      <td>40.719174</td>
+      <td>-73.996220</td>
+      <td>POINT (-73.99622 40.71917)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>bVJQEeRNi34-3XN_F1AZEg</td>
+      <td>xing-fu-tang-new-york</td>
+      <td>Xing Fu Tang</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/RzKMKS...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/xing-fu-tang-new-york...</td>
+      <td>58</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7288, 'longitude': -73.98775}</td>
+      <td>['delivery', 'pickup']</td>
+      <td>NaN</td>
+      <td>{'address1': '133 2nd Ave', 'address2': '', 'a...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2656.450427</td>
+      <td>40.728800</td>
+      <td>-73.987750</td>
+      <td>POINT (-73.98775 40.72880)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3aypSFXLfkAL4dhHVFobKg</td>
+      <td>lazy-sundaes-new-york-6</td>
+      <td>Lazy Sundaes</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/kEfCYC...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/lazy-sundaes-new-york...</td>
+      <td>28</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.720597, 'longitude': -73.984539}</td>
+      <td>['delivery', 'pickup']</td>
+      <td>$$</td>
+      <td>{'address1': '23 Clinton St', 'address2': None...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1877.016204</td>
+      <td>40.720597</td>
+      <td>-73.984539</td>
+      <td>POINT (-73.98454 40.72060)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>zupVwJAFYkHDwrsQd2ktXA</td>
+      <td>fiftylan-union-square-new-york-3</td>
+      <td>FIFTYLAN Union Square</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/UIwR20...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/fiftylan-union-square...</td>
+      <td>54</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.0</td>
+      <td>{'latitude': 40.735516, 'longitude': -73.989191}</td>
+      <td>['delivery', 'pickup']</td>
+      <td>NaN</td>
+      <td>{'address1': '32 Union Square E', 'address2': ...</td>
+      <td>1.646767e+10</td>
+      <td>(646) 767-0085</td>
+      <td>3367.900728</td>
+      <td>40.735516</td>
+      <td>-73.989191</td>
+      <td>POINT (-73.98919 40.73552)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7-bx74TooPuZKZDNW4WFcQ</td>
+      <td>chun-yang-tea-new-york</td>
+      <td>Chun Yang Tea</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/JrGwrZ...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/chun-yang-tea-new-yor...</td>
+      <td>83</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.71617, 'longitude': -73.9971}</td>
+      <td>['delivery', 'pickup']</td>
+      <td>$$</td>
+      <td>{'address1': '26B Elizabeth St', 'address2': '...</td>
+      <td>1.212420e+10</td>
+      <td>(212) 420-0123</td>
+      <td>1212.877370</td>
+      <td>40.716170</td>
+      <td>-73.997100</td>
+      <td>POINT (-73.99710 40.71617)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">join_df</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">sjoin</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> 
+                    <span class="n">neighborhoods</span><span class="p">,</span> 
+                    <span class="n">predicate</span><span class="o">=</span><span class="s1">&#39;intersects&#39;</span><span class="p">)</span> 
+
+<span class="n">join_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>alias</th>
+      <th>name</th>
+      <th>image_url</th>
+      <th>is_closed</th>
+      <th>url</th>
+      <th>review_count</th>
+      <th>categories</th>
+      <th>rating</th>
+      <th>coordinates</th>
+      <th>...</th>
+      <th>longitude</th>
+      <th>geometry</th>
+      <th>index_right</th>
+      <th>boro_code</th>
+      <th>boro_name</th>
+      <th>county_fip</th>
+      <th>ntacode</th>
+      <th>ntaname</th>
+      <th>shape_area</th>
+      <th>shape_leng</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Q3fmTHT7zilDWtfzLK9lMA</td>
+      <td>truedan-new-york-3</td>
+      <td>Truedan</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/BmUZXO...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/truedan-new-york-3?ad...</td>
+      <td>96</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
+      <td>...</td>
+      <td>-73.996220</td>
+      <td>POINT (-73.99622 40.71917)</td>
+      <td>94</td>
+      <td>1.0</td>
+      <td>Manhattan</td>
+      <td>061</td>
+      <td>MN24</td>
+      <td>SoHo-TriBeCa-Civic Center-Little Italy</td>
+      <td>2.503268e+07</td>
+      <td>26855.031527</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>DbhBca8LzskjS0B-L4QfZg</td>
+      <td>tiger-sugar-new-york</td>
+      <td>Tiger Sugar</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/5wNVyj...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/tiger-sugar-new-york?...</td>
+      <td>475</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.0</td>
+      <td>{'latitude': 40.717151, 'longitude': -73.998231}</td>
+      <td>...</td>
+      <td>-73.998231</td>
+      <td>POINT (-73.99823 40.71715)</td>
+      <td>94</td>
+      <td>1.0</td>
+      <td>Manhattan</td>
+      <td>061</td>
+      <td>MN24</td>
+      <td>SoHo-TriBeCa-Civic Center-Little Italy</td>
+      <td>2.503268e+07</td>
+      <td>26855.031527</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>bxCjNLVDQggNTbpviV0RMw</td>
+      <td>lazy-sundaes-new-york-4</td>
+      <td>Lazy Sundaes</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/iDul5E...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/lazy-sundaes-new-york...</td>
+      <td>61</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.0</td>
+      <td>{'latitude': 40.7189689, 'longitude': -74.0006...</td>
+      <td>...</td>
+      <td>-74.000677</td>
+      <td>POINT (-74.00068 40.71897)</td>
+      <td>94</td>
+      <td>1.0</td>
+      <td>Manhattan</td>
+      <td>061</td>
+      <td>MN24</td>
+      <td>SoHo-TriBeCa-Civic Center-Little Italy</td>
+      <td>2.503268e+07</td>
+      <td>26855.031527</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>jsJdz6pvyYZjtut9vkUwBw</td>
+      <td>yaya-tea-grand-new-york-2</td>
+      <td>Yaya Tea Grand</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/iutBCc...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/yaya-tea-grand-new-yo...</td>
+      <td>294</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.0</td>
+      <td>{'latitude': 40.7192268371582, 'longitude': -7...</td>
+      <td>...</td>
+      <td>-73.996277</td>
+      <td>POINT (-73.99628 40.71923)</td>
+      <td>94</td>
+      <td>1.0</td>
+      <td>Manhattan</td>
+      <td>061</td>
+      <td>MN24</td>
+      <td>SoHo-TriBeCa-Civic Center-Little Italy</td>
+      <td>2.503268e+07</td>
+      <td>26855.031527</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>uge-Lp_kY1J6Z4CzzceULw</td>
+      <td>honestea-new-york</td>
+      <td>Honestea</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/77X7Xd...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/honestea-new-york?adj...</td>
+      <td>97</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>3.5</td>
+      <td>{'latitude': 40.71789, 'longitude': -73.99692}</td>
+      <td>...</td>
+      <td>-73.996920</td>
+      <td>POINT (-73.99692 40.71789)</td>
+      <td>94</td>
+      <td>1.0</td>
+      <td>Manhattan</td>
+      <td>061</td>
+      <td>MN24</td>
+      <td>SoHo-TriBeCa-Civic Center-Little Italy</td>
+      <td>2.503268e+07</td>
+      <td>26855.031527</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 27 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">join_df</span> <span class="o">=</span> <span class="n">join_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;ntaname&#39;</span><span class="p">)[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">join_df</span> <span class="o">=</span> <span class="n">join_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="n">join_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;nta_name&#39;</span><span class="p">,</span> <span class="s1">&#39;counts&#39;</span><span class="p">]</span>
+
+<span class="n">join_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>nta_name</th>
+      <th>counts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Flushing</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Chinatown</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Sunset Park East</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Hunters Point-Sunnyside-West Maspeth</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Elmhurst</td>
+      <td>17</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;counts&quot;</span><span class="p">,</span> 
+            <span class="n">y</span><span class="o">=</span><span class="s2">&quot;nta_name&quot;</span><span class="p">,</span> 
+            <span class="n">data</span><span class="o">=</span><span class="n">join_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span> 
+            <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;most bubble tea locations per neighborhood in nyc&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;neighborhood&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;busineses-per-neighborhood.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/boba-analysis-nyc_32_0.png" src="_images/boba-analysis-nyc_32_0.png" />
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="data-wrangling.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Retrieving Bubble Tea Shops in NYC Using Yelp Fusion API</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Mark Bauer, Nathan Williamson, Chidi Ezeolu<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,1330 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retrieving Bubble Tea Shops in NYC Using Yelp Fusion API &#8212; Searching for Boba</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Searching for Boba: Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API" href="boba-analysis-nyc.html" />
+    <link rel="prev" title="Searching for Boba: Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Searching for Boba</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Searching for Boba: Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Cleaning
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Retrieving Bubble Tea Shops in NYC Using Yelp Fusion API
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Exploratory Data Analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="boba-analysis-nyc.html">
+   Searching for Boba: Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/data-wrangling.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/datalifenyc/boba-nyc"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/datalifenyc/boba-nyc/issues/new?title=Issue%20on%20page%20%2Fdata-wrangling.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/datalifenyc/boba-nyc/master?urlpath=tree/data-wrangling.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Retrieving Bubble Tea Shops in NYC Using Yelp Fusion API</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="retrieving-bubble-tea-shops-in-nyc-using-yelp-fusion-api">
+<h1>Retrieving Bubble Tea Shops in NYC Using Yelp Fusion API<a class="headerlink" href="#retrieving-bubble-tea-shops-in-nyc-using-yelp-fusion-api" title="Permalink to this headline">¶</a></h1>
+<p>Mark Bauer</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># importing libraries</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">decouple</span> <span class="kn">import</span> <span class="n">AutoConfig</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># API only returns 1,000 results and 50 per request</span>
+<span class="c1"># we use the offset parameter to page through to the next 50</span>
+<span class="c1"># source: https://www.yelp.com/developers/faq</span>
+
+<span class="c1"># saving my api key as an environment variable</span>
+<span class="n">API_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;YELP_API&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">API_KEY</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">AutoConfig</span><span class="p">(</span><span class="n">search_path</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+    <span class="n">API_KEY</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s1">&#39;YELP_API&#39;</span><span class="p">)</span>
+
+<span class="c1"># empty list to place our data for each page</span>
+<span class="n">lst</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># our offset parameter - each page 50 rows</span>
+<span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;initial offset number: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">offset</span><span class="p">))</span>
+
+<span class="c1"># loop through the api 20 times (limit is 1000 rows with each page includes 50 rows)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+    
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;Bearer </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">API_KEY</span><span class="p">)}</span>
+        <span class="n">search_api_url</span> <span class="o">=</span> <span class="s1">&#39;https://api.yelp.com/v3/businesses/search&#39;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+                  <span class="s1">&#39;term&#39;</span><span class="p">:</span> <span class="s1">&#39;bubble tea&#39;</span><span class="p">,</span> 
+                  <span class="s1">&#39;categories&#39;</span><span class="p">:</span> <span class="s1">&#39;bubbletea, boba&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;location&#39;</span><span class="p">:</span> <span class="s1">&#39;New York City&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;offset&#39;</span><span class="p">:</span> <span class="n">offset</span><span class="p">,</span>
+                  <span class="s1">&#39;limit&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">}</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">search_api_url</span><span class="p">,</span> 
+                                <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> 
+                                <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> 
+                                <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+        <span class="c1"># return a dictionary</span>
+        <span class="n">data_dict</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        
+        <span class="c1"># convert the business dictionary to a pandas dataframe</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_dict</span><span class="p">[</span><span class="s1">&#39;businesses&#39;</span><span class="p">])</span>
+        <span class="c1"># append dataframe to list</span>
+        <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+      
+        <span class="c1"># add 50 to the offset to access a new page</span>
+        <span class="n">offset</span> <span class="o">+=</span> <span class="mi">50</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;current offset number: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">offset</span><span class="p">))</span>
+        
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;exception: </span><span class="si">{}</span><span class="se">\n</span><span class="s1">exit loop.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ex</span><span class="p">))</span>
+        <span class="k">break</span>
+
+<span class="c1"># concatenate all pages to one dataframe</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">rows</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;query includes </span><span class="si">{:,}</span><span class="s1"> rows and </span><span class="si">{}</span><span class="s1"> columns.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">columns</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;row id is unique: </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">is_unique</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">is_unique</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+    <span class="n">duplicates</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])]</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">duplicates</span><span class="o">.</span><span class="n">head</span><span class="p">()[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">duplicates found: </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">vals</span><span class="p">))</span>
+    
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;dropping duplicates...&#39;</span><span class="p">)</span>
+    
+    <span class="n">rows</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">row id is unique: </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">is_unique</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;query includes </span><span class="si">{:,}</span><span class="s1"> rows and </span><span class="si">{}</span><span class="s1"> columns.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">columns</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>initial offset number: 0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>current offset number: 50
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>current offset number: 100
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>current offset number: 150
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>current offset number: 200
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>current offset number: 250
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>current offset number: 300
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>current offset number: 350
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>current offset number: 400
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>current offset number: 450
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>current offset number: 500
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>current offset number: 550
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>current offset number: 600
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>current offset number: 650
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>current offset number: 700
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>current offset number: 750
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>current offset number: 800
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>current offset number: 850
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>current offset number: 900
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>current offset number: 950
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>current offset number: 1000
+
+query includes 543 rows and 16 columns.
+row id is unique: False.
+
+duplicates found: [&#39;D&amp;M Bakery Inc.&#39;].
+dropping duplicates...
+
+row id is unique: True.
+query includes 542 rows and 16 columns.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>alias</th>
+      <th>name</th>
+      <th>image_url</th>
+      <th>is_closed</th>
+      <th>url</th>
+      <th>review_count</th>
+      <th>categories</th>
+      <th>rating</th>
+      <th>coordinates</th>
+      <th>transactions</th>
+      <th>location</th>
+      <th>phone</th>
+      <th>display_phone</th>
+      <th>distance</th>
+      <th>price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>bVJQEeRNi34-3XN_F1AZEg</td>
+      <td>xing-fu-tang-new-york</td>
+      <td>Xing Fu Tang</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/cyFHFE...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/xing-fu-tang-new-york...</td>
+      <td>73</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7288, 'longitude': -73.98775}</td>
+      <td>[delivery, pickup]</td>
+      <td>{'address1': '133 2nd Ave', 'address2': '', 'a...</td>
+      <td></td>
+      <td></td>
+      <td>2656.450427</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Q3fmTHT7zilDWtfzLK9lMA</td>
+      <td>truedan-new-york-3</td>
+      <td>Truedan</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/BmUZXO...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/truedan-new-york-3?ad...</td>
+      <td>97</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
+      <td>[delivery, pickup]</td>
+      <td>{'address1': '208 Grand St', 'address2': None,...</td>
+      <td>+16465592886</td>
+      <td>(646) 559-2886</td>
+      <td>1535.241614</td>
+      <td>$$</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Pb5WVn8D5Xj26zpc9PutUw</td>
+      <td>wanpo-tea-shop-new-york-3</td>
+      <td>Wanpo Tea Shop</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/nGx1Qx...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/wanpo-tea-shop-new-yo...</td>
+      <td>29</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.73155209065394, 'longitude': -...</td>
+      <td>[delivery, pickup]</td>
+      <td>{'address1': '37 E 8th St', 'address2': '', 'a...</td>
+      <td>+12129958349</td>
+      <td>(212) 995-8349</td>
+      <td>2903.009527</td>
+      <td>$$</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7-bx74TooPuZKZDNW4WFcQ</td>
+      <td>chun-yang-tea-new-york</td>
+      <td>Chun Yang Tea</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/JrGwrZ...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/chun-yang-tea-new-yor...</td>
+      <td>85</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.71617, 'longitude': -73.9971}</td>
+      <td>[delivery, pickup]</td>
+      <td>{'address1': '26B Elizabeth St', 'address2': '...</td>
+      <td>+12124200123</td>
+      <td>(212) 420-0123</td>
+      <td>1212.877370</td>
+      <td>$$</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3aypSFXLfkAL4dhHVFobKg</td>
+      <td>lazy-sundaes-new-york-6</td>
+      <td>Lazy Sundaes</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/kEfCYC...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/lazy-sundaes-new-york...</td>
+      <td>29</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.720597, 'longitude': -73.984539}</td>
+      <td>[delivery, pickup]</td>
+      <td>{'address1': '23 Clinton St', 'address2': None...</td>
+      <td></td>
+      <td></td>
+      <td>1877.016204</td>
+      <td>$$</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>alias</th>
+      <th>name</th>
+      <th>image_url</th>
+      <th>is_closed</th>
+      <th>url</th>
+      <th>review_count</th>
+      <th>categories</th>
+      <th>rating</th>
+      <th>coordinates</th>
+      <th>transactions</th>
+      <th>location</th>
+      <th>phone</th>
+      <th>display_phone</th>
+      <th>distance</th>
+      <th>price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>537</th>
+      <td>Vz6hbICqQfyMWq9wzAKakw</td>
+      <td>tbaar-flushing-4</td>
+      <td>TBaar</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/phUYWa...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/tbaar-flushing-4?adju...</td>
+      <td>6</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.0</td>
+      <td>{'latitude': 40.7613116, 'longitude': -73.8308...</td>
+      <td>[]</td>
+      <td>{'address1': '37-11 Main St', 'address2': '', ...</td>
+      <td></td>
+      <td></td>
+      <td>15147.410738</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>538</th>
+      <td>2_TEOFG1P_wz9ZRbkggJZg</td>
+      <td>hummus-grill-edison</td>
+      <td>Hummus Grill</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/s308l1...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/hummus-grill-edison?a...</td>
+      <td>28</td>
+      <td>[{'alias': 'mediterranean', 'title': 'Mediterr...</td>
+      <td>3.0</td>
+      <td>{'latitude': 40.5481840840451, 'longitude': -7...</td>
+      <td>[delivery, pickup]</td>
+      <td>{'address1': '55 Parsonage Rd', 'address2': ''...</td>
+      <td></td>
+      <td></td>
+      <td>33625.610011</td>
+      <td>$</td>
+    </tr>
+    <tr>
+      <th>539</th>
+      <td>YBgAPbviWYtVP2gAUhc7_A</td>
+      <td>t-baar-flushing</td>
+      <td>T Baar</td>
+      <td>https://s3-media4.fl.yelpcdn.com/bphoto/8pk-_Q...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/t-baar-flushing?adjus...</td>
+      <td>8</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>3.5</td>
+      <td>{'latitude': 40.7587509, 'longitude': -73.830162}</td>
+      <td>[]</td>
+      <td>{'address1': '135-36 40th Rd', 'address2': '',...</td>
+      <td></td>
+      <td></td>
+      <td>15045.970192</td>
+      <td>$</td>
+    </tr>
+    <tr>
+      <th>540</th>
+      <td>7apqk24GsFC9dptoD5dDZg</td>
+      <td>uncleman-cafe-new-york</td>
+      <td>Uncleman Cafe</td>
+      <td></td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/uncleman-cafe-new-yor...</td>
+      <td>1</td>
+      <td>[{'alias': 'desserts', 'title': 'Desserts'}, {...</td>
+      <td>1.0</td>
+      <td>{'latitude': 40.71781, 'longitude': -73.99795}</td>
+      <td>[]</td>
+      <td>{'address1': '122 Mulberry St', 'address2': No...</td>
+      <td>+12129666206</td>
+      <td>(212) 966-6206</td>
+      <td>1414.238245</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>541</th>
+      <td>f5UVQXvDpOrrIZdCjsw47w</td>
+      <td>maxins-cafe-flushing</td>
+      <td>Maxin's Cafe</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/S3vWvD...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/maxins-cafe-flushing?...</td>
+      <td>15</td>
+      <td>[{'alias': 'bakeries', 'title': 'Bakeries'}, {...</td>
+      <td>3.5</td>
+      <td>{'latitude': 40.7585, 'longitude': -73.83064}</td>
+      <td>[]</td>
+      <td>{'address1': '135-24 40th Rd', 'address2': '',...</td>
+      <td>+17188869200</td>
+      <td>(718) 886-9200</td>
+      <td>14997.842205</td>
+      <td>$</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 542 entries, 0 to 541
+Data columns (total 16 columns):
+ #   Column         Non-Null Count  Dtype  
+---  ------         --------------  -----  
+ 0   id             542 non-null    object 
+ 1   alias          542 non-null    object 
+ 2   name           542 non-null    object 
+ 3   image_url      542 non-null    object 
+ 4   is_closed      542 non-null    bool   
+ 5   url            542 non-null    object 
+ 6   review_count   542 non-null    int64  
+ 7   categories     542 non-null    object 
+ 8   rating         542 non-null    float64
+ 9   coordinates    542 non-null    object 
+ 10  transactions   542 non-null    object 
+ 11  location       542 non-null    object 
+ 12  phone          542 non-null    object 
+ 13  display_phone  542 non-null    object 
+ 14  distance       542 non-null    float64
+ 15  price          329 non-null    object 
+dtypes: bool(1), float64(2), int64(1), object(12)
+memory usage: 64.2+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gong Cha                       36
+Kung Fu Tea                    34
+ViVi Bubble Tea                21
+Möge Tee                       10
+CoCo Fresh Tea &amp; Juice          8
+                               ..
+Taiyaki NYC - Williamsburg      1
+ABC Eats Food Hall              1
+Cocohodo                        1
+Gong Cha - Ridgewood            1
+Maxin&#39;s Cafe                    1
+Name: name, Length: 360, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gong Cha                       36
+Kung Fu Tea                    34
+ViVi Bubble Tea                21
+Möge Tee                       10
+CoCo Fresh Tea &amp; Juice          8
+Coco Fresh Tea &amp; Juice          6
+Vivi Bubble Tea                 6
+Tiger Sugar                     5
+Banhmigos                       4
+Real Fruit Bubble Tea           4
+Hawa Smoothies &amp; Bubble Tea     4
+TBaar                           4
+Chun Yang Tea                   4
+Yifang Taiwan Fruit Tea         3
+Hanco&#39;s                         3
+Mr. Wish                        3
+Mi Tea                          3
+Tornado Crepe                   3
+Yaya Tea Garden                 3
+Meet Fresh                      3
+Name: name, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;categories&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;alias&#39;: &#39;bubbletea&#39;, &#39;title&#39;: &#39;Bubble Tea&#39;}]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;coordinates&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="mi">4326</span><span class="p">,</span> 
+      <span class="n">geometry</span><span class="o">=</span><span class="n">gpd</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">gdf</span><span class="o">.</span><span class="n">latitude</span><span class="p">))</span>
+
+<span class="n">gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>alias</th>
+      <th>name</th>
+      <th>image_url</th>
+      <th>is_closed</th>
+      <th>url</th>
+      <th>review_count</th>
+      <th>categories</th>
+      <th>rating</th>
+      <th>coordinates</th>
+      <th>transactions</th>
+      <th>location</th>
+      <th>phone</th>
+      <th>display_phone</th>
+      <th>distance</th>
+      <th>price</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>bVJQEeRNi34-3XN_F1AZEg</td>
+      <td>xing-fu-tang-new-york</td>
+      <td>Xing Fu Tang</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/cyFHFE...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/xing-fu-tang-new-york...</td>
+      <td>73</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7288, 'longitude': -73.98775}</td>
+      <td>[delivery, pickup]</td>
+      <td>{'address1': '133 2nd Ave', 'address2': '', 'a...</td>
+      <td></td>
+      <td></td>
+      <td>2656.450427</td>
+      <td>NaN</td>
+      <td>40.728800</td>
+      <td>-73.987750</td>
+      <td>POINT (-73.98775 40.72880)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Q3fmTHT7zilDWtfzLK9lMA</td>
+      <td>truedan-new-york-3</td>
+      <td>Truedan</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/BmUZXO...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/truedan-new-york-3?ad...</td>
+      <td>97</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
+      <td>[delivery, pickup]</td>
+      <td>{'address1': '208 Grand St', 'address2': None,...</td>
+      <td>+16465592886</td>
+      <td>(646) 559-2886</td>
+      <td>1535.241614</td>
+      <td>$$</td>
+      <td>40.719174</td>
+      <td>-73.996220</td>
+      <td>POINT (-73.99622 40.71917)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Pb5WVn8D5Xj26zpc9PutUw</td>
+      <td>wanpo-tea-shop-new-york-3</td>
+      <td>Wanpo Tea Shop</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/nGx1Qx...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/wanpo-tea-shop-new-yo...</td>
+      <td>29</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.73155209065394, 'longitude': -...</td>
+      <td>[delivery, pickup]</td>
+      <td>{'address1': '37 E 8th St', 'address2': '', 'a...</td>
+      <td>+12129958349</td>
+      <td>(212) 995-8349</td>
+      <td>2903.009527</td>
+      <td>$$</td>
+      <td>40.731552</td>
+      <td>-73.994160</td>
+      <td>POINT (-73.99416 40.73155)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7-bx74TooPuZKZDNW4WFcQ</td>
+      <td>chun-yang-tea-new-york</td>
+      <td>Chun Yang Tea</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/JrGwrZ...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/chun-yang-tea-new-yor...</td>
+      <td>85</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.71617, 'longitude': -73.9971}</td>
+      <td>[delivery, pickup]</td>
+      <td>{'address1': '26B Elizabeth St', 'address2': '...</td>
+      <td>+12124200123</td>
+      <td>(212) 420-0123</td>
+      <td>1212.877370</td>
+      <td>$$</td>
+      <td>40.716170</td>
+      <td>-73.997100</td>
+      <td>POINT (-73.99710 40.71617)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3aypSFXLfkAL4dhHVFobKg</td>
+      <td>lazy-sundaes-new-york-6</td>
+      <td>Lazy Sundaes</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/kEfCYC...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/lazy-sundaes-new-york...</td>
+      <td>29</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.720597, 'longitude': -73.984539}</td>
+      <td>[delivery, pickup]</td>
+      <td>{'address1': '23 Clinton St', 'address2': None...</td>
+      <td></td>
+      <td></td>
+      <td>1877.016204</td>
+      <td>$$</td>
+      <td>40.720597</td>
+      <td>-73.984539</td>
+      <td>POINT (-73.98454 40.72060)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://data.cityofnewyork.us/api/geospatial/tqmj-j8zm?method=export&amp;format=Shapefile&#39;</span>
+<span class="n">boro_gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="n">boro_gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>boro_code</th>
+      <th>boro_name</th>
+      <th>shape_area</th>
+      <th>shape_leng</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>Manhattan</td>
+      <td>6.366208e+08</td>
+      <td>359993.127161</td>
+      <td>MULTIPOLYGON (((-74.01093 40.68449, -74.01193 ...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>Bronx</td>
+      <td>1.187194e+09</td>
+      <td>463868.935588</td>
+      <td>MULTIPOLYGON (((-73.89681 40.79581, -73.89694 ...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.0</td>
+      <td>Brooklyn</td>
+      <td>1.934174e+09</td>
+      <td>728195.194837</td>
+      <td>MULTIPOLYGON (((-73.86327 40.58388, -73.86381 ...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5.0</td>
+      <td>Staten Island</td>
+      <td>1.623631e+09</td>
+      <td>325924.002252</td>
+      <td>MULTIPOLYGON (((-74.05051 40.56642, -74.05047 ...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4.0</td>
+      <td>Queens</td>
+      <td>3.040206e+09</td>
+      <td>900269.281914</td>
+      <td>MULTIPOLYGON (((-73.82645 40.59053, -73.82642 ...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">boro_gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;bubble tea shops in NYC area&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/data-wrangling_11_0.png" src="_images/data-wrangling_11_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="n">boro_gdf</span><span class="p">)</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">gdf</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\datal\AppData\Local\Temp\ipykernel_75088\2316523936.py:1: UserWarning: CRS mismatch between the CRS of left geometries and the CRS of right geometries.
+Use `to_crs()` to reproject one of the input geometries to match the CRS of the other.
+
+Left CRS: EPSG:4326
+Right CRS: GEOGCS[&quot;WGS84(DD)&quot;,DATUM[&quot;WGS84&quot;,SPHEROID[&quot;WGS84&quot;, ...
+
+  gdf = gpd.clip(gdf, boro_gdf)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(404, 19)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>alias</th>
+      <th>name</th>
+      <th>image_url</th>
+      <th>is_closed</th>
+      <th>url</th>
+      <th>review_count</th>
+      <th>categories</th>
+      <th>rating</th>
+      <th>coordinates</th>
+      <th>transactions</th>
+      <th>location</th>
+      <th>phone</th>
+      <th>display_phone</th>
+      <th>distance</th>
+      <th>price</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>BLnq_CETaoJYQB7U3IxGCw</td>
+      <td>mr-chicken-and-mrs-tea-ozone-park</td>
+      <td>Mr.Chicken &amp; Mrs.Tea</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/QLxNJs...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/mr-chicken-and-mrs-te...</td>
+      <td>96</td>
+      <td>[{'alias': 'chicken_wings', 'title': 'Chicken ...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.6698487, 'longitude': -73.8423...</td>
+      <td>[pickup, delivery]</td>
+      <td>{'address1': '150-29 Crossbay Blvd', 'address2...</td>
+      <td>+13475350010</td>
+      <td>(347) 535-0010</td>
+      <td>13456.986110</td>
+      <td>NaN</td>
+      <td>40.669849</td>
+      <td>-73.842308</td>
+      <td>POINT (-73.84231 40.66985)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1IwCoN9jVu4O-jaeEKH83w</td>
+      <td>halo-kitchen-and-lounge-queens</td>
+      <td>Halo Kitchen &amp; Lounge</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/s7DKo7...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/halo-kitchen-and-loun...</td>
+      <td>12</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>2.5</td>
+      <td>{'latitude': 40.68871402307153, 'longitude': -...</td>
+      <td>[delivery, pickup]</td>
+      <td>{'address1': '12710 Liberty Ave', 'address2': ...</td>
+      <td>+19293860928</td>
+      <td>(929) 386-0928</td>
+      <td>15021.671634</td>
+      <td>NaN</td>
+      <td>40.688714</td>
+      <td>-73.817481</td>
+      <td>POINT (-73.81748 40.68871)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>j5x37Ozo9hc3--zdMnZfEA</td>
+      <td>pop-pot-noodle-and-tea-spot-queens-2</td>
+      <td>Pop Pot Noodle &amp; Tea Spot</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/SDb9ck...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/pop-pot-noodle-and-te...</td>
+      <td>16</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.0</td>
+      <td>{'latitude': 40.69123, 'longitude': -73.86614}</td>
+      <td>[delivery, pickup]</td>
+      <td>{'address1': '7508 Jamaica Ave', 'address2': N...</td>
+      <td></td>
+      <td></td>
+      <td>10916.154176</td>
+      <td>NaN</td>
+      <td>40.691230</td>
+      <td>-73.866140</td>
+      <td>POINT (-73.86614 40.69123)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AQqUiXi0hn1xu5qVfM54IQ</td>
+      <td>beijing-dumpling-house-jamaica</td>
+      <td>Beijing Dumpling House</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/w93mGy...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/beijing-dumpling-hous...</td>
+      <td>332</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7043147, 'longitude': -73.8091...</td>
+      <td>[delivery, pickup]</td>
+      <td>{'address1': '88-38 Sutphin Blvd', 'address2':...</td>
+      <td>+17182972935</td>
+      <td>(718) 297-2935</td>
+      <td>15613.386874</td>
+      <td>$</td>
+      <td>40.704315</td>
+      <td>-73.809180</td>
+      <td>POINT (-73.80918 40.70431)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-E5PfobEXNQ_WC8Qv2wGJA</td>
+      <td>halal-china-kitchen-plus-jamaica</td>
+      <td>Halal China Kitchen Plus</td>
+      <td>https://s3-media4.fl.yelpcdn.com/bphoto/lnj0lA...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/halal-china-kitchen-p...</td>
+      <td>34</td>
+      <td>[{'alias': 'chinese', 'title': 'Chinese'}, {'a...</td>
+      <td>3.5</td>
+      <td>{'latitude': 40.7081726, 'longitude': -73.8032...</td>
+      <td>[delivery, pickup]</td>
+      <td>{'address1': '87-48 Parsons Blvd', 'address2':...</td>
+      <td>+17185261300</td>
+      <td>(718) 526-1300</td>
+      <td>16108.411529</td>
+      <td>NaN</td>
+      <td>40.708173</td>
+      <td>-73.803248</td>
+      <td>POINT (-73.80325 40.70817)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">boro_gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;bubble tea shops in NYC&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/data-wrangling_14_0.png" src="_images/data-wrangling_14_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # save file</span>
+<span class="c1"># gdf.to_csv(&#39;boba-nyc.csv&#39;, index=False)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # sanity check</span>
+<span class="c1"># pd.read_csv(&#39;boba-nyc.csv&#39;).head()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Searching for Boba: Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="boba-analysis-nyc.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Searching for Boba: Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Mark Bauer, Nathan Williamson, Chidi Ezeolu<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

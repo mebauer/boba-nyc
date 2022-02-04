@@ -1,0 +1,11 @@
+name: boba-nyc
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - jupyter-book
+  - ipykernel
+  - pandas
+  - geopandas
+  - python-decouple
+  - seaborn

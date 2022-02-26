@@ -21,3 +21,6 @@
 | 17    | Test boba-analysis-nyc            | [X]           | [X]   |
 | 18    | Test data-wrangling               | [X]           | [X]   |
 | 19    | Test JupyterBook Initial Build    | [ ]           | [ ]   |
+| 20    | Merge Socrata API Demo notebook   | [X]           | [X]   |
+| 21    | Test Socrata API Demo notebook    | [ ]           | [ ]   |
+| 22    | Update environment file           | [ ]           | [ ]   |

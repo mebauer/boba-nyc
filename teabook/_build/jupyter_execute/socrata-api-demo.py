@@ -14,8 +14,6 @@ from sodapy import Socrata
 import plotly.express as px
 from urllib.request import urlopen
 import json
-# from IPython.core.display import display, HTML
-from IPython.display import IFrame
 pd.options.display.max_rows = 100
 
 
@@ -142,9 +140,6 @@ fig = px.choropleth_mapbox(doggy_zips_grouped, geojson=zip_codes, locations='zip
                           ).update(layout=dict(title=dict(x=0.5)))
 fig.update_layout(margin={"r":0,"t":30,"l":0,"b":0})
 fig.show()
-# fig.write_html('export/doggy-zip-map.html')
-# display(HTML('export/doggy-zip-map.html'))
-# IFrame(src = 'export/doggy-zip-map.html', width=700, height=600)
 
 
 # In[ ]:

@@ -100,26 +100,44 @@ You can view these notebooks through your browser by clicking _View_ under the _
 
 ## Resources
 
-NYC Open Data Week 2022:
+### NYC Open Data Week 2022
 
 - [About Open Data Week](https://2022.open-data.nyc/about/?_ga=2.50656297.1098322179.1641752075-1851954477.1641607907&_gl=1*1b9ycty*_ga*MTg1MTk1NDQ3Ny4xNjQxNjA3OTA3*_ga_7GQYNB09QV*MTY0MTc1NDU4My40LjAuMTY0MTc1NDU4My4w): Open Data Week is organized and produced by the NYC Open Data Program and BetaNYC. This annual festival  takes place during the first week of March to celebrate New York City’s Open Data Law, which was signed into law on March 7, 2012, and International Open Data Day which is typically the first Saturday in March.
 - [NYC Open Data](https://opendata.cityofnewyork.us/): Open Data is free public data published by New York City agencies and other partners.
 
-Yelp Fusion API:
+### Yelp Fusion API - references
 
 - [Getting Started](https://www.yelp.com/developers/documentation/v3/get_started)  
 - [Register for an API Key](https://www.yelp.com/developers/documentation/v3/authentication)
 - [Business Endpoints](https://www.yelp.com/developers/documentation/v3/business)  
 - [Samples on GitHub](https://github.com/Yelp/yelp-fusion)
 
+### CC-licensed materials
+
+- [File:Matcha green tea.jpg](https://commons.wikimedia.org/wiki/File:Matcha_green_tea.jpg) by [BubbleManiaCZ](https://commons.wikimedia.org/w/index.php?title=User:BubbleManiaCZ&action=edit&redlink=1) is under the [Creative Commons](https://en.wikipedia.org/wiki/en:Creative_Commons) [Attribution-Share Alike 3.0 Unported](https://creativecommons.org/licenses/by-sa/3.0/deed.en) license.
+
+### Image editors
+
+- [Favicon Generator / Generate from Image](https://favicon.io/favicon-converter/)
+
+### Social media badges
+
+[Shields.io: Quality metadata for open source projects](https://shields.io/)
+
 ## Further Reading
 
-TBD
+### Licensing
+
+- [Best practices for attribution](https://wiki.creativecommons.org/wiki/best_practices_for_attribution)
+- [Commons:Credit line](https://commons.wikimedia.org/wiki/Commons:Credit_line)
 
 ## Say Hello 👋
 
-I can be reached at:  
+We can be reached at:
 
-Twitter | [markbauerwater](https://twitter.com/markbauerwater)  
-LinkedIn | [markebauer](https://www.linkedin.com/in/markebauer/)  
-GitHub | [mebauer](https://github.com/mebauer)
+| Presenter | LinkedIn | GitHub | Twitter |
+| --------- | -------- | ------ | ------- |
+| Mark Bauer | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin&labelColor=blue)](https://www.linkedin.com/in/markebauer) | [![GitHub followers](https://img.shields.io/github/followers/mebauer?style=social)](https://github.com/mebauer) | [![Twitter Follow](https://img.shields.io/twitter/follow/markbauerwater?style=social)](https://twitter.com/markbauerwater) |
+| Chidi Ezeolu | [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin&labelColor=blue)](https://www.linkedin.com/in/chidi-ezeolu-411b0856) | [![GitHub followers](https://img.shields.io/github/followers/datalifenyc?style=social)](https://github.com/datalifenyc)| |
+| Ho Hsieh | | | |
+| Nathan Williamson | | [![GitHub followers](https://img.shields.io/github/followers/nateswill?style=social)](https://github.com/nateswill) | |

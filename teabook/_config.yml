@@ -1,7 +1,14 @@
 title: Searching for Boba
-author: Mark Bauer, Nathan Williamson, Chidi Ezeolu
+author: Mark Bauer, Chidi Ezeolu, Ho Hsieh, Nathan Williamson
+copyright: "2022"
 repository:
-  url: https://github.com/datalifenyc/boba-nyc
+  url: https://github.com/mebauer/boba-nyc
+  path_to_book: teabook
 html:
+  favicon: favicon.ico
   use_repository_button: true
   use_issues_button: true
+sphinx:
+  config:
+    html_js_files:
+    - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js

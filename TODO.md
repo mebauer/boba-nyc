@@ -20,4 +20,7 @@
 | 16    | Include LICENSE file              | [X]           | [X]   |
 | 17    | Test boba-analysis-nyc            | [X]           | [X]   |
 | 18    | Test data-wrangling               | [X]           | [X]   |
-| 19    | Test JupyterBook Initial Build    | [ ]           | [ ]   |
+| 19    | Test JupyterBook Initial Build    | [X]           | [X]   |
+| 20    | Merge Socrata API Demo notebook   | [X]           | [X]   |
+| 21    | Test Socrata API Demo notebook    | [X]           | [X]   |
+| 22    | Update environment file           | [X]           | [X]   |

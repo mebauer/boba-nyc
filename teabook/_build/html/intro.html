@@ -214,6 +214,16 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#presenters">
+   Presenters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#event">
+   Event
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#table-of-contents">
    Table of Contents
   </a>
@@ -296,6 +306,16 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#presenters">
+   Presenters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#event">
+   Event
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#table-of-contents">
    Table of Contents
   </a>
@@ -368,10 +388,24 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="searching-for-boba-analyzing-bubble-tea-shops-in-nyc-using-the-yelp-fusion-api">
 <h1>Searching for Boba: Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API<a class="headerlink" href="#searching-for-boba-analyzing-bubble-tea-shops-in-nyc-using-the-yelp-fusion-api" title="Permalink to this headline">¶</a></h1>
-<p><strong>Presenters</strong>: Mark Bauer, Nathan Williamson, Chidi Ezeolu<br />
-<strong>Event</strong>: <a class="reference external" href="https://www.open-data.nyc/">NYC Open Data Week 2022</a></p>
-<p>The analysis can be found in the <a class="reference external" href="https://github.com/mebauer/boba-nyc/blob/master/teabook/boba-analysis-nyc.ipynb">boba-analysis-nyc.ipynb</a> notebook.</p>
+<div class="section" id="presenters">
+<h2>Presenters<a class="headerlink" href="#presenters" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Mark Bauer</p></li>
+<li><p>Chidi Ezeolu</p></li>
+<li><p>Ho Hsieh</p></li>
+<li><p>Nathan Williamson</p></li>
+</ul>
+</div>
+<div class="section" id="event">
+<h2>Event<a class="headerlink" href="#event" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.open-data.nyc/">NYC Open Data Week 2022</a></p>
+<ul class="simple">
+<li><p>The <em><strong>notebooks</strong></em> can be found in the <a class="reference external" href="https://github.com/mebauer/boba-nyc/tree/master/teabook">teabook</a> folder.</p></li>
+<li><p>The <em><strong>website</strong></em> for this repo can be found here: <a class="reference external" href="https://boba-nyc.datalife.nyc">boba-nyc.datalife.nyc</a></p></li>
+</ul>
 <p><img alt="cover-photo" src="_images/busineses-per-neighborhood.png" /></p>
+</div>
 <div class="section" id="table-of-contents">
 <h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -386,20 +420,21 @@
 </div>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>TBD…</p>
-<p>In this project, I explore NYC’s Bubble Tea Shops using the Yelp Fusion API. Specifically, I attempt to answer the following questions:</p>
-<ol class="simple">
-<li><p>TBD</p></li>
-<li><p>TBD</p></li>
-<li><p>TBD</p></li>
-<li><p>TBD</p></li>
-</ol>
+<p>In this workshop, we explore and develop insights about NYC’s Bubble Tea Shops using the Yelp Fusion API. Sections include:</p>
+<ul class="simple">
+<li><p>How to use the Yelp Fusion API</p></li>
+<li><p>Data Cleaning, Wrangling and Visualizations in Python</p></li>
+<li><p>A demo of our web app created in Jupyter Book and Streamlit.</p></li>
+</ul>
+<p>Additionally, questions we’ll explore include bubble tea locations, Yelp ratings, review counts and price.</p>
+<p>After an initial introduction of each section, participants will join break-out groups depending on which topic they would like to learn more about. These break-out sessions will be hands-on and interactive. Participants will then reconvene for a Q&amp;A and final thoughts. Attendees will gain a better understanding of the data analysis workflow and will leave with skills and a template to uncover insights with any dataset.</p>
+<p>This workshop recommends beginner-level proficiency with Python and is focused on applying Python to data analysis; however, those new to Python are gladly welcome!</p>
 </div>
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Basics of Python or other programming languages (R, SQL, etc.)</p></li>
-<li><p>Knowledge of Data Analysis</p></li>
+<li><p>Basic knowledge of Data Analysis</p></li>
 <li><p>Basics of Jupyter Notebooks</p></li>
 </ul>
 <p>This project recommends beginner-level proficiency with Python and is focused on applying Python to data analysis.</p>
@@ -455,11 +490,15 @@ In order to set up your access to Yelp Fusion API, you need to create an app wit
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:left"><p><a class="reference internal" href="boba-analysis-nyc.html"><span class="doc std std-doc">boba-analysis-nyc.ipynb</span></a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a class="reference internal" href="socrata-api-demo.html"><span class="doc std std-doc">socrata-api-demo.ipynb</span></a></p></td>
+<td class="text-align:left"><p>Intro to the Socrata API with the NYC Dog Licensing Dataset &amp; Python</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://boba-nyc.datalife.nyc/socrata-api-demo.html">Demo</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="reference internal" href="boba-analysis-nyc.html"><span class="doc std std-doc">boba-analysis-nyc.ipynb</span></a></p></td>
 <td class="text-align:left"><p>Analyzing Bubble Tea shops in NYC.</p></td>
 <td class="text-align:left"><p><a class="reference external" href="https://boba-nyc.datalife.nyc/boba-analysis-nyc.html">Demo</a></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="reference internal" href="data-wrangling.html"><span class="doc std std-doc">data-wrangling.ipynb</span></a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a class="reference internal" href="data-wrangling.html"><span class="doc std std-doc">data-wrangling.ipynb</span></a></p></td>
 <td class="text-align:left"><p>Query and data cleaning workflow from the Yelp Fusion API’s Business Search endpoint.</p></td>
 <td class="text-align:left"><p><a class="reference external" href="https://boba-nyc.datalife.nyc/data-wrangling.html">Demo</a></p></td>
 </tr>
@@ -472,8 +511,11 @@ In order to set up your access to Yelp Fusion API, you need to create an app wit
 <li><p><a class="reference external" href="https://www.anaconda.com/">Anaconda</a>: A distribution of the Python and R programming languages for scientific computing (data science, machine learning applications, large-scale data processing, predictive analytics, etc.), that aims to simplify package management and deployment.</p></li>
 <li><p><a class="reference external" href="https://jupyter.org/index.html">Project Jupyter</a>: Project Jupyter is a non-profit, open-source project, born out of the IPython Project in 2014 as it evolved to support interactive data science and scientific computing across all programming languages.</p></li>
 <li><p><a class="reference external" href="https://jupyter.org/try">Jupyter Notebook</a>: The Jupyter Notebook is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text.</p></li>
+<li><p><a class="reference external" href="https://jupyterbook.org">Jupyter Book</a>: Jupyter Book is an open source project for building beautiful, publication-quality books and documents from computational material</p></li>
 <li><p><a class="reference external" href="https://nbviewer.jupyter.org/">nbviewer</a>: A web application that lets you enter the URL of a Jupyter Notebook file, renders that notebook as a static HTML web page, and gives you a stable link to that page which you can share with others.</p></li>
 <li><p><a class="reference external" href="https://mybinder.org/">Binder</a>: The Binder Project is an open community that makes it possible to create sharable, interactive, reproducible environments.</p></li>
+<li><p><a class="reference external" href="https://dev.socrata.com/">Socrata</a>: The Socrata Open Data API allows you to programmatically access a wealth of open data resources from governments, non-profits, and NGOs around the world.</p></li>
+<li><p><a class="reference external" href="https://plotly.com/">Plotly</a>: The front end for ML and data science models.</p></li>
 </ul>
 </div>
 <div class="section" id="resources">

@@ -83,9 +83,9 @@ You can view these notebooks through your browser by clicking _View_ under the _
 
 | File Name | Description | Static Webpage |
 | :-------- | :---------- | :------------- |
-| [socrata-api-demo.ipynb](socrata-api-demo.ipynb) | Intro to the Socrata API with the NYC Dog Licensing Dataset & Python | [Demo](https://boba-nyc.datalife.nyc/socrata-api-demo.html) |
-| [boba-analysis-nyc.ipynb](boba-analysis-nyc.ipynb) | Analyzing Bubble Tea shops in NYC. | [Demo](https://boba-nyc.datalife.nyc/boba-analysis-nyc.html) |
-| [data-wrangling.ipynb](data-wrangling.ipynb) | Query and data cleaning workflow from the Yelp Fusion API's Business Search endpoint. | [Demo](https://boba-nyc.datalife.nyc/data-wrangling.html) |
+| [socrata-api-demo.ipynb](teabook/socrata-api-demo.ipynb) | Intro to the Socrata API with the NYC Dog Licensing Dataset & Python | [Demo](https://boba-nyc.datalife.nyc/socrata-api-demo.html) |
+| [boba-analysis-nyc.ipynb](teabook/boba-analysis-nyc.ipynb) | Analyzing Bubble Tea shops in NYC. | [Demo](https://boba-nyc.datalife.nyc/boba-analysis-nyc.html) |
+| [data-wrangling.ipynb](teabook/data-wrangling.ipynb) | Query and data cleaning workflow from the Yelp Fusion API's Business Search endpoint. | [Demo](https://boba-nyc.datalife.nyc/data-wrangling.html) |
 
 ## Open Source Applications Used in Project
 

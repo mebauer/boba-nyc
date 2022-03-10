@@ -9,7 +9,8 @@
 
 ## Event
 
-[NYC Open Data Week 2022](https://www.open-data.nyc/)
+[NYC Open Data Week 2022](https://www.open-data.nyc/). 
+[Event Page](https://2022.open-data.nyc/event/obsessed-with-boba-analyzing-bubble-tea-shops-in-nyc-using-the-yelp-fusion-api/)
 
 - The ___notebooks___ can be found in the [teabook](https://github.com/mebauer/boba-nyc/tree/master/teabook) folder.
 

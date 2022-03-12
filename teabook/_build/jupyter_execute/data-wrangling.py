@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Retrieving Bubble Tea Shops in NYC Using Yelp Fusion API
-# 
-# Mark Bauer
+# # Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API
+# Data Wrangling: Retrieving Bubble Tea Shops in NYC Using Yelp Fusion API
+
+# In this notebook, we use the Yelp Fusion API to read in data about Bubble Tea Shops in NYC. Additionally, we preview the data, examine the number of rows and columns, and clip only shops that are within NYC's five boroughs. This output data will be the data we use throughout the project.
 
 # In[1]:
 
@@ -15,21 +16,21 @@ import numpy as np
 import geopandas as gpd
 import matplotlib.pyplot as plt
 import requests
-from decouple import AutoConfig
+# from decouple import AutoConfig
 
 
 # In[2]:
 
 
-# API only returns 1,000 results and 50 per request
-# we use the offset parameter to page through to the next 50
-# source: https://www.yelp.com/developers/faq
+'''API only returns 1,000 results and 50 per request 
+   we use the offset parameter to page through to the next 50 
+   source: https://www.yelp.com/developers/faq'''
 
-# saving my api key as an environment variable
-API_KEY = os.environ.get('YELP_API')
-if API_KEY is None:
-    config = AutoConfig(search_path = '.')
-    API_KEY = config('YELP_API')
+# saving yelp api key as an environment variable
+API_KEY = os.environ.get('yelp_api')
+# if API_KEY is None:
+#     config = AutoConfig(search_path = '.')
+#     API_KEY = config('YELP_API')
 
 # empty list to place our data for each page
 lst = []
@@ -44,8 +45,7 @@ for i in range(20):
     try:
         headers = {'Authorization': 'Bearer {}'.format(API_KEY)}
         search_api_url = 'https://api.yelp.com/v3/businesses/search'
-        params = {
-                  'term': 'bubble tea', 
+        params = {'term': 'bubble tea', 
                   'categories': 'bubbletea, boba',
                   'location': 'New York City',
                   'offset': offset,
@@ -59,9 +59,8 @@ for i in range(20):
         # return a dictionary
         data_dict = response.json()
         
-        # convert the business dictionary to a pandas dataframe
+        # convert the business dictionary to a pandas dataframe and append to list
         data = pd.DataFrame(data_dict['businesses'])
-        # append dataframe to list
         lst.append(data)
       
         # add 50 to the offset to access a new page
@@ -72,15 +71,17 @@ for i in range(20):
         print('exception: {}\nexit loop.'.format(ex))
         break
 
-# concatenate all pages to one dataframe
+# concatenate all pages to one dataframe and reset index
 df = pd.concat(lst)
 df = df.reset_index(drop=True)
 
+# review shape of dataframe
 rows, columns = df.shape
 print()
 print('query includes {:,} rows and {} columns.'.format(rows, columns))
 print('row id is unique: {}.'.format(df['id'].is_unique))
 
+# review if dataframe id is unique, if not drop duplicates
 if df['id'].is_unique == False:
     duplicates = df.loc[df.duplicated(subset=['id'])]
     vals = list(duplicates.head()['name'].values)
@@ -94,90 +95,105 @@ if df['id'].is_unique == False:
     print('query includes {:,} rows and {} columns.'.format(rows, columns))
 
 
-# In[3]:
-
-
-df.head()
-
-
-# In[4]:
-
-
-df.tail()
-
-
-# In[5]:
-
-
-df.info()
-
-
-# In[6]:
-
-
-df['name'].value_counts()
-
-
 # In[7]:
 
 
+# preview first five rows
+df.head()
+
+
+# In[10]:
+
+
+# preview last five rows
+df.tail()
+
+
+# In[11]:
+
+
+# preview column datatypes and non-null counts
+df.info()
+
+
+# In[12]:
+
+
+# return count of unique values of bubble tea shops
+df['name'].value_counts()
+
+
+# In[13]:
+
+
+# return top 20 count of unique values of bubble tea shops
 df['name'].value_counts().head(20)
 
 
-# In[8]:
+# In[17]:
 
 
+# review the categories of the yelp api - make sure it's bubble tea
 df['categories'][0]
 
 
-# In[9]:
+# In[19]:
 
 
+# explode coordinates to create an individual column
 gdf = pd.concat([df, df['coordinates'].apply(pd.Series)], axis=1)
 
+# retrieve lat, lon values and return a geodataframe
 gdf = gpd.GeoDataFrame(gdf, crs=4326, 
       geometry=gpd.points_from_xy(gdf.longitude, gdf.latitude))
 
 gdf.head()
 
 
-# In[10]:
+# In[20]:
 
 
+# read in boroughs shapefile to return only bubble tea shops within nyc
 url = 'https://data.cityofnewyork.us/api/geospatial/tqmj-j8zm?method=export&format=Shapefile'
 boro_gdf = gpd.read_file(url)
 
 boro_gdf.head()
 
 
-# In[11]:
+# In[22]:
 
 
+# plot bubble tea shops and boroughs
 fig, ax = plt.subplots(figsize=(8, 8))
 
 gdf.plot(ax=ax)
 boro_gdf.plot(ax=ax, facecolor='None', edgecolor='black', zorder=0)
 
 plt.title('bubble tea shops in NYC area')
+plt.xlabel('lon')
+plt.ylabel('lat')
 plt.tight_layout()
 
 
-# In[12]:
+# In[38]:
 
 
+# clip bubble tea shops that are within the five boroughs
 gdf = gpd.clip(gdf, boro_gdf)
 gdf = gdf.reset_index(drop=True)
 
-gdf.shape
+rows, columns = gdf.shape
+print('number of rows: {}\nnumber of columns: {}'.format(rows, columns))
 
 
-# In[13]:
+# In[39]:
 
 
+# preview dataframe
 gdf.head()
 
 
-# In[14]:
+# In[40]:
 
 
 fig, ax = plt.subplots(figsize=(8, 8))
@@ -186,19 +202,27 @@ gdf.plot(ax=ax)
 boro_gdf.plot(ax=ax, facecolor='None', edgecolor='black', zorder=0)
 
 plt.title('bubble tea shops in NYC')
+plt.xlabel('lon')
+plt.ylabel('lat')
 plt.tight_layout()
 
 
-# In[15]:
+# In[33]:
 
 
 # # save file
 # gdf.to_csv('boba-nyc.csv', index=False)
 
 
-# In[16]:
+# In[34]:
 
 
 # # sanity check
 # pd.read_csv('boba-nyc.csv').head()
+
+
+# In[ ]:
+
+
+
 

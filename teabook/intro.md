@@ -1,4 +1,4 @@
-# Searching for Boba: Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API
+# Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API
 
 ## Presenters
 
@@ -9,7 +9,9 @@
 
 ## Event
 
-[NYC Open Data Week 2022](https://www.open-data.nyc/)
+[NYC Open Data Week 2022](https://www.open-data.nyc/)  
+
+[Event RSVP](https://2022.open-data.nyc/event/obsessed-with-boba-analyzing-bubble-tea-shops-in-nyc-using-the-yelp-fusion-api/)  
 
 - The ___notebooks___ can be found in the [teabook](https://github.com/mebauer/boba-nyc/tree/master/teabook) folder.
 
@@ -48,6 +50,56 @@ This workshop recommends beginner-level proficiency with Python and is focused o
 - Basics of Jupyter Notebooks
 
 This project recommends beginner-level proficiency with Python and is focused on applying Python to data analysis.
+
+## Install
+
+1. Install [Anaconda](https://docs.anaconda.com/anaconda/install/index.html)
+
+2. Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+
+3. Clone [boba-nyc](https://github.com/mebauer/boba-nyc) repo
+
+    ```bash
+    git clone https://github.com/mebauer/boba-nyc.git
+    ```
+
+4. Enter directory of local repo
+
+    ```bash
+    cd boba-nyc
+    ```
+
+5. Install requirements
+
+    ```bash
+    conda env create -f environment.yml
+    ```
+
+## Other Commands
+
+### Git
+
+[Git - git-push Documentation](https://git-scm.com/docs/git-push)
+
+```bash
+git push origin
+```
+
+### Jupyter Book
+
+[Build your book](https://jupyterbook.org/start/build.html)
+
+```bash
+jupyter-book build --all teabook/
+```
+
+### Streamlit
+
+[Create an app](https://docs.streamlit.io/library/get-started/create-an-app)
+
+```bash
+streamlit run <app.py>
+```
 
 ## Data
 
@@ -98,7 +150,9 @@ You can view these notebooks through your browser by clicking _View_ under the _
 - [Socrata](https://dev.socrata.com/): The Socrata Open Data API allows you to programmatically access a wealth of open data resources from governments, non-profits, and NGOs around the world.
 - [Plotly](https://plotly.com/): The front end for ML and data science models.
 
-## Resources
+## Other Applications and Services Used in Project
+
+- [Google Cloud Storage](https://cloud.google.com/storage): Storage service used to host static website files.
 
 ### NYC Open Data Week 2022
 
@@ -116,13 +170,19 @@ You can view these notebooks through your browser by clicking _View_ under the _
 
 - [File:Matcha green tea.jpg](https://commons.wikimedia.org/wiki/File:Matcha_green_tea.jpg) by [BubbleManiaCZ](https://commons.wikimedia.org/w/index.php?title=User:BubbleManiaCZ&action=edit&redlink=1) is under the [Creative Commons](https://en.wikipedia.org/wiki/en:Creative_Commons) [Attribution-Share Alike 3.0 Unported](https://creativecommons.org/licenses/by-sa/3.0/deed.en) license.
 
+### Cheatsheets
+
+- [Git](https://intellipaat.com/mediaFiles/2019/03/Git-Cheat-Sheet.jpg)
+
+- [Conda](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)
+
 ### Image editors
 
 - [Favicon Generator / Generate from Image](https://favicon.io/favicon-converter/)
 
 ### Social media badges
 
-[Shields.io: Quality metadata for open source projects](https://shields.io/)
+- [Shields.io: Quality metadata for open source projects](https://shields.io/)
 
 ## Further Reading
 

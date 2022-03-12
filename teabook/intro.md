@@ -85,6 +85,25 @@ This project recommends beginner-level proficiency with Python and is focused on
 git push origin
 ```
 
+[Configuring a remote for a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/configuring-a-remote-for-a-fork)
+
+```bash
+git remote -v
+git remote add upstream https://github.com/mebauer/boba-nyc.git
+git remote -v
+```
+
+[Syncing a fork from the command line](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork#syncing-a-fork-from-the-command-line)
+
+_main_: name of local default branch  
+_upstream/master_: name of remote parent (orginal) repo branch
+
+```bash
+git fetch upstream
+git checkout main
+git fetch upstream/master
+```
+
 ### Jupyter Book
 
 [Build your book](https://jupyterbook.org/start/build.html)

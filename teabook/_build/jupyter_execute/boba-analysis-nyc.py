@@ -100,96 +100,10 @@ names_counts
 # In[12]:
 
 
-# check for duplicates - white spaces, mispellings, etc
-lst = []
-for row in range(len(names_counts)):
-    value = names_counts['name'][row].replace(' ', '').lower()
-    lst.append(value)  
-    
-names_counts = pd.concat([names_counts, pd.Series(lst).rename('name_lower')], axis=1)
-names_counts.head()    
-
-
-# In[13]:
-
-
-# there are duplicate entries
-names_counts['name_lower'].value_counts().head(10)
-
-
-# In[14]:
-
-
-# return list of duplicate entries that need to be replaced
-duplicates_ser = names_counts['name_lower'].value_counts() > 1
-duplicates = duplicates_ser.loc[duplicates_ser].index
-
-duplicates.to_list()
-
-
-# In[15]:
-
-
-names_counts = names_counts.loc[names_counts['name_lower'].isin(duplicates.to_list())].sort_values(by='name_lower')
-
-names_counts
-
-
-# In[16]:
-
-
-# a dictionary of formatted names (lower & remove white spice) and new names to be returned
-new_names = {'yifangtaiwanfruittea':'Yi Fang Taiwan Fruit Tea',
-             'vivibubbletea':'Vivi Bubble Tea',
-             'jooyteashoppe':'JOOY Tea Shop',
-             'tbaar':'TBaar',
-             'cocofreshtea&juice':'CoCo Fresh Tea & Juice',
-             "yomie'sricexyogurt":"Yomie's Rice X Yogurt",
-             'pokébowlstation':'PokéBowl Station'}
-
-names_counts['name_lower'] = names_counts['name_lower'].replace(new_names)
-
-names_counts
-
-
-# In[17]:
-
-
-# a dictionary of old and new names to be returned
-replace_duplicates = dict(zip(names_counts['name'], names_counts['name_lower']))
-
-replace_duplicates
-
-
-# In[18]:
-
-
-# replace old and new names to original dataframe
-df['name'] = df['name'].replace(replace_duplicates)
-
-df.head()
-
-
-# In[19]:
-
-
-df.to_csv('boba-nyc-cleaned.csv', index=False)
-
-
-# In[20]:
-
-
-# count of unique values of bubble tea shops
-df['name'].value_counts()
-
-
-# In[21]:
-
-
 df['name'].value_counts().reset_index(drop=False)
 
 
-# In[22]:
+# In[13]:
 
 
 names_counts = df['name'].value_counts().reset_index(drop=False)
@@ -206,7 +120,7 @@ plt.title('Number of bubble tea shops by business in nyc', fontsize=15)
 plt.tight_layout()
 
 
-# In[23]:
+# In[14]:
 
 
 review_count_df = df.groupby(by='name')['review_count'].mean().sort_values(ascending=False)
@@ -216,7 +130,7 @@ review_count_df = review_count_df.reset_index()
 review_count_df.head()
 
 
-# In[24]:
+# In[15]:
 
 
 fig, ax = plt.subplots(figsize=(8, 6))
@@ -230,7 +144,7 @@ plt.title('Average number of reviews per business in nyc', fontsize=15)
 plt.tight_layout()
 
 
-# In[25]:
+# In[16]:
 
 
 most_reviewed = df.sort_values(by='review_count', ascending=False).head(20)
@@ -238,7 +152,7 @@ most_reviewed = df.sort_values(by='review_count', ascending=False).head(20)
 most_reviewed.head()
 
 
-# In[26]:
+# In[17]:
 
 
 fig, ax = plt.subplots(figsize=(8, 6))
@@ -252,13 +166,13 @@ plt.title('Most reviews per business location in nyc', fontsize=15)
 plt.tight_layout()
 
 
-# In[27]:
+# In[18]:
 
 
 df['rating'].describe()
 
 
-# In[28]:
+# In[19]:
 
 
 fig, ax = plt.subplots(figsize=(8, 6))
@@ -266,11 +180,11 @@ fig, ax = plt.subplots(figsize=(8, 6))
 sns.countplot(data=df, 
              x="rating")
 
-plt.title('Count of ratings per business location in nyc', fontsize=15)
+plt.title('Count of Yelp ratings per business location in nyc', fontsize=15)
 plt.tight_layout()
 
 
-# In[29]:
+# In[20]:
 
 
 price_df = df['price'].dropna().value_counts()
@@ -280,7 +194,7 @@ price_df.columns = ['price', 'counts']
 price_df
 
 
-# In[30]:
+# In[21]:
 
 
 price_df['price'] = price_df['price'].str.count('\\$')
@@ -288,7 +202,7 @@ price_df['price'] = price_df['price'].str.count('\\$')
 price_df
 
 
-# In[31]:
+# In[22]:
 
 
 fig, ax = plt.subplots(figsize=(8, 6))
@@ -298,11 +212,11 @@ sns.barplot(y="counts",
             data=price_df, 
             ax=ax)
 
-plt.title('Price level (1 = $) per business location in NYC', fontsize=15)
+plt.title('Yelp price level (1 = $) per business location in NYC', fontsize=15)
 plt.tight_layout()
 
 
-# In[32]:
+# In[23]:
 
 
 url = 'https://data.cityofnewyork.us/api/geospatial/cpf4-rkhq?method=export&format=Shapefile'
@@ -311,13 +225,13 @@ neighborhoods = gpd.read_file(url)
 neighborhoods.head()
 
 
-# In[33]:
+# In[24]:
 
 
 neighborhoods.crs
 
 
-# In[34]:
+# In[25]:
 
 
 neighborhoods = neighborhoods.to_crs('EPSG:4326')
@@ -325,13 +239,13 @@ neighborhoods = neighborhoods.to_crs('EPSG:4326')
 neighborhoods.crs
 
 
-# In[35]:
+# In[27]:
 
 
 df.head()
 
 
-# In[36]:
+# In[28]:
 
 
 gdf = gpd.GeoDataFrame(df, crs=4326,
@@ -340,7 +254,7 @@ gdf = gpd.GeoDataFrame(df, crs=4326,
 gdf.head()
 
 
-# In[37]:
+# In[29]:
 
 
 join_df = gpd.sjoin(gdf, 
@@ -350,7 +264,7 @@ join_df = gpd.sjoin(gdf,
 join_df.head()
 
 
-# In[38]:
+# In[30]:
 
 
 join_df = join_df.groupby(by=['ntaname', 'shape_area'])['id'].count().sort_values(ascending=False)
@@ -362,7 +276,7 @@ join_df['counts_squaremile'] = join_df['counts'] / 27878400
 join_df.head()
 
 
-# In[40]:
+# In[31]:
 
 
 fig, ax = plt.subplots(figsize=(10, 6))
@@ -380,7 +294,7 @@ plt.tight_layout()
 plt.savefig('busineses-per-neighborhood.png', dpi=200)
 
 
-# In[43]:
+# In[32]:
 
 
 fig, ax = plt.subplots(figsize=(10, 6))

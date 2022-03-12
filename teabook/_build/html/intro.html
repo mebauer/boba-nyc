@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Searching for Boba: Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API &#8212; Searching for Boba</title>
+    <title>Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API &#8212; Searching for Boba</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -88,7 +88,7 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1 current">
   <a class="reference internal" href="#">
-   Searching for Boba: Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API
+   Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API
   </a>
  </li>
 </ul>
@@ -112,7 +112,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="data-wrangling.html">
-   Retrieving Bubble Tea Shops in NYC Using Yelp Fusion API
+   Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API
   </a>
  </li>
 </ul>
@@ -124,7 +124,19 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="boba-analysis-nyc.html">
-   Searching for Boba: Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API
+   Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Geospatial Analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="boba-maps-nyc.html">
+   Maps
   </a>
  </li>
 </ul>
@@ -240,6 +252,33 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install">
+   Install
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other-commands">
+   Other Commands
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#git">
+     Git
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jupyter-book">
+     Jupyter Book
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#streamlit">
+     Streamlit
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data">
    Data
   </a>
@@ -272,8 +311,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#resources">
-   Resources
+  <a class="reference internal nav-link" href="#other-applications-and-services-used-in-project">
+   Other Applications and Services Used in Project
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -289,6 +328,11 @@
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#cc-licensed-materials">
      CC-licensed materials
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cheatsheets">
+     Cheatsheets
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -330,7 +374,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Searching for Boba: Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API</h1>
+                <h1>Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -366,6 +410,33 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install">
+   Install
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other-commands">
+   Other Commands
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#git">
+     Git
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#jupyter-book">
+     Jupyter Book
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#streamlit">
+     Streamlit
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data">
    Data
   </a>
@@ -398,8 +469,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#resources">
-   Resources
+  <a class="reference internal nav-link" href="#other-applications-and-services-used-in-project">
+   Other Applications and Services Used in Project
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -415,6 +486,11 @@
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#cc-licensed-materials">
      CC-licensed materials
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cheatsheets">
+     Cheatsheets
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -455,8 +531,8 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="searching-for-boba-analyzing-bubble-tea-shops-in-nyc-using-the-yelp-fusion-api">
-<h1>Searching for Boba: Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API<a class="headerlink" href="#searching-for-boba-analyzing-bubble-tea-shops-in-nyc-using-the-yelp-fusion-api" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="obsessed-with-boba-analyzing-bubble-tea-shops-in-nyc-using-the-yelp-fusion-api">
+<h1>Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API<a class="headerlink" href="#obsessed-with-boba-analyzing-bubble-tea-shops-in-nyc-using-the-yelp-fusion-api" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="presenters">
 <h2>Presenters<a class="headerlink" href="#presenters" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -469,6 +545,7 @@
 <div class="section" id="event">
 <h2>Event<a class="headerlink" href="#event" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://www.open-data.nyc/">NYC Open Data Week 2022</a></p>
+<p><a class="reference external" href="https://2022.open-data.nyc/event/obsessed-with-boba-analyzing-bubble-tea-shops-in-nyc-using-the-yelp-fusion-api/">Event RSVP</a></p>
 <ul class="simple">
 <li><p>The <em><strong>notebooks</strong></em> can be found in the <a class="reference external" href="https://github.com/mebauer/boba-nyc/tree/master/teabook">teabook</a> folder.</p></li>
 <li><p>The <em><strong>website</strong></em> for this repo can be found here: <a class="reference external" href="https://boba-nyc.datalife.nyc">boba-nyc.datalife.nyc</a></p></li>
@@ -507,6 +584,52 @@
 <li><p>Basics of Jupyter Notebooks</p></li>
 </ul>
 <p>This project recommends beginner-level proficiency with Python and is focused on applying Python to data analysis.</p>
+</div>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<ol>
+<li><p>Install <a class="reference external" href="https://docs.anaconda.com/anaconda/install/index.html">Anaconda</a></p></li>
+<li><p>Install <a class="reference external" href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">Git</a></p></li>
+<li><p>Clone <a class="reference external" href="https://github.com/mebauer/boba-nyc">boba-nyc</a> repo</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/mebauer/boba-nyc.git
+</pre></div>
+</div>
+</li>
+<li><p>Enter directory of local repo</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> boba-nyc
+</pre></div>
+</div>
+</li>
+<li><p>Install requirements</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda env create -f environment.yml
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="other-commands">
+<h2>Other Commands<a class="headerlink" href="#other-commands" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="git">
+<h3>Git<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://git-scm.com/docs/git-push">Git - git-push Documentation</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git push origin
+</pre></div>
+</div>
+</div>
+<div class="section" id="jupyter-book">
+<h3>Jupyter Book<a class="headerlink" href="#jupyter-book" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://jupyterbook.org/start/build.html">Build your book</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter-book build --all teabook/
+</pre></div>
+</div>
+</div>
+<div class="section" id="streamlit">
+<h3>Streamlit<a class="headerlink" href="#streamlit" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://docs.streamlit.io/library/get-started/create-an-app">Create an app</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>streamlit run &lt;app.py&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
@@ -587,8 +710,11 @@ In order to set up your access to Yelp Fusion API, you need to create an app wit
 <li><p><a class="reference external" href="https://plotly.com/">Plotly</a>: The front end for ML and data science models.</p></li>
 </ul>
 </div>
-<div class="section" id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="other-applications-and-services-used-in-project">
+<h2>Other Applications and Services Used in Project<a class="headerlink" href="#other-applications-and-services-used-in-project" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cloud.google.com/storage">Google Cloud Storage</a>: Storage service used to host static website files.</p></li>
+</ul>
 <div class="section" id="nyc-open-data-week-2022">
 <h3>NYC Open Data Week 2022<a class="headerlink" href="#nyc-open-data-week-2022" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
@@ -611,6 +737,13 @@ In order to set up your access to Yelp Fusion API, you need to create an app wit
 <li><p><a class="reference external" href="https://commons.wikimedia.org/wiki/File:Matcha_green_tea.jpg">File:Matcha green tea.jpg</a> by <a class="reference external" href="https://commons.wikimedia.org/w/index.php?title=User:BubbleManiaCZ&amp;action=edit&amp;redlink=1">BubbleManiaCZ</a> is under the <a class="reference external" href="https://en.wikipedia.org/wiki/en:Creative_Commons">Creative Commons</a> <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">Attribution-Share Alike 3.0 Unported</a> license.</p></li>
 </ul>
 </div>
+<div class="section" id="cheatsheets">
+<h3>Cheatsheets<a class="headerlink" href="#cheatsheets" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://intellipaat.com/mediaFiles/2019/03/Git-Cheat-Sheet.jpg">Git</a></p></li>
+<li><p><a class="reference external" href="https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf">Conda</a></p></li>
+</ul>
+</div>
 <div class="section" id="image-editors">
 <h3>Image editors<a class="headerlink" href="#image-editors" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
@@ -619,7 +752,9 @@ In order to set up your access to Yelp Fusion API, you need to create an app wit
 </div>
 <div class="section" id="social-media-badges">
 <h3>Social media badges<a class="headerlink" href="#social-media-badges" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://shields.io/">Shields.io: Quality metadata for open source projects</a></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://shields.io/">Shields.io: Quality metadata for open source projects</a></p></li>
+</ul>
 </div>
 </div>
 <div class="section" id="further-reading">
@@ -655,8 +790,8 @@ In order to set up your access to Yelp Fusion API, you need to create an app wit
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p>Ho Hsieh</p></td>
-<td><p></p></td>
-<td><p></p></td>
+<td><p><a class="reference external" href="https://www.linkedin.com/in/hohsieh/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-blue?style=flat&amp;logo=linkedin&amp;labelColor=blue" /></a></p></td>
+<td><p><a class="reference external" href="https://github.com/hohsieh"><img alt="GitHub followers" src="https://img.shields.io/github/followers/hohsieh?style=social" /></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p>Nathan Williamson</p></td>
@@ -666,6 +801,8 @@ In order to set up your access to Yelp Fusion API, you need to create an app wit
 </tr>
 </tbody>
 </table>
+</div>
+<div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
 </div>

@@ -1,0 +1,1774 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maps &#8212; Searching for Boba</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API" href="boba-analysis-nyc.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Searching for Boba</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Acquisition
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="socrata-api-demo.html">
+   Intro to the Socrata API with the NYC Dog Licensing Dataset &amp; Python
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Cleaning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data-wrangling.html">
+   Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Exploratory Data Analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="boba-analysis-nyc.html">
+   Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Geospatial Analysis
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Maps
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/boba-maps-nyc.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/mebauer/boba-nyc"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/mebauer/boba-nyc/issues/new?title=Issue%20on%20page%20%2Fboba-maps-nyc.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/mebauer/boba-nyc/master?urlpath=tree/teabook/boba-maps-nyc.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Maps</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="maps">
+<h1>Maps<a class="headerlink" href="#maps" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1"># import seaborn as sns</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="c1"># %matplotlib inline</span>
+<span class="c1"># sns.set(color_codes=True)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\datal\anaconda3\envs\boba-nyc\lib\site-packages\pyproj\__init__.py:89: UserWarning: pyproj unable to set database path.
+  _pyproj_global_context_initialize()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;boba-nyc.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>alias</th>
+      <th>name</th>
+      <th>image_url</th>
+      <th>is_closed</th>
+      <th>url</th>
+      <th>review_count</th>
+      <th>categories</th>
+      <th>rating</th>
+      <th>coordinates</th>
+      <th>transactions</th>
+      <th>price</th>
+      <th>location</th>
+      <th>phone</th>
+      <th>display_phone</th>
+      <th>distance</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Q3fmTHT7zilDWtfzLK9lMA</td>
+      <td>truedan-new-york-3</td>
+      <td>Truedan</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/BmUZXO...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/truedan-new-york-3?ad...</td>
+      <td>99</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
+      <td>['delivery', 'pickup']</td>
+      <td>$$</td>
+      <td>{'address1': '208 Grand St', 'address2': None,...</td>
+      <td>1.646559e+10</td>
+      <td>(646) 559-2886</td>
+      <td>1535.241614</td>
+      <td>40.719174</td>
+      <td>-73.996220</td>
+      <td>POINT (-73.9962197 40.7191742)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7-bx74TooPuZKZDNW4WFcQ</td>
+      <td>chun-yang-tea-new-york</td>
+      <td>Chun Yang Tea</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/JrGwrZ...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/chun-yang-tea-new-yor...</td>
+      <td>91</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.71617, 'longitude': -73.9971}</td>
+      <td>['delivery', 'pickup']</td>
+      <td>$$</td>
+      <td>{'address1': '26B Elizabeth St', 'address2': '...</td>
+      <td>1.212420e+10</td>
+      <td>(212) 420-0123</td>
+      <td>1212.877370</td>
+      <td>40.716170</td>
+      <td>-73.997100</td>
+      <td>POINT (-73.9971 40.71617)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3aypSFXLfkAL4dhHVFobKg</td>
+      <td>lazy-sundaes-new-york-6</td>
+      <td>Lazy Sundaes</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/kEfCYC...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/lazy-sundaes-new-york...</td>
+      <td>32</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.720597, 'longitude': -73.984539}</td>
+      <td>['delivery', 'pickup']</td>
+      <td>$$</td>
+      <td>{'address1': '23 Clinton St', 'address2': None...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1877.016204</td>
+      <td>40.720597</td>
+      <td>-73.984539</td>
+      <td>POINT (-73.984539 40.720597)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>bVJQEeRNi34-3XN_F1AZEg</td>
+      <td>xing-fu-tang-new-york</td>
+      <td>Xing Fu Tang</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/cyFHFE...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/xing-fu-tang-new-york...</td>
+      <td>89</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7288, 'longitude': -73.98775}</td>
+      <td>['delivery', 'pickup']</td>
+      <td>NaN</td>
+      <td>{'address1': '133 2nd Ave', 'address2': '', 'a...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2656.450427</td>
+      <td>40.728800</td>
+      <td>-73.987750</td>
+      <td>POINT (-73.98775000000001 40.7288)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>zupVwJAFYkHDwrsQd2ktXA</td>
+      <td>fiftylan-union-square-new-york-3</td>
+      <td>FIFTYLAN Union Square</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/UIwR20...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/fiftylan-union-square...</td>
+      <td>59</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.0</td>
+      <td>{'latitude': 40.735516, 'longitude': -73.989191}</td>
+      <td>['delivery', 'pickup']</td>
+      <td>NaN</td>
+      <td>{'address1': '32 Union Square E', 'address2': ...</td>
+      <td>1.646767e+10</td>
+      <td>(646) 767-0085</td>
+      <td>3367.900728</td>
+      <td>40.735516</td>
+      <td>-73.989191</td>
+      <td>POINT (-73.98919100000001 40.735516)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>review_count</th>
+      <th>rating</th>
+      <th>phone</th>
+      <th>distance</th>
+      <th>latitude</th>
+      <th>longitude</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>413.000000</td>
+      <td>413.000000</td>
+      <td>3.630000e+02</td>
+      <td>413.000000</td>
+      <td>413.000000</td>
+      <td>413.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>90.784504</td>
+      <td>3.991525</td>
+      <td>1.615045e+10</td>
+      <td>8865.304351</td>
+      <td>40.716352</td>
+      <td>-73.943407</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>117.238138</td>
+      <td>0.605838</td>
+      <td>2.382773e+09</td>
+      <td>5580.328072</td>
+      <td>0.058112</td>
+      <td>0.082408</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.201432e+10</td>
+      <td>953.875131</td>
+      <td>40.537609</td>
+      <td>-74.166080</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>16.000000</td>
+      <td>3.500000</td>
+      <td>1.347732e+10</td>
+      <td>3944.470714</td>
+      <td>40.689812</td>
+      <td>-73.994960</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>50.000000</td>
+      <td>4.000000</td>
+      <td>1.718293e+10</td>
+      <td>8155.616841</td>
+      <td>40.731610</td>
+      <td>-73.974950</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>117.000000</td>
+      <td>4.500000</td>
+      <td>1.718887e+10</td>
+      <td>12773.346149</td>
+      <td>40.757323</td>
+      <td>-73.882745</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>740.000000</td>
+      <td>5.000000</td>
+      <td>1.934235e+10</td>
+      <td>25132.157979</td>
+      <td>40.886959</td>
+      <td>-73.702410</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;O&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>unique</th>
+      <th>top</th>
+      <th>freq</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>id</th>
+      <td>413</td>
+      <td>413</td>
+      <td>Q3fmTHT7zilDWtfzLK9lMA</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>alias</th>
+      <td>413</td>
+      <td>413</td>
+      <td>truedan-new-york-3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>name</th>
+      <td>413</td>
+      <td>269</td>
+      <td>Kung Fu Tea</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>image_url</th>
+      <td>408</td>
+      <td>408</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/BmUZXO...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>url</th>
+      <td>413</td>
+      <td>413</td>
+      <td>https://www.yelp.com/biz/truedan-new-york-3?ad...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>categories</th>
+      <td>413</td>
+      <td>177</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>114</td>
+    </tr>
+    <tr>
+      <th>coordinates</th>
+      <td>413</td>
+      <td>408</td>
+      <td>{'latitude': 40.71697, 'longitude': -73.99471}</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>transactions</th>
+      <td>413</td>
+      <td>5</td>
+      <td>['delivery', 'pickup']</td>
+      <td>212</td>
+    </tr>
+    <tr>
+      <th>price</th>
+      <td>258</td>
+      <td>3</td>
+      <td>$</td>
+      <td>168</td>
+    </tr>
+    <tr>
+      <th>location</th>
+      <td>413</td>
+      <td>410</td>
+      <td>{'address1': '136-20 Roosevelt Ave', 'address2...</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>display_phone</th>
+      <td>363</td>
+      <td>358</td>
+      <td>(718) 795-5828</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>geometry</th>
+      <td>413</td>
+      <td>408</td>
+      <td>POINT (-73.99471 40.71697)</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://data.cityofnewyork.us/api/geospatial/cpf4-rkhq?method=export&amp;format=Shapefile&#39;</span>
+<span class="n">neighborhoods</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">neighborhoods</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>boro_code</th>
+      <th>boro_name</th>
+      <th>county_fip</th>
+      <th>ntacode</th>
+      <th>ntaname</th>
+      <th>shape_area</th>
+      <th>shape_leng</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4.0</td>
+      <td>Queens</td>
+      <td>081</td>
+      <td>QN51</td>
+      <td>Murray Hill</td>
+      <td>5.248828e+07</td>
+      <td>33266.904856</td>
+      <td>POLYGON ((-73.80379 40.77561, -73.80099 40.775...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.0</td>
+      <td>Queens</td>
+      <td>081</td>
+      <td>QN27</td>
+      <td>East Elmhurst</td>
+      <td>1.972685e+07</td>
+      <td>19816.711894</td>
+      <td>POLYGON ((-73.86110 40.76366, -73.85993 40.762...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.0</td>
+      <td>Queens</td>
+      <td>081</td>
+      <td>QN41</td>
+      <td>Fresh Meadows-Utopia</td>
+      <td>2.777485e+07</td>
+      <td>22106.431272</td>
+      <td>POLYGON ((-73.77758 40.73019, -73.77849 40.729...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.0</td>
+      <td>Manhattan</td>
+      <td>061</td>
+      <td>MN17</td>
+      <td>Midtown-Midtown South</td>
+      <td>3.019153e+07</td>
+      <td>27032.700375</td>
+      <td>POLYGON ((-73.97301 40.76428, -73.97141 40.763...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.0</td>
+      <td>Bronx</td>
+      <td>005</td>
+      <td>BX09</td>
+      <td>Soundview-Castle Hill-Clason Point-Harding Park</td>
+      <td>5.198380e+07</td>
+      <td>67340.977626</td>
+      <td>MULTIPOLYGON (((-73.88064 40.81852, -73.88098 ...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">neighborhoods</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">4326</span><span class="p">)</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">neighborhoods</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">gpd</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">latitude</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">neighborhoods</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">CRSError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_30084</span>\<span class="mf">1926518103.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">neighborhoods</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">4326</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">neighborhoods</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">gpd</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">latitude</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">neighborhoods</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+
+<span class="nn">~\anaconda3\envs\boba-nyc\lib\site-packages\geopandas\geodataframe.py</span> in <span class="ni">to_crs</span><span class="nt">(self, crs, epsg, inplace)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1273</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1274</span>             <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="ne">-&gt; </span><span class="mi">1275</span>         <span class="n">geom</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="n">crs</span><span class="p">,</span> <span class="n">epsg</span><span class="o">=</span><span class="n">epsg</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1276</span>         <span class="n">df</span><span class="o">.</span><span class="n">geometry</span> <span class="o">=</span> <span class="n">geom</span>
+<span class="g g-Whitespace">   </span><span class="mi">1277</span>         <span class="n">df</span><span class="o">.</span><span class="n">crs</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">crs</span>
+
+<span class="nn">~\anaconda3\envs\boba-nyc\lib\site-packages\geopandas\geoseries.py</span> in <span class="ni">to_crs</span><span class="nt">(self, crs, epsg)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1118</span>         <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1119</span><span class="sd">         return GeoSeries(</span>
+<span class="ne">-&gt; </span><span class="mi">1120</span><span class="sd">             self.values.to_crs(crs=crs, epsg=epsg), index=self.index, name=self.name</span>
+<span class="g g-Whitespace">   </span><span class="mi">1121</span><span class="sd">         )</span>
+<span class="g g-Whitespace">   </span><span class="mi">1122</span><span class="sd"> </span>
+
+<span class="nn">~\anaconda3\envs\boba-nyc\lib\site-packages\geopandas\array.py</span> in <span class="ni">to_crs</span><span class="nt">(self, crs, epsg)</span>
+<span class="g g-Whitespace">    </span><span class="mi">768</span><span class="sd">             crs = CRS.from_user_input(crs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">769</span><span class="sd">         elif epsg is not None:</span>
+<span class="ne">--&gt; </span><span class="mi">770</span><span class="sd">             crs = CRS.from_epsg(epsg)</span>
+<span class="g g-Whitespace">    </span><span class="mi">771</span><span class="sd">         else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">772</span><span class="sd">             raise ValueError(&quot;Must pass either crs or epsg.&quot;)</span>
+
+<span class="nn">~\anaconda3\envs\boba-nyc\lib\site-packages\pyproj\crs\crs.py</span> in <span class="ni">from_epsg</span><span class="nt">(cls, code)</span>
+<span class="g g-Whitespace">    </span><span class="mi">368</span><span class="sd">         CRS</span>
+<span class="g g-Whitespace">    </span><span class="mi">369</span><span class="sd">         &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">370</span>         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_user_input</span><span class="p">(</span><span class="n">_prepare_from_epsg</span><span class="p">(</span><span class="n">code</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">371</span> 
+<span class="g g-Whitespace">    </span><span class="mi">372</span>     <span class="nd">@classmethod</span>
+
+<span class="nn">~\anaconda3\envs\boba-nyc\lib\site-packages\pyproj\crs\crs.py</span> in <span class="ni">from_user_input</span><span class="nt">(cls, value, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">477</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">478</span>             <span class="k">return</span> <span class="n">value</span>
+<span class="ne">--&gt; </span><span class="mi">479</span>         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">480</span> 
+<span class="g g-Whitespace">    </span><span class="mi">481</span>     <span class="k">def</span> <span class="nf">get_geod</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Geod</span><span class="p">]:</span>
+
+<span class="nn">~\anaconda3\envs\boba-nyc\lib\site-packages\pyproj\crs\crs.py</span> in <span class="ni">__init__</span><span class="nt">(self, projparams, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">324</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">crs</span> <span class="o">=</span> <span class="n">projparams</span>
+<span class="g g-Whitespace">    </span><span class="mi">325</span>         <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">326</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_local</span><span class="o">.</span><span class="n">crs</span> <span class="o">=</span> <span class="n">_CRS</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">srs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">327</span> 
+<span class="g g-Whitespace">    </span><span class="mi">328</span>     <span class="nd">@property</span>
+
+<span class="nn">pyproj\_crs.pyx</span> in <span class="ni">pyproj._crs._CRS.__init__</span><span class="nt">()</span>
+
+<span class="ne">CRSError</span>: Invalid projection: epsg:4326: (Internal Proj Error: proj_create: no database context specified)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">join_df</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">sjoin</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="n">neighborhoods</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">join_df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">join_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(397, 27)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>alias</th>
+      <th>name</th>
+      <th>image_url</th>
+      <th>is_closed</th>
+      <th>url</th>
+      <th>review_count</th>
+      <th>categories</th>
+      <th>rating</th>
+      <th>coordinates</th>
+      <th>...</th>
+      <th>longitude</th>
+      <th>geometry</th>
+      <th>index_right</th>
+      <th>boro_code</th>
+      <th>boro_name</th>
+      <th>county_fip</th>
+      <th>ntacode</th>
+      <th>ntaname</th>
+      <th>shape_area</th>
+      <th>shape_leng</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Q3fmTHT7zilDWtfzLK9lMA</td>
+      <td>truedan-new-york-3</td>
+      <td>Truedan</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/BmUZXO...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/truedan-new-york-3?ad...</td>
+      <td>96</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
+      <td>...</td>
+      <td>-73.996220</td>
+      <td>POINT (-73.99622 40.71917)</td>
+      <td>94</td>
+      <td>1.0</td>
+      <td>Manhattan</td>
+      <td>061</td>
+      <td>MN24</td>
+      <td>SoHo-TriBeCa-Civic Center-Little Italy</td>
+      <td>2.503268e+07</td>
+      <td>26855.031527</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>bVJQEeRNi34-3XN_F1AZEg</td>
+      <td>xing-fu-tang-new-york</td>
+      <td>Xing Fu Tang</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/RzKMKS...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/xing-fu-tang-new-york...</td>
+      <td>58</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7288, 'longitude': -73.98775}</td>
+      <td>...</td>
+      <td>-73.987750</td>
+      <td>POINT (-73.98775 40.72880)</td>
+      <td>139</td>
+      <td>1.0</td>
+      <td>Manhattan</td>
+      <td>061</td>
+      <td>MN22</td>
+      <td>East Village</td>
+      <td>1.089424e+07</td>
+      <td>13555.232094</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3aypSFXLfkAL4dhHVFobKg</td>
+      <td>lazy-sundaes-new-york-6</td>
+      <td>Lazy Sundaes</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/kEfCYC...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/lazy-sundaes-new-york...</td>
+      <td>28</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.720597, 'longitude': -73.984539}</td>
+      <td>...</td>
+      <td>-73.984539</td>
+      <td>POINT (-73.98454 40.72060)</td>
+      <td>88</td>
+      <td>1.0</td>
+      <td>Manhattan</td>
+      <td>061</td>
+      <td>MN27</td>
+      <td>Chinatown</td>
+      <td>1.450188e+07</td>
+      <td>20786.254332</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>zupVwJAFYkHDwrsQd2ktXA</td>
+      <td>fiftylan-union-square-new-york-3</td>
+      <td>FIFTYLAN Union Square</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/UIwR20...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/fiftylan-union-square...</td>
+      <td>54</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.0</td>
+      <td>{'latitude': 40.735516, 'longitude': -73.989191}</td>
+      <td>...</td>
+      <td>-73.989191</td>
+      <td>POINT (-73.98919 40.73552)</td>
+      <td>32</td>
+      <td>1.0</td>
+      <td>Manhattan</td>
+      <td>061</td>
+      <td>MN21</td>
+      <td>Gramercy</td>
+      <td>7.526916e+06</td>
+      <td>12096.891148</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7-bx74TooPuZKZDNW4WFcQ</td>
+      <td>chun-yang-tea-new-york</td>
+      <td>Chun Yang Tea</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/JrGwrZ...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/chun-yang-tea-new-yor...</td>
+      <td>83</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.71617, 'longitude': -73.9971}</td>
+      <td>...</td>
+      <td>-73.997100</td>
+      <td>POINT (-73.99710 40.71617)</td>
+      <td>88</td>
+      <td>1.0</td>
+      <td>Manhattan</td>
+      <td>061</td>
+      <td>MN27</td>
+      <td>Chinatown</td>
+      <td>1.450188e+07</td>
+      <td>20786.254332</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 27 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_nt</span> <span class="o">=</span> <span class="n">join_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;ntaname&#39;</span><span class="p">)[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">group_nt</span> <span class="o">=</span> <span class="n">group_nt</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">group_nt</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ntaname&#39;</span><span class="p">,</span> <span class="s1">&#39;counts&#39;</span><span class="p">]</span>
+<span class="n">group_nt</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">group_nt</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>counts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>94.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>4.223404</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>5.993104</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>2.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>4.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>39.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_nt</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">group_nt</span><span class="o">.</span><span class="n">counts</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;cnt_category&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">group_nt</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">group_nt</span><span class="o">.</span><span class="n">counts</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;cnt_category&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">group_nt</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">group_nt</span><span class="o">.</span><span class="n">counts</span><span class="o">&gt;</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;cnt_category&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">group_nt</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">group_nt</span><span class="o">.</span><span class="n">counts</span><span class="o">&gt;</span><span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;cnt_category&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">group_nt</span><span class="o">.</span><span class="n">astype</span><span class="p">({</span><span class="s1">&#39;cnt_category&#39;</span><span class="p">:</span><span class="nb">int</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ntaname</th>
+      <th>counts</th>
+      <th>cnt_category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>park-cemetery-etc-Queens</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Old Astoria</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Oakland Gardens</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Fort Greene</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>New Springville-Bloomfield-Travis</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>Hunters Point-Sunnyside-West Maspeth</td>
+      <td>17</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>Elmhurst</td>
+      <td>17</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>Sunset Park East</td>
+      <td>22</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>Chinatown</td>
+      <td>25</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>Flushing</td>
+      <td>39</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+<p>94 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nt_rating</span> <span class="o">=</span> <span class="n">join_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;ntaname&#39;</span><span class="p">)[</span><span class="s1">&#39;rating&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">nt_rating</span> <span class="o">=</span> <span class="n">nt_rating</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">nt_rating</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ntaname&#39;</span><span class="p">,</span><span class="s1">&#39;rating&#39;</span><span class="p">]</span>
+<span class="n">nt_rating</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<span class="c1"># nt_rating.head()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>94.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>4.018316</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.473810</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>2.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>3.858766</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>4.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>4.276786</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>5.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_nt</span> <span class="o">=</span> <span class="n">group_nt</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">nt_rating</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;ntaname&#39;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;ntaname&#39;</span><span class="p">)</span>
+<span class="n">group_nt</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ntaname</th>
+      <th>counts</th>
+      <th>cnt_category</th>
+      <th>rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>park-cemetery-etc-Queens</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Old Astoria</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Oakland Gardens</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Fort Greene</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>New Springville-Bloomfield-Travis</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>4.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_nt_gdf</span> <span class="o">=</span> <span class="n">neighborhoods</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">group_nt</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;ntaname&#39;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;ntaname&#39;</span><span class="p">)</span>
+<span class="c1"># group_nt_gdf[&#39;counts&#39;].fillna(0, inplace=True)</span>
+<span class="c1"># group_nt_gdf[&#39;cnt_category&#39;].fillna(0, inplace=True)</span>
+<span class="n">group_nt_gdf</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>boro_code</th>
+      <th>shape_area</th>
+      <th>shape_leng</th>
+      <th>counts</th>
+      <th>cnt_category</th>
+      <th>rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>195.000000</td>
+      <td>1.950000e+02</td>
+      <td>195.000000</td>
+      <td>94.000000</td>
+      <td>94.000000</td>
+      <td>94.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>3.000000</td>
+      <td>4.318885e+07</td>
+      <td>41951.159527</td>
+      <td>4.223404</td>
+      <td>1.585106</td>
+      <td>4.018316</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1.218415</td>
+      <td>4.444240e+07</td>
+      <td>48318.180831</td>
+      <td>5.993104</td>
+      <td>1.091606</td>
+      <td>0.473810</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.000000</td>
+      <td>5.582695e+06</td>
+      <td>12021.209965</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>2.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>2.000000</td>
+      <td>1.938190e+07</td>
+      <td>23823.525753</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>3.858766</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>3.000000</td>
+      <td>3.262979e+07</td>
+      <td>30603.715250</td>
+      <td>2.000000</td>
+      <td>1.000000</td>
+      <td>4.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>4.000000</td>
+      <td>5.018478e+07</td>
+      <td>41719.052553</td>
+      <td>4.000000</td>
+      <td>1.000000</td>
+      <td>4.276786</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>5.000000</td>
+      <td>3.271987e+08</td>
+      <td>485889.330514</td>
+      <td>39.000000</td>
+      <td>4.000000</td>
+      <td>5.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_nt_gdf</span><span class="p">[</span><span class="s1">&#39;label_geometry&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">group_nt_gdf</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">centroid</span>
+<span class="n">group_nt_gdf</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;counts&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">group_nt_gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ho/opt/anaconda3/envs/pyv37/lib/python3.7/site-packages/ipykernel_launcher.py:1: UserWarning: Geometry is in a geographic CRS. Results from &#39;centroid&#39; are likely incorrect. Use &#39;GeoSeries.to_crs()&#39; to re-project geometries to a projected CRS before this operation.
+
+  &quot;&quot;&quot;Entry point for launching an IPython kernel.
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>boro_code</th>
+      <th>boro_name</th>
+      <th>county_fip</th>
+      <th>ntacode</th>
+      <th>ntaname</th>
+      <th>shape_area</th>
+      <th>shape_leng</th>
+      <th>geometry</th>
+      <th>counts</th>
+      <th>cnt_category</th>
+      <th>rating</th>
+      <th>label_geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4.0</td>
+      <td>Queens</td>
+      <td>081</td>
+      <td>QN51</td>
+      <td>Murray Hill</td>
+      <td>5.248828e+07</td>
+      <td>33266.904856</td>
+      <td>POLYGON ((-73.80379 40.77561, -73.80099 40.775...</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>4.50000</td>
+      <td>POINT (-73.80955 40.76835)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.0</td>
+      <td>Queens</td>
+      <td>081</td>
+      <td>QN27</td>
+      <td>East Elmhurst</td>
+      <td>1.972685e+07</td>
+      <td>19816.711894</td>
+      <td>POLYGON ((-73.86110 40.76366, -73.85993 40.762...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>POINT (-73.86840 40.76335)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.0</td>
+      <td>Queens</td>
+      <td>081</td>
+      <td>QN41</td>
+      <td>Fresh Meadows-Utopia</td>
+      <td>2.777485e+07</td>
+      <td>22106.431272</td>
+      <td>POLYGON ((-73.77758 40.73019, -73.77849 40.729...</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>4.00000</td>
+      <td>POINT (-73.78372 40.73489)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.0</td>
+      <td>Manhattan</td>
+      <td>061</td>
+      <td>MN17</td>
+      <td>Midtown-Midtown South</td>
+      <td>3.019153e+07</td>
+      <td>27032.700375</td>
+      <td>POLYGON ((-73.97301 40.76428, -73.97141 40.763...</td>
+      <td>16.0</td>
+      <td>4.0</td>
+      <td>3.90625</td>
+      <td>POINT (-73.98350 40.75573)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.0</td>
+      <td>Bronx</td>
+      <td>005</td>
+      <td>BX09</td>
+      <td>Soundview-Castle Hill-Clason Point-Harding Park</td>
+      <td>5.198380e+07</td>
+      <td>67340.977626</td>
+      <td>MULTIPOLYGON (((-73.88064 40.81852, -73.88098 ...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>POINT (-73.85619 40.81805)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># neighborhoods.plot(ax=ax, edgecolor=&quot;grey&quot;, linewidth=0.4, facecolor=&#39;none&#39;)</span>
+<span class="n">missing_kwds</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;lightgrey&quot;</span><span class="p">,</span><span class="s2">&quot;edgecolor&quot;</span><span class="p">:</span> <span class="s2">&quot;lightgrey&quot;</span><span class="p">,</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Missing values&quot;</span><span class="p">}</span>
+<span class="n">group_nt_gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">&#39;counts&#39;</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;OrRd&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">legend_kwds</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s2">&quot;Counts of Boba Tea Shops in NYC Neighborhoods&quot;</span><span class="p">},</span> <span class="n">missing_kwds</span><span class="o">=</span><span class="n">missing_kwds</span><span class="p">)</span>
+
+<span class="n">top_counts</span> <span class="o">=</span> <span class="n">group_nt_gdf</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;counts&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">top_counts</span><span class="o">.</span><span class="n">label_geometry</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">top_counts</span><span class="o">.</span><span class="n">label_geometry</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">top_counts</span><span class="o">.</span><span class="n">ntaname</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ho/opt/anaconda3/envs/pyv37/lib/python3.7/site-packages/geopandas/plotting.py:630: FutureWarning: &#39;colormap&#39; is deprecated, please use &#39;cmap&#39; instead (for consistency with matplotlib)
+  FutureWarning,
+</pre></div>
+</div>
+<img alt="_images/boba-maps-nyc_14_1.png" src="_images/boba-maps-nyc_14_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">missing_kwds</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;lightgrey&quot;</span><span class="p">,</span><span class="s2">&quot;edgecolor&quot;</span><span class="p">:</span> <span class="s2">&quot;lightgrey&quot;</span><span class="p">,</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Missing values&quot;</span><span class="p">}</span>
+<span class="n">group_nt_gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">&#39;rating&#39;</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;BuPu&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">legend_kwds</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s2">&quot;Rating of Boba Tea Shops in NYC Neighborhoods&quot;</span><span class="p">},</span> <span class="n">missing_kwds</span><span class="o">=</span><span class="n">missing_kwds</span><span class="p">)</span>
+
+<span class="n">top_rated</span> <span class="o">=</span> <span class="n">group_nt_gdf</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;rating&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">top_rated</span><span class="o">.</span><span class="n">label_geometry</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">top_rated</span><span class="o">.</span><span class="n">label_geometry</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">top_rated</span><span class="o">.</span><span class="n">ntaname</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ho/opt/anaconda3/envs/pyv37/lib/python3.7/site-packages/geopandas/plotting.py:630: FutureWarning: &#39;colormap&#39; is deprecated, please use &#39;cmap&#39; instead (for consistency with matplotlib)
+  FutureWarning,
+</pre></div>
+</div>
+<img alt="_images/boba-maps-nyc_15_1.png" src="_images/boba-maps-nyc_15_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+
+<span class="c1"># draw counts of boba tea shops</span>
+<span class="n">group_nt_gdf_pt</span> <span class="o">=</span> <span class="n">group_nt_gdf</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">group_nt_gdf_pt</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">group_nt_gdf_pt</span><span class="p">[</span><span class="s1">&#39;label_geometry&#39;</span><span class="p">]</span>
+<span class="n">group_nt_gdf_pt</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="s1">&#39;Counts of Boba Shops in NYC&#39;</span><span class="p">)</span>
+<span class="n">neighborhoods</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#ebd7b8&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#gainsboro</span>
+<span class="n">group_nt_gdf_pt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#2e2622&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="n">group_nt_gdf_pt</span><span class="o">.</span><span class="n">counts</span> <span class="o">*</span> <span class="mi">50</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;#2e2622&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">legend_kwds</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s2">&quot;Counts of Boba Tea Shops in NYC Neighborhoods&quot;</span><span class="p">})</span>
+
+
+<span class="c1"># draw average rating of boba tea shops</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="s1">&#39;Average Ratings of Boba Shops in NYC&#39;</span><span class="p">)</span>
+<span class="n">missing_kwds</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;lightgrey&quot;</span><span class="p">,</span><span class="s2">&quot;edgecolor&quot;</span><span class="p">:</span> <span class="s2">&quot;lightgrey&quot;</span><span class="p">,</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Missing values&quot;</span><span class="p">}</span>
+<span class="n">group_nt_gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">column</span><span class="o">=</span><span class="s1">&#39;rating&#39;</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;BuPu&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">missing_kwds</span><span class="o">=</span><span class="n">missing_kwds</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ho/opt/anaconda3/envs/pyv37/lib/python3.7/site-packages/geopandas/plotting.py:630: FutureWarning: &#39;colormap&#39; is deprecated, please use &#39;cmap&#39; instead (for consistency with matplotlib)
+  FutureWarning,
+</pre></div>
+</div>
+<img alt="_images/boba-maps-nyc_16_1.png" src="_images/boba-maps-nyc_16_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">group_nt_gdf_pt</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">group_nt_gdf_pt</span><span class="o">.</span><span class="n">counts</span><span class="p">)</span><span class="o">.</span><span class="n">isna</span><span class="p">()][</span><span class="s1">&#39;ntaname&#39;</span><span class="p">])</span> <span class="o">==</span>  <span class="nb">list</span><span class="p">((</span><span class="n">group_nt_gdf_pt</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">group_nt_gdf_pt</span><span class="o">.</span><span class="n">rating</span><span class="p">)</span><span class="o">.</span><span class="n">isna</span><span class="p">()])[</span><span class="s1">&#39;ntaname&#39;</span><span class="p">])</span>
+<span class="n">group_nt_gdf_pt</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">group_nt_gdf_pt</span><span class="o">.</span><span class="n">ntaname</span><span class="o">==</span><span class="s1">&#39;Battery Park City-Lower Manhattan&#39;</span><span class="p">]</span>
+
+
+<span class="c1"># group_nt_gdf_pt.plot(ax=ax[1], colormap=&#39;BuPu&#39;, column=&quot;rating&quot;, markersize=np.power(group_nt_gdf_pt.rating,2) * 20, alpha=0.5, edgecolor=&#39;#2e2622&#39;, linewidth=0.4, legend=True, missing_kwds=missing_kwds)</span>
+<span class="n">group_nt_gdf_pt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;BuPu&#39;</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;rating&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="n">group_nt_gdf_pt</span><span class="o">.</span><span class="n">counts</span> <span class="o">*</span> <span class="mi">80</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;#2e2622&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>boro_code</th>
+      <th>boro_name</th>
+      <th>county_fip</th>
+      <th>ntacode</th>
+      <th>ntaname</th>
+      <th>shape_area</th>
+      <th>shape_leng</th>
+      <th>geometry</th>
+      <th>counts</th>
+      <th>cnt_category</th>
+      <th>rating</th>
+      <th>label_geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>95</th>
+      <td>1.0</td>
+      <td>Manhattan</td>
+      <td>061</td>
+      <td>MN25</td>
+      <td>Battery Park City-Lower Manhattan</td>
+      <td>1.901245e+07</td>
+      <td>43732.562268</td>
+      <td>POINT (-74.01025 40.70801)</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>4.166667</td>
+      <td>POINT (-74.01025 40.70801)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="boba-analysis-nyc.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Mark Bauer, Chidi Ezeolu, Ho Hsieh, Nathan Williamson<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

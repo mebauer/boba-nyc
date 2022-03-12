@@ -10,3 +10,6 @@ parts:
   - caption: Exploratory Data Analysis
     chapters:
     - file: boba-analysis-nyc
+  - caption: Geospatial Analysis
+    chapters:
+    - file: boba-maps-nyc

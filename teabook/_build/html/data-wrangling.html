@@ -239,6 +239,49 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importing-libraries">
+   Importing libraries
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#retrieving-data-from-yelp-api">
+   Retrieving data from Yelp API
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inspect-data">
+   Inspect data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inspect-categories">
+   Inspect categories
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#check-for-duplicates">
+   Check for duplicates
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clip-shops-within-nyc">
+   Clip shops within NYC
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -251,6 +294,49 @@
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importing-libraries">
+   Importing libraries
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#retrieving-data-from-yelp-api">
+   Retrieving data from Yelp API
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inspect-data">
+   Inspect data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inspect-categories">
+   Inspect categories
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#check-for-duplicates">
+   Check for duplicates
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clip-shops-within-nyc">
+   Clip shops within NYC
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -261,6 +347,9 @@
 <h1>Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API<a class="headerlink" href="#obsessed-with-boba-analyzing-bubble-tea-shops-in-nyc-using-the-yelp-fusion-api" title="Permalink to this headline">¶</a></h1>
 <p>Data Wrangling: Retrieving Bubble Tea Shops in NYC Using Yelp Fusion API</p>
 <p>In this notebook, we use the Yelp Fusion API to read in data about Bubble Tea Shops in NYC. Additionally, we preview the data, examine the number of rows and columns, and clip only shops that are within NYC’s five boroughs. This output data will be the data we use throughout the project.</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="importing-libraries">
+<h1>Importing libraries<a class="headerlink" href="#importing-libraries" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># importing libraries</span>
@@ -281,6 +370,9 @@
 </div>
 </div>
 </div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="retrieving-data-from-yelp-api">
+<h1>Retrieving data from Yelp API<a class="headerlink" href="#retrieving-data-from-yelp-api" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;API only returns 1,000 results and 50 per request </span>
@@ -365,7 +457,7 @@ exit loop.
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_28328</span>\<span class="mf">462497479.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_31904</span>\<span class="mf">462497479.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">     </span><span class="mi">49</span> 
 <span class="g g-Whitespace">     </span><span class="mi">50</span> <span class="c1"># concatenate all pages to one dataframe and reset index</span>
 <span class="ne">---&gt; </span><span class="mi">51</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
@@ -398,6 +490,9 @@ exit loop.
 </div>
 </div>
 </div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="inspect-data">
+<h1>Inspect data<a class="headerlink" href="#inspect-data" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># preview first five rows</span>
@@ -455,7 +550,7 @@ exit loop.
       <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
       <td>4.5</td>
       <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
-      <td>[delivery, pickup]</td>
+      <td>[pickup, delivery]</td>
       <td>$$</td>
       <td>{'address1': '208 Grand St', 'address2': None,...</td>
       <td>+16465592886</td>
@@ -474,7 +569,7 @@ exit loop.
       <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
       <td>4.5</td>
       <td>{'latitude': 40.71617, 'longitude': -73.9971}</td>
-      <td>[delivery, pickup]</td>
+      <td>[pickup, delivery]</td>
       <td>$$</td>
       <td>{'address1': '26B Elizabeth St', 'address2': '...</td>
       <td>+12124200123</td>
@@ -493,7 +588,7 @@ exit loop.
       <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
       <td>4.5</td>
       <td>{'latitude': 40.720597, 'longitude': -73.984539}</td>
-      <td>[delivery, pickup]</td>
+      <td>[pickup, delivery]</td>
       <td>$$</td>
       <td>{'address1': '23 Clinton St', 'address2': None...</td>
       <td></td>
@@ -508,11 +603,11 @@ exit loop.
       <td>https://s3-media2.fl.yelpcdn.com/bphoto/cyFHFE...</td>
       <td>False</td>
       <td>https://www.yelp.com/biz/xing-fu-tang-new-york...</td>
-      <td>89</td>
+      <td>91</td>
       <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
       <td>4.5</td>
       <td>{'latitude': 40.7288, 'longitude': -73.98775}</td>
-      <td>[delivery, pickup]</td>
+      <td>[pickup, delivery]</td>
       <td>NaN</td>
       <td>{'address1': '133 2nd Ave', 'address2': '', 'a...</td>
       <td></td>
@@ -527,11 +622,11 @@ exit loop.
       <td>https://s3-media3.fl.yelpcdn.com/bphoto/UIwR20...</td>
       <td>False</td>
       <td>https://www.yelp.com/biz/fiftylan-union-square...</td>
-      <td>59</td>
+      <td>60</td>
       <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
       <td>4.0</td>
       <td>{'latitude': 40.735516, 'longitude': -73.989191}</td>
-      <td>[delivery, pickup]</td>
+      <td>[pickup, delivery]</td>
       <td>NaN</td>
       <td>{'address1': '32 Union Square E', 'address2': ...</td>
       <td>+16467670085</td>
@@ -588,7 +683,7 @@ exit loop.
   </thead>
   <tbody>
     <tr>
-      <th>547</th>
+      <th>548</th>
       <td>QBebLBqhiuDlWasPgp6s4Q</td>
       <td>tbaar-flushing-5</td>
       <td>Tbaar</td>
@@ -599,7 +694,7 @@ exit loop.
       <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
       <td>3.5</td>
       <td>{'latitude': 40.759357, 'longitude': -73.830396}</td>
-      <td>[delivery, pickup]</td>
+      <td>[pickup, delivery]</td>
       <td>NaN</td>
       <td>{'address1': '135-52 Roosevelt Ave', 'address2...</td>
       <td></td>
@@ -607,7 +702,7 @@ exit loop.
       <td>15054.917573</td>
     </tr>
     <tr>
-      <th>548</th>
+      <th>549</th>
       <td>7apqk24GsFC9dptoD5dDZg</td>
       <td>uncleman-cafe-new-york</td>
       <td>Uncleman Cafe</td>
@@ -626,7 +721,7 @@ exit loop.
       <td>1414.238245</td>
     </tr>
     <tr>
-      <th>549</th>
+      <th>550</th>
       <td>Vz6hbICqQfyMWq9wzAKakw</td>
       <td>tbaar-flushing-4</td>
       <td>TBaar</td>
@@ -645,7 +740,7 @@ exit loop.
       <td>15147.410738</td>
     </tr>
     <tr>
-      <th>550</th>
+      <th>551</th>
       <td>YBgAPbviWYtVP2gAUhc7_A</td>
       <td>t-baar-flushing</td>
       <td>T Baar</td>
@@ -664,7 +759,7 @@ exit loop.
       <td>15045.970192</td>
     </tr>
     <tr>
-      <th>551</th>
+      <th>552</th>
       <td>f5UVQXvDpOrrIZdCjsw47w</td>
       <td>maxins-cafe-flushing</td>
       <td>Maxin's Cafe</td>
@@ -695,28 +790,28 @@ exit loop.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 552 entries, 0 to 551
+RangeIndex: 553 entries, 0 to 552
 Data columns (total 16 columns):
  #   Column         Non-Null Count  Dtype  
 ---  ------         --------------  -----  
- 0   id             552 non-null    object 
- 1   alias          552 non-null    object 
- 2   name           552 non-null    object 
- 3   image_url      552 non-null    object 
- 4   is_closed      552 non-null    bool   
- 5   url            552 non-null    object 
- 6   review_count   552 non-null    int64  
- 7   categories     552 non-null    object 
- 8   rating         552 non-null    float64
- 9   coordinates    552 non-null    object 
- 10  transactions   552 non-null    object 
+ 0   id             553 non-null    object 
+ 1   alias          553 non-null    object 
+ 2   name           553 non-null    object 
+ 3   image_url      553 non-null    object 
+ 4   is_closed      553 non-null    bool   
+ 5   url            553 non-null    object 
+ 6   review_count   553 non-null    int64  
+ 7   categories     553 non-null    object 
+ 8   rating         553 non-null    float64
+ 9   coordinates    553 non-null    object 
+ 10  transactions   553 non-null    object 
  11  price          334 non-null    object 
- 12  location       552 non-null    object 
- 13  phone          552 non-null    object 
- 14  display_phone  552 non-null    object 
- 15  distance       552 non-null    float64
+ 12  location       553 non-null    object 
+ 13  phone          553 non-null    object 
+ 14  display_phone  553 non-null    object 
+ 15  distance       553 non-null    float64
 dtypes: bool(1), float64(2), int64(1), object(12)
-memory usage: 65.4+ KB
+memory usage: 65.5+ KB
 </pre></div>
 </div>
 </div>
@@ -729,18 +824,18 @@ memory usage: 65.4+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gong Cha                   37
-Kung Fu Tea                34
-ViVi Bubble Tea            21
-Möge Tee                   10
-CoCo Fresh Tea &amp; Juice      8
-                           ..
-Lil M Bubble Tea            1
-Duomi Rice Yogurt House     1
-Tea Makers                  1
-One Cup Tea                 1
-Uncle Drink                 1
-Name: name, Length: 366, dtype: int64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gong Cha                  37
+Kung Fu Tea               34
+ViVi Bubble Tea           21
+Möge Tee                  10
+CoCo Fresh Tea &amp; Juice     8
+                          ..
+98K                        1
+Off The Bone               1
+Modern Tea Shop            1
+The TeaCompany Cafe        1
+Bobaly                     1
+Name: name, Length: 367, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -760,37 +855,1040 @@ Möge Tee                       10
 CoCo Fresh Tea &amp; Juice          8
 Vivi Bubble Tea                 6
 Coco Fresh Tea &amp; Juice          6
-Tiger Sugar                     5
 Real Fruit Bubble Tea           5
+Tiger Sugar                     5
+TBaar                           4
 Chun Yang Tea                   4
 Meet Fresh                      4
 Banhmigos                       4
 Hawa Smoothies &amp; Bubble Tea     4
-TBaar                           4
 Yaya Tea Garden                 3
-Hanco&#39;s                         3
+Tbaar                           3
 Tornado Crepe                   3
-Lazy Sundaes                    3
-Jupioca                         3
-Mr. Wish                        3
+Yi Fang Taiwan Fruit Tea        3
+Yifang Taiwan Fruit Tea         3
+Mi Tea                          3
 Name: name, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="inspect-categories">
+<h1>Inspect categories<a class="headerlink" href="#inspect-categories" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;categories&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      [{&#39;alias&#39;: &#39;bubbletea&#39;, &#39;title&#39;: &#39;Bubble Tea&#39;}]
+1      [{&#39;alias&#39;: &#39;bubbletea&#39;, &#39;title&#39;: &#39;Bubble Tea&#39;}]
+2    [{&#39;alias&#39;: &#39;bubbletea&#39;, &#39;title&#39;: &#39;Bubble Tea&#39;}...
+3      [{&#39;alias&#39;: &#39;bubbletea&#39;, &#39;title&#39;: &#39;Bubble Tea&#39;}]
+4      [{&#39;alias&#39;: &#39;bubbletea&#39;, &#39;title&#39;: &#39;Bubble Tea&#39;}]
+Name: categories, dtype: object
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># review the categories of the yelp api - make sure it&#39;s bubble tea</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;categories&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;categories&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;alias&#39;: &#39;bubbletea&#39;, &#39;title&#39;: &#39;Bubble Tea&#39;}]
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>{'alias': 'desserts', 'title': 'Desserts'}</td>
+      <td>{'alias': 'shavedice', 'title': 'Shaved Ice'}</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>548</th>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>549</th>
+      <td>{'alias': 'desserts', 'title': 'Desserts'}</td>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>{'alias': 'cafes', 'title': 'Cafes'}</td>
+    </tr>
+    <tr>
+      <th>550</th>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>{'alias': 'juicebars', 'title': 'Juice Bars &amp; ...</td>
+      <td>{'alias': 'coffee', 'title': 'Coffee &amp; Tea'}</td>
+    </tr>
+    <tr>
+      <th>551</th>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>552</th>
+      <td>{'alias': 'bakeries', 'title': 'Bakeries'}</td>
+      <td>{'alias': 'chinese', 'title': 'Chinese'}</td>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+    </tr>
+  </tbody>
+</table>
+<p>553 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">categories_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;categories&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span>
+<span class="n">categories_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cat_1&#39;</span><span class="p">,</span> <span class="s1">&#39;cat_2&#39;</span><span class="p">,</span> <span class="s1">&#39;cat_3&#39;</span><span class="p">]</span>
+
+<span class="n">categories_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cat_1</th>
+      <th>cat_2</th>
+      <th>cat_3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>{'alias': 'desserts', 'title': 'Desserts'}</td>
+      <td>{'alias': 'shavedice', 'title': 'Shaved Ice'}</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>548</th>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>549</th>
+      <td>{'alias': 'desserts', 'title': 'Desserts'}</td>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>{'alias': 'cafes', 'title': 'Cafes'}</td>
+    </tr>
+    <tr>
+      <th>550</th>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>{'alias': 'juicebars', 'title': 'Juice Bars &amp; ...</td>
+      <td>{'alias': 'coffee', 'title': 'Coffee &amp; Tea'}</td>
+    </tr>
+    <tr>
+      <th>551</th>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>552</th>
+      <td>{'alias': 'bakeries', 'title': 'Bakeries'}</td>
+      <td>{'alias': 'chinese', 'title': 'Chinese'}</td>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+    </tr>
+  </tbody>
+</table>
+<p>553 rows × 3 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="check-for-duplicates">
+<h1>Check for duplicates<a class="headerlink" href="#check-for-duplicates" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># identify number of unique bubble tea shop entries</span>
+<span class="n">names_counts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">names_counts</span> <span class="o">=</span> <span class="n">names_counts</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;counts&#39;</span><span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number of unique bubble tea shops: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names_counts</span><span class="p">)))</span>
+<span class="n">names_counts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of unique bubble tea shops: 367
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>counts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Gong Cha</td>
+      <td>37</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Kung Fu Tea</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ViVi Bubble Tea</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Möge Tee</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CoCo Fresh Tea &amp; Juice</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>362</th>
+      <td>98K</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>363</th>
+      <td>Off The Bone</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>364</th>
+      <td>Modern Tea Shop</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>365</th>
+      <td>The TeaCompany Cafe</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>366</th>
+      <td>Bobaly</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>367 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check for duplicates - white spaces, mispellings, etc</span>
+<span class="n">lst</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names_counts</span><span class="p">)):</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">names_counts</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">][</span><span class="n">row</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>  
+    
+<span class="n">names_counts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">names_counts</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;name_lower&#39;</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">names_counts</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>counts</th>
+      <th>name_lower</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Gong Cha</td>
+      <td>37</td>
+      <td>gongcha</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Kung Fu Tea</td>
+      <td>34</td>
+      <td>kungfutea</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ViVi Bubble Tea</td>
+      <td>21</td>
+      <td>vivibubbletea</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Möge Tee</td>
+      <td>10</td>
+      <td>mögetee</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CoCo Fresh Tea &amp; Juice</td>
+      <td>8</td>
+      <td>cocofreshtea&amp;juice</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># there are duplicate entries</span>
+<span class="n">names_counts</span><span class="p">[</span><span class="s1">&#39;name_lower&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vivibubbletea           3
+yifangtaiwanfruittea    3
+tbaar                   3
+jooyteashoppe           3
+mr.wish                 2
+pokébowlstation         2
+cocofreshtea&amp;juice      2
+tigersugar              2
+yomie&#39;sricexyogurt      2
+harmony                 1
+Name: name_lower, dtype: int64
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># return list of duplicate entries that need to be replaced</span>
+<span class="n">duplicates_ser</span> <span class="o">=</span> <span class="n">names_counts</span><span class="p">[</span><span class="s1">&#39;name_lower&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span>
+<span class="n">duplicates</span> <span class="o">=</span> <span class="n">duplicates_ser</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">duplicates_ser</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;these places have dulicate entries:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">dup</span> <span class="ow">in</span> <span class="n">duplicates</span><span class="o">.</span><span class="n">to_list</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">dup</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>these places have dulicate entries:
+
+vivibubbletea
+yifangtaiwanfruittea
+tbaar
+jooyteashoppe
+mr.wish
+pokébowlstation
+cocofreshtea&amp;juice
+tigersugar
+yomie&#39;sricexyogurt
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names_counts</span> <span class="o">=</span> <span class="p">(</span><span class="n">names_counts</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">names_counts</span><span class="p">[</span><span class="s1">&#39;name_lower&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">duplicates</span><span class="o">.</span><span class="n">to_list</span><span class="p">())]</span>
+                <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;name_lower&#39;</span><span class="p">))</span>
+
+<span class="n">names_counts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>counts</th>
+      <th>name_lower</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>4</th>
+      <td>CoCo Fresh Tea &amp; Juice</td>
+      <td>8</td>
+      <td>cocofreshtea&amp;juice</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Coco Fresh Tea &amp; Juice</td>
+      <td>6</td>
+      <td>cocofreshtea&amp;juice</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>JOOY TEA SHOPPE</td>
+      <td>1</td>
+      <td>jooyteashoppe</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>JOOY Tea Shoppe</td>
+      <td>1</td>
+      <td>jooyteashoppe</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>Jooy Tea Shoppe</td>
+      <td>1</td>
+      <td>jooyteashoppe</td>
+    </tr>
+    <tr>
+      <th>316</th>
+      <td>Mr.Wish</td>
+      <td>1</td>
+      <td>mr.wish</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Mr. Wish</td>
+      <td>3</td>
+      <td>mr.wish</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>PokéBowl Station</td>
+      <td>2</td>
+      <td>pokébowlstation</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>Pokébowl Station</td>
+      <td>1</td>
+      <td>pokébowlstation</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>TBaar</td>
+      <td>4</td>
+      <td>tbaar</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Tbaar</td>
+      <td>3</td>
+      <td>tbaar</td>
+    </tr>
+    <tr>
+      <th>299</th>
+      <td>T Baar</td>
+      <td>1</td>
+      <td>tbaar</td>
+    </tr>
+    <tr>
+      <th>289</th>
+      <td>TIGER SUGAR</td>
+      <td>1</td>
+      <td>tigersugar</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Tiger Sugar</td>
+      <td>5</td>
+      <td>tigersugar</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ViVi Bubble Tea</td>
+      <td>21</td>
+      <td>vivibubbletea</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Vivi Bubble Tea</td>
+      <td>6</td>
+      <td>vivibubbletea</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>ViVi Bubble tea</td>
+      <td>1</td>
+      <td>vivibubbletea</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Yifang Taiwan Fruit Tea</td>
+      <td>3</td>
+      <td>yifangtaiwanfruittea</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Yi Fang Taiwan Fruit Tea</td>
+      <td>3</td>
+      <td>yifangtaiwanfruittea</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>YiFang Taiwan Fruit Tea</td>
+      <td>2</td>
+      <td>yifangtaiwanfruittea</td>
+    </tr>
+    <tr>
+      <th>111</th>
+      <td>Yomie's Rice x Yogurt</td>
+      <td>1</td>
+      <td>yomie'sricexyogurt</td>
+    </tr>
+    <tr>
+      <th>176</th>
+      <td>Yomie's Rice X Yogurt</td>
+      <td>1</td>
+      <td>yomie'sricexyogurt</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a dictionary of formatted names (lower &amp; remove white spice) and new names to be returned</span>
+<span class="n">new_names</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;yifangtaiwanfruittea&#39;</span><span class="p">:</span><span class="s1">&#39;Yi Fang Taiwan Fruit Tea&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;vivibubbletea&#39;</span><span class="p">:</span><span class="s1">&#39;Vivi Bubble Tea&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;jooyteashoppe&#39;</span><span class="p">:</span><span class="s1">&#39;JOOY Tea Shop&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;tbaar&#39;</span><span class="p">:</span><span class="s1">&#39;TBaar&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;cocofreshtea&amp;juice&#39;</span><span class="p">:</span><span class="s1">&#39;CoCo Fresh Tea &amp; Juice&#39;</span><span class="p">,</span>
+             <span class="s2">&quot;yomie&#39;sricexyogurt&quot;</span><span class="p">:</span><span class="s2">&quot;Yomie&#39;s Rice X Yogurt&quot;</span><span class="p">,</span>
+             <span class="s1">&#39;pokébowlstation&#39;</span><span class="p">:</span><span class="s1">&#39;PokéBowl Station&#39;</span><span class="p">}</span>
+
+<span class="n">names_counts</span><span class="p">[</span><span class="s1">&#39;name_lower&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">names_counts</span><span class="p">[</span><span class="s1">&#39;name_lower&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">new_names</span><span class="p">)</span>
+
+<span class="n">names_counts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>counts</th>
+      <th>name_lower</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>4</th>
+      <td>CoCo Fresh Tea &amp; Juice</td>
+      <td>8</td>
+      <td>CoCo Fresh Tea &amp; Juice</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Coco Fresh Tea &amp; Juice</td>
+      <td>6</td>
+      <td>CoCo Fresh Tea &amp; Juice</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>JOOY TEA SHOPPE</td>
+      <td>1</td>
+      <td>JOOY Tea Shop</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>JOOY Tea Shoppe</td>
+      <td>1</td>
+      <td>JOOY Tea Shop</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>Jooy Tea Shoppe</td>
+      <td>1</td>
+      <td>JOOY Tea Shop</td>
+    </tr>
+    <tr>
+      <th>316</th>
+      <td>Mr.Wish</td>
+      <td>1</td>
+      <td>mr.wish</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Mr. Wish</td>
+      <td>3</td>
+      <td>mr.wish</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>PokéBowl Station</td>
+      <td>2</td>
+      <td>PokéBowl Station</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>Pokébowl Station</td>
+      <td>1</td>
+      <td>PokéBowl Station</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>TBaar</td>
+      <td>4</td>
+      <td>TBaar</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Tbaar</td>
+      <td>3</td>
+      <td>TBaar</td>
+    </tr>
+    <tr>
+      <th>299</th>
+      <td>T Baar</td>
+      <td>1</td>
+      <td>TBaar</td>
+    </tr>
+    <tr>
+      <th>289</th>
+      <td>TIGER SUGAR</td>
+      <td>1</td>
+      <td>tigersugar</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Tiger Sugar</td>
+      <td>5</td>
+      <td>tigersugar</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ViVi Bubble Tea</td>
+      <td>21</td>
+      <td>Vivi Bubble Tea</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Vivi Bubble Tea</td>
+      <td>6</td>
+      <td>Vivi Bubble Tea</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>ViVi Bubble tea</td>
+      <td>1</td>
+      <td>Vivi Bubble Tea</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Yifang Taiwan Fruit Tea</td>
+      <td>3</td>
+      <td>Yi Fang Taiwan Fruit Tea</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Yi Fang Taiwan Fruit Tea</td>
+      <td>3</td>
+      <td>Yi Fang Taiwan Fruit Tea</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>YiFang Taiwan Fruit Tea</td>
+      <td>2</td>
+      <td>Yi Fang Taiwan Fruit Tea</td>
+    </tr>
+    <tr>
+      <th>111</th>
+      <td>Yomie's Rice x Yogurt</td>
+      <td>1</td>
+      <td>Yomie's Rice X Yogurt</td>
+    </tr>
+    <tr>
+      <th>176</th>
+      <td>Yomie's Rice X Yogurt</td>
+      <td>1</td>
+      <td>Yomie's Rice X Yogurt</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a dictionary of old and new names to be returned</span>
+<span class="n">replace_duplicates</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">names_counts</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="n">names_counts</span><span class="p">[</span><span class="s1">&#39;name_lower&#39;</span><span class="p">]))</span>
+
+<span class="n">replace_duplicates</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;CoCo Fresh Tea &amp; Juice&#39;: &#39;CoCo Fresh Tea &amp; Juice&#39;,
+ &#39;Coco Fresh Tea &amp; Juice&#39;: &#39;CoCo Fresh Tea &amp; Juice&#39;,
+ &#39;JOOY TEA SHOPPE&#39;: &#39;JOOY Tea Shop&#39;,
+ &#39;JOOY Tea Shoppe&#39;: &#39;JOOY Tea Shop&#39;,
+ &#39;Jooy Tea Shoppe&#39;: &#39;JOOY Tea Shop&#39;,
+ &#39;Mr.Wish&#39;: &#39;mr.wish&#39;,
+ &#39;Mr. Wish&#39;: &#39;mr.wish&#39;,
+ &#39;PokéBowl Station&#39;: &#39;PokéBowl Station&#39;,
+ &#39;Pokébowl Station&#39;: &#39;PokéBowl Station&#39;,
+ &#39;TBaar&#39;: &#39;TBaar&#39;,
+ &#39;Tbaar&#39;: &#39;TBaar&#39;,
+ &#39;T Baar&#39;: &#39;TBaar&#39;,
+ &#39;TIGER SUGAR&#39;: &#39;tigersugar&#39;,
+ &#39;Tiger Sugar&#39;: &#39;tigersugar&#39;,
+ &#39;ViVi Bubble Tea&#39;: &#39;Vivi Bubble Tea&#39;,
+ &#39;Vivi Bubble Tea&#39;: &#39;Vivi Bubble Tea&#39;,
+ &#39;ViVi Bubble tea&#39;: &#39;Vivi Bubble Tea&#39;,
+ &#39;Yifang Taiwan Fruit Tea&#39;: &#39;Yi Fang Taiwan Fruit Tea&#39;,
+ &#39;Yi Fang Taiwan Fruit Tea&#39;: &#39;Yi Fang Taiwan Fruit Tea&#39;,
+ &#39;YiFang Taiwan Fruit Tea&#39;: &#39;Yi Fang Taiwan Fruit Tea&#39;,
+ &quot;Yomie&#39;s Rice x Yogurt&quot;: &quot;Yomie&#39;s Rice X Yogurt&quot;,
+ &quot;Yomie&#39;s Rice X Yogurt&quot;: &quot;Yomie&#39;s Rice X Yogurt&quot;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># replace old and new names to original dataframe</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">replace_duplicates</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>alias</th>
+      <th>name</th>
+      <th>image_url</th>
+      <th>is_closed</th>
+      <th>url</th>
+      <th>review_count</th>
+      <th>categories</th>
+      <th>rating</th>
+      <th>coordinates</th>
+      <th>transactions</th>
+      <th>price</th>
+      <th>location</th>
+      <th>phone</th>
+      <th>display_phone</th>
+      <th>distance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Q3fmTHT7zilDWtfzLK9lMA</td>
+      <td>truedan-new-york-3</td>
+      <td>Truedan</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/BmUZXO...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/truedan-new-york-3?ad...</td>
+      <td>99</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
+      <td>[pickup, delivery]</td>
+      <td>$$</td>
+      <td>{'address1': '208 Grand St', 'address2': None,...</td>
+      <td>+16465592886</td>
+      <td>(646) 559-2886</td>
+      <td>1535.241614</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7-bx74TooPuZKZDNW4WFcQ</td>
+      <td>chun-yang-tea-new-york</td>
+      <td>Chun Yang Tea</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/JrGwrZ...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/chun-yang-tea-new-yor...</td>
+      <td>91</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.71617, 'longitude': -73.9971}</td>
+      <td>[pickup, delivery]</td>
+      <td>$$</td>
+      <td>{'address1': '26B Elizabeth St', 'address2': '...</td>
+      <td>+12124200123</td>
+      <td>(212) 420-0123</td>
+      <td>1212.877370</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3aypSFXLfkAL4dhHVFobKg</td>
+      <td>lazy-sundaes-new-york-6</td>
+      <td>Lazy Sundaes</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/kEfCYC...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/lazy-sundaes-new-york...</td>
+      <td>32</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.720597, 'longitude': -73.984539}</td>
+      <td>[pickup, delivery]</td>
+      <td>$$</td>
+      <td>{'address1': '23 Clinton St', 'address2': None...</td>
+      <td></td>
+      <td></td>
+      <td>1877.016204</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>bVJQEeRNi34-3XN_F1AZEg</td>
+      <td>xing-fu-tang-new-york</td>
+      <td>Xing Fu Tang</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/cyFHFE...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/xing-fu-tang-new-york...</td>
+      <td>91</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7288, 'longitude': -73.98775}</td>
+      <td>[pickup, delivery]</td>
+      <td>NaN</td>
+      <td>{'address1': '133 2nd Ave', 'address2': '', 'a...</td>
+      <td></td>
+      <td></td>
+      <td>2656.450427</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>zupVwJAFYkHDwrsQd2ktXA</td>
+      <td>fiftylan-union-square-new-york-3</td>
+      <td>FIFTYLAN Union Square</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/UIwR20...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/fiftylan-union-square...</td>
+      <td>60</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.0</td>
+      <td>{'latitude': 40.735516, 'longitude': -73.989191}</td>
+      <td>[pickup, delivery]</td>
+      <td>NaN</td>
+      <td>{'address1': '32 Union Square E', 'address2': ...</td>
+      <td>+16467670085</td>
+      <td>(646) 767-0085</td>
+      <td>3367.900728</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gong Cha                       37
+Kung Fu Tea                    34
+Vivi Bubble Tea                28
+CoCo Fresh Tea &amp; Juice         14
+Möge Tee                       10
+Yi Fang Taiwan Fruit Tea        8
+TBaar                           8
+tigersugar                      6
+Real Fruit Bubble Tea           5
+Meet Fresh                      4
+Banhmigos                       4
+mr.wish                         4
+Chun Yang Tea                   4
+Hawa Smoothies &amp; Bubble Tea     4
+Waffle &amp; Bubble                 3
+Teazzi Tea Shop                 3
+PokéBowl Station                3
+Yaya Tea Garden                 3
+Tornado Crepe                   3
+Jupioca                         3
+Name: name, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="clip-shops-within-nyc">
+<h1>Clip shops within NYC<a class="headerlink" href="#clip-shops-within-nyc" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># explode coordinates to create an individual column</span>
@@ -857,7 +1955,7 @@ Name: name, dtype: int64
       <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
       <td>4.5</td>
       <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
-      <td>[delivery, pickup]</td>
+      <td>[pickup, delivery]</td>
       <td>$$</td>
       <td>{'address1': '208 Grand St', 'address2': None,...</td>
       <td>+16465592886</td>
@@ -879,7 +1977,7 @@ Name: name, dtype: int64
       <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
       <td>4.5</td>
       <td>{'latitude': 40.71617, 'longitude': -73.9971}</td>
-      <td>[delivery, pickup]</td>
+      <td>[pickup, delivery]</td>
       <td>$$</td>
       <td>{'address1': '26B Elizabeth St', 'address2': '...</td>
       <td>+12124200123</td>
@@ -901,7 +1999,7 @@ Name: name, dtype: int64
       <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
       <td>4.5</td>
       <td>{'latitude': 40.720597, 'longitude': -73.984539}</td>
-      <td>[delivery, pickup]</td>
+      <td>[pickup, delivery]</td>
       <td>$$</td>
       <td>{'address1': '23 Clinton St', 'address2': None...</td>
       <td></td>
@@ -919,11 +2017,11 @@ Name: name, dtype: int64
       <td>https://s3-media2.fl.yelpcdn.com/bphoto/cyFHFE...</td>
       <td>False</td>
       <td>https://www.yelp.com/biz/xing-fu-tang-new-york...</td>
-      <td>89</td>
+      <td>91</td>
       <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
       <td>4.5</td>
       <td>{'latitude': 40.7288, 'longitude': -73.98775}</td>
-      <td>[delivery, pickup]</td>
+      <td>[pickup, delivery]</td>
       <td>NaN</td>
       <td>{'address1': '133 2nd Ave', 'address2': '', 'a...</td>
       <td></td>
@@ -941,11 +2039,11 @@ Name: name, dtype: int64
       <td>https://s3-media3.fl.yelpcdn.com/bphoto/UIwR20...</td>
       <td>False</td>
       <td>https://www.yelp.com/biz/fiftylan-union-square...</td>
-      <td>59</td>
+      <td>60</td>
       <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
       <td>4.0</td>
       <td>{'latitude': 40.735516, 'longitude': -73.989191}</td>
-      <td>[delivery, pickup]</td>
+      <td>[pickup, delivery]</td>
       <td>NaN</td>
       <td>{'address1': '32 Union Square E', 'address2': ...</td>
       <td>+16467670085</td>
@@ -1056,7 +2154,7 @@ Name: name, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/data-wrangling_12_0.png" src="_images/data-wrangling_12_0.png" />
+<img alt="_images/data-wrangling_29_0.png" src="_images/data-wrangling_29_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1072,7 +2170,7 @@ Name: name, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of rows: 413
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of rows: 414
 number of columns: 19
 </pre></div>
 </div>
@@ -1138,7 +2236,7 @@ number of columns: 19
       <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
       <td>4.5</td>
       <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
-      <td>[delivery, pickup]</td>
+      <td>[pickup, delivery]</td>
       <td>$$</td>
       <td>{'address1': '208 Grand St', 'address2': None,...</td>
       <td>+16465592886</td>
@@ -1160,7 +2258,7 @@ number of columns: 19
       <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
       <td>4.5</td>
       <td>{'latitude': 40.71617, 'longitude': -73.9971}</td>
-      <td>[delivery, pickup]</td>
+      <td>[pickup, delivery]</td>
       <td>$$</td>
       <td>{'address1': '26B Elizabeth St', 'address2': '...</td>
       <td>+12124200123</td>
@@ -1182,7 +2280,7 @@ number of columns: 19
       <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
       <td>4.5</td>
       <td>{'latitude': 40.720597, 'longitude': -73.984539}</td>
-      <td>[delivery, pickup]</td>
+      <td>[pickup, delivery]</td>
       <td>$$</td>
       <td>{'address1': '23 Clinton St', 'address2': None...</td>
       <td></td>
@@ -1200,11 +2298,11 @@ number of columns: 19
       <td>https://s3-media2.fl.yelpcdn.com/bphoto/cyFHFE...</td>
       <td>False</td>
       <td>https://www.yelp.com/biz/xing-fu-tang-new-york...</td>
-      <td>89</td>
+      <td>91</td>
       <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
       <td>4.5</td>
       <td>{'latitude': 40.7288, 'longitude': -73.98775}</td>
-      <td>[delivery, pickup]</td>
+      <td>[pickup, delivery]</td>
       <td>NaN</td>
       <td>{'address1': '133 2nd Ave', 'address2': '', 'a...</td>
       <td></td>
@@ -1222,11 +2320,11 @@ number of columns: 19
       <td>https://s3-media3.fl.yelpcdn.com/bphoto/UIwR20...</td>
       <td>False</td>
       <td>https://www.yelp.com/biz/fiftylan-union-square...</td>
-      <td>59</td>
+      <td>60</td>
       <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
       <td>4.0</td>
       <td>{'latitude': 40.735516, 'longitude': -73.989191}</td>
-      <td>[delivery, pickup]</td>
+      <td>[pickup, delivery]</td>
       <td>NaN</td>
       <td>{'address1': '32 Union Square E', 'address2': ...</td>
       <td>+16467670085</td>
@@ -1255,7 +2353,7 @@ number of columns: 19
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/data-wrangling_15_0.png" src="_images/data-wrangling_15_0.png" />
+<img alt="_images/data-wrangling_32_0.png" src="_images/data-wrangling_32_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1273,6 +2371,160 @@ number of columns: 19
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>alias</th>
+      <th>name</th>
+      <th>image_url</th>
+      <th>is_closed</th>
+      <th>url</th>
+      <th>review_count</th>
+      <th>categories</th>
+      <th>rating</th>
+      <th>coordinates</th>
+      <th>transactions</th>
+      <th>price</th>
+      <th>location</th>
+      <th>phone</th>
+      <th>display_phone</th>
+      <th>distance</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Q3fmTHT7zilDWtfzLK9lMA</td>
+      <td>truedan-new-york-3</td>
+      <td>Truedan</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/BmUZXO...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/truedan-new-york-3?ad...</td>
+      <td>99</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
+      <td>['pickup', 'delivery']</td>
+      <td>$$</td>
+      <td>{'address1': '208 Grand St', 'address2': None,...</td>
+      <td>1.646559e+10</td>
+      <td>(646) 559-2886</td>
+      <td>1535.241614</td>
+      <td>40.719174</td>
+      <td>-73.996220</td>
+      <td>POINT (-73.9962197 40.7191742)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7-bx74TooPuZKZDNW4WFcQ</td>
+      <td>chun-yang-tea-new-york</td>
+      <td>Chun Yang Tea</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/JrGwrZ...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/chun-yang-tea-new-yor...</td>
+      <td>91</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.71617, 'longitude': -73.9971}</td>
+      <td>['pickup', 'delivery']</td>
+      <td>$$</td>
+      <td>{'address1': '26B Elizabeth St', 'address2': '...</td>
+      <td>1.212420e+10</td>
+      <td>(212) 420-0123</td>
+      <td>1212.877370</td>
+      <td>40.716170</td>
+      <td>-73.997100</td>
+      <td>POINT (-73.9971 40.71617)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3aypSFXLfkAL4dhHVFobKg</td>
+      <td>lazy-sundaes-new-york-6</td>
+      <td>Lazy Sundaes</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/kEfCYC...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/lazy-sundaes-new-york...</td>
+      <td>32</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.720597, 'longitude': -73.984539}</td>
+      <td>['pickup', 'delivery']</td>
+      <td>$$</td>
+      <td>{'address1': '23 Clinton St', 'address2': None...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1877.016204</td>
+      <td>40.720597</td>
+      <td>-73.984539</td>
+      <td>POINT (-73.984539 40.720597)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>bVJQEeRNi34-3XN_F1AZEg</td>
+      <td>xing-fu-tang-new-york</td>
+      <td>Xing Fu Tang</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/cyFHFE...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/xing-fu-tang-new-york...</td>
+      <td>91</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7288, 'longitude': -73.98775}</td>
+      <td>['pickup', 'delivery']</td>
+      <td>NaN</td>
+      <td>{'address1': '133 2nd Ave', 'address2': '', 'a...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2656.450427</td>
+      <td>40.728800</td>
+      <td>-73.987750</td>
+      <td>POINT (-73.98775000000001 40.7288)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>zupVwJAFYkHDwrsQd2ktXA</td>
+      <td>fiftylan-union-square-new-york-3</td>
+      <td>FIFTYLAN Union Square</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/UIwR20...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/fiftylan-union-square...</td>
+      <td>60</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.0</td>
+      <td>{'latitude': 40.735516, 'longitude': -73.989191}</td>
+      <td>['pickup', 'delivery']</td>
+      <td>NaN</td>
+      <td>{'address1': '32 Union Square E', 'address2': ...</td>
+      <td>1.646767e+10</td>
+      <td>(646) 767-0085</td>
+      <td>3367.900728</td>
+      <td>40.735516</td>
+      <td>-73.989191</td>
+      <td>POINT (-73.98919100000001 40.735516)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </div>
 

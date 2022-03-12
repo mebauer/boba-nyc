@@ -615,6 +615,20 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git push origin
 </pre></div>
 </div>
+<p><a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/configuring-a-remote-for-a-fork">Configuring a remote for a fork</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git remote -v
+git remote add upstream https://github.com/mebauer/boba-nyc.git
+git remote -v
+</pre></div>
+</div>
+<p><a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork#syncing-a-fork-from-the-command-line">Syncing a fork from the command line</a></p>
+<p><em>main</em>: name of local default branch<br />
+<em>upstream/master</em>: name of remote parent (orginal) repo branch</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git fetch upstream
+git checkout main
+git fetch upstream/master
+</pre></div>
+</div>
 </div>
 <div class="section" id="jupyter-book">
 <h3>Jupyter Book<a class="headerlink" href="#jupyter-book" title="Permalink to this headline">¶</a></h3>

@@ -5,6 +5,8 @@ import pandas as pd
 import streamlit as st
 import os
 from PIL import Image
+import plotly.express as px
+import plotly.figure_factory as ff
 
 ## Internal Libraries
 ### None
@@ -45,8 +47,17 @@ store_counts_df = pd.read_csv(file_path + '/name_counts.csv', index_col = [0])
 max_stores = int(store_counts_df['counts'].max())
 default_store_count = 4
 
+store_neighborhoods_df = pd.read_csv(file_path + '/store_neighborhoods.csv', index_col = [0])
+neighborhoods_list = store_neighborhoods_df['ntaname'].unique()
+
+## Sidebar - Select Options
 st.sidebar.header('Select Options')
+
+## Sidebar - Select Min # of Stores
 store_count = st.sidebar.slider('Select Min # of Stores', 1, max_stores, default_store_count)
+
+## Sidebar - Select Neighborhoods
+selected_neighborhood = st.sidebar.multiselect('Select Neighborhoods', neighborhoods_list, neighborhoods_list)
 
 def view_stores_by_count(count_of_stores):
     stores_df = store_counts_df[store_counts_df['counts'] >= store_count]
@@ -57,15 +68,59 @@ def view_stores_by_count(count_of_stores):
     stores_df.index += 1
     return stores_df
 
-# def user_options():
-#     store_count = st.sidebar.slider('# of Stores', 1, max_stores, default_store_count)
-#     data = {
-#         'store_count': store_count,
-#     }
-#     options = pd.DataFrame(data, index = [0])
-#     return options
+def view_stores_by_neighborhood(neighborhood):
+    stores_df = store_neighborhoods_df[store_neighborhoods_df['ntaname'].isin(neighborhood)]
+    return_stores_df = stores_df[[
+        # 'id',
+        'name',
+        'boro_name',
+        'ntaname',
+        # 'url',
+        'review_count', 
+        'rating',
+    ]]
+    return_stores_df = return_stores_df.rename(columns = {
+        'name': 'Bubble Tea Shop Name',
+        'review_count': '# of Yelp Reviews',
+        'rating': 'Average Rating',
+        'boro_name': 'Borough',
+        'ntaname': 'Neighborhood'
+    })
+    return_stores_df.sort_values(
+        by = [
+        'Borough',
+        'Neighborhood',
+        'Average Rating'
+        ],
+        ascending = [
+            True,
+            True,
+            False
+        ],
+        inplace = True
+    )
+    return return_stores_df
 
 stores_counts_df = view_stores_by_count(store_count)
 
+stores_by_neighborhood_df = view_stores_by_neighborhood(selected_neighborhood)
+
 st.subheader('Store Counts')
 st.write(stores_counts_df)
+
+fig = px.bar(stores_counts_df.sort_values('# of Stores in 5 Boros'), 
+    y = 'Bubble Tea Shop Name',
+    x = '# of Stores in 5 Boros',
+    barmode = 'stack',
+    orientation = 'h',
+)
+st.plotly_chart(fig)
+
+st.write('---')
+
+st.subheader('Store by Neighborhood')
+st.write(stores_by_neighborhood_df)
+
+# Horizontal Bar Chart
+# https://plotly.com/python/horizontal-bar-charts/
+

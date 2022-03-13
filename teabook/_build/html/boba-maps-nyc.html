@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API &#8212; Searching for Boba</title>
+    <title>Boba Maps of NYC &#8212; Searching for Boba</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -104,7 +104,7 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="socrata-api-demo.html">
+  <a class="reference internal" href="api-demo-socrata-yelp.html">
    Intro to the Socrata API with the NYC Dog Licensing Dataset &amp; Python
   </a>
  </li>
@@ -141,7 +141,7 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API
+   Boba Maps of NYC
   </a>
  </li>
 </ul>
@@ -254,13 +254,13 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#boba-maps-of-nyc">
-   Boba Maps of NYC
+  <a class="reference internal nav-link" href="#best-nyc-neighborhoods-for-boba-lovers">
+   Best NYC Neighborhoods for Boba Lovers?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#map-boba-data-for-nyc-neighborhoods">
-   Map boba data for NYC neighborhoods
+   Map Boba Data for NYC Neighborhoods
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -277,12 +277,12 @@
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#that-take-into-account-counts-of-reviews-and-counts-of-boba-shops-in-the-neighborhood">
-     - that take into account counts of reviews and counts of boba shops in the neighborhood?
+     that take into account counts of reviews and counts of boba shops in the neighborhood?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-creation-of-boba-index">
-     The creation of Boba Index…
+     The Creation of Boba Index…
     </a>
    </li>
   </ul>
@@ -297,7 +297,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API</h1>
+                <h1>Boba Maps of NYC</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -308,13 +308,13 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#boba-maps-of-nyc">
-   Boba Maps of NYC
+  <a class="reference internal nav-link" href="#best-nyc-neighborhoods-for-boba-lovers">
+   Best NYC Neighborhoods for Boba Lovers?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#map-boba-data-for-nyc-neighborhoods">
-   Map boba data for NYC neighborhoods
+   Map Boba Data for NYC Neighborhoods
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -331,12 +331,12 @@
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#that-take-into-account-counts-of-reviews-and-counts-of-boba-shops-in-the-neighborhood">
-     - that take into account counts of reviews and counts of boba shops in the neighborhood?
+     that take into account counts of reviews and counts of boba shops in the neighborhood?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-creation-of-boba-index">
-     The creation of Boba Index…
+     The Creation of Boba Index…
     </a>
    </li>
   </ul>
@@ -350,10 +350,10 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="obsessed-with-boba-analyzing-bubble-tea-shops-in-nyc-using-the-yelp-fusion-api">
-<h1>Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API<a class="headerlink" href="#obsessed-with-boba-analyzing-bubble-tea-shops-in-nyc-using-the-yelp-fusion-api" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="boba-maps-of-nyc">
-<h2>Boba Maps of NYC<a class="headerlink" href="#boba-maps-of-nyc" title="Permalink to this headline">¶</a></h2>
+  <div class="tex2jax_ignore mathjax_ignore section" id="boba-maps-of-nyc">
+<h1>Boba Maps of NYC<a class="headerlink" href="#boba-maps-of-nyc" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="best-nyc-neighborhoods-for-boba-lovers">
+<h2>Best NYC Neighborhoods for Boba Lovers?<a class="headerlink" href="#best-nyc-neighborhoods-for-boba-lovers" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Imports for Google Colab Session</span>
@@ -782,7 +782,7 @@
 </div>
 </div>
 <div class="section" id="map-boba-data-for-nyc-neighborhoods">
-<h2>Map boba data for NYC neighborhoods<a class="headerlink" href="#map-boba-data-for-nyc-neighborhoods" title="Permalink to this headline">¶</a></h2>
+<h2>Map Boba Data for NYC Neighborhoods<a class="headerlink" href="#map-boba-data-for-nyc-neighborhoods" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read neighborhood data as geodataframe</span>
@@ -897,7 +897,7 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">CRSError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_29880</span>\<span class="mf">3558824444.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_26748</span>\<span class="mf">3558824444.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># re-project neighborhood data</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">neighborhoods</span> <span class="o">=</span> <span class="n">neighborhoods</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s1">&#39;EPSG:4326&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> 
@@ -1970,7 +1970,7 @@
 <div class="section" id="nyc-neighborhood-boba-index">
 <h2>NYC Neighborhood Boba Index<a class="headerlink" href="#nyc-neighborhood-boba-index" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="that-take-into-account-counts-of-reviews-and-counts-of-boba-shops-in-the-neighborhood">
-<h3>- that take into account counts of reviews and counts of boba shops in the neighborhood?<a class="headerlink" href="#that-take-into-account-counts-of-reviews-and-counts-of-boba-shops-in-the-neighborhood" title="Permalink to this headline">¶</a></h3>
+<h3>that take into account counts of reviews and counts of boba shops in the neighborhood?<a class="headerlink" href="#that-take-into-account-counts-of-reviews-and-counts-of-boba-shops-in-the-neighborhood" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make a copy of the boba dataframe</span>
@@ -2394,7 +2394,7 @@
 </div>
 </div>
 <div class="section" id="the-creation-of-boba-index">
-<h3>The creation of Boba Index…<a class="headerlink" href="#the-creation-of-boba-index" title="Permalink to this headline">¶</a></h3>
+<h3>The Creation of Boba Index…<a class="headerlink" href="#the-creation-of-boba-index" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_nt_gdf2</span><span class="p">[</span><span class="s1">&#39;boba_index&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>

@@ -3,7 +3,7 @@ root: intro
 parts:
   - caption: Data Acquisition
     chapters:
-    - file: socrata-api-demo
+    - file: api-demo-socrata-yelp
   - caption: Data Cleaning
     chapters:
     - file: data-wrangling

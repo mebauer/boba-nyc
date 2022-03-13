@@ -1,6 +1,7 @@
 title: Searching for Boba
 author: Mark Bauer, Chidi Ezeolu, Ho Hsieh, Nathan Williamson
 copyright: "2022"
+logo: "bubble-tea-title-img.jpg"
 repository:
   url: https://github.com/mebauer/boba-nyc
   path_to_book: teabook

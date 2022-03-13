@@ -73,7 +73,7 @@ print(neighborhoods.crs)
 print(gdf.crs)
 
 
-# In[8]:
+# In[617]:
 
 
 # join the neighborhood information to each boba shop
@@ -82,7 +82,7 @@ print(join_df.shape)
 join_df.head()
 
 
-# In[9]:
+# In[618]:
 
 
 # get the counts of boba shops groupped by neighborhood names
@@ -92,7 +92,7 @@ nt_count.columns = ['ntaname', 'counts']
 nt_count.describe()
 
 
-# In[10]:
+# In[619]:
 
 
 # get the average ratings of boba shops groupped by neighborhood names
@@ -102,7 +102,7 @@ nt_rating.columns = ['ntaname','rating']
 nt_rating.describe()
 
 
-# In[11]:
+# In[620]:
 
 
 # get the average ratings of boba shops groupped by neighborhood names
@@ -112,7 +112,7 @@ nt_revcount.columns = ['ntaname','review_count']
 nt_revcount.describe()
 
 
-# In[12]:
+# In[621]:
 
 
 # merge the counts, ratings, review counts by neighborhood dataframe to the neighborhood geodataframe, which contains spatial information of the neighborhoods
@@ -123,7 +123,7 @@ group_nt_gdf = group_nt_gdf.merge(nt_revcount, how="left", left_on='ntaname', ri
 group_nt_gdf.head()
 
 
-# In[13]:
+# In[622]:
 
 
 # get the lat-long of the centroid of each neighborhood ("label_geometry") for labeling
@@ -132,7 +132,7 @@ group_nt_gdf.sort_values('counts', ascending=True)
 group_nt_gdf.head()
 
 
-# In[14]:
+# In[623]:
 
 
 # create a choropleth map of boba shop counts in NYC neighborhoods
@@ -149,7 +149,7 @@ for x, y, label in zip(top_counts.label_geometry.x, top_counts.label_geometry.y,
 ax.set_axis_off()
 
 
-# In[15]:
+# In[624]:
 
 
 # create a choropleth map of average boba shop ratings in NYC neighborhoods
@@ -167,7 +167,7 @@ for x, y, label in zip(top_rated.label_geometry.x, top_rated.label_geometry.y, t
 ax.set_axis_off()
 
 
-# In[16]:
+# In[625]:
 
 
 # Put the maps side to side..
@@ -219,13 +219,13 @@ ax[1][0].legend(loc='lower right', markerscale=0.7, frameon=False)
 # - fewer boba shops...less competition?
 # - fewer counts of review...less representative rating?
 
-# In[17]:
+# In[626]:
 
 
 group_nt_gdf[['rating', 'counts', 'review_count']].describe()
 
 
-# In[18]:
+# In[627]:
 
 
 group_nt_gdf.sort_values("rating", ascending=False).dropna()[0:10]
@@ -235,14 +235,14 @@ group_nt_gdf.sort_values("rating", ascending=False).dropna()[0:10]
 # 
 # ### - that take into account counts of reviews and counts of boba shops in the neighborhood?
 
-# In[19]:
+# In[628]:
 
 
 # make a copy of the boba dataframe
 join_df2 = join_df.copy()
 
 
-# In[20]:
+# In[629]:
 
 
 # make a copy of the neighborhoods geodataframe 
@@ -250,14 +250,14 @@ group_nt_gdf2 = group_nt_gdf[['boro_name', 'ntaname', 'geometry', 'label_geometr
 group_nt_gdf2.head()
 
 
-# In[21]:
+# In[630]:
 
 
 join_df2['rate_rev'] = join_df2['rating'] * join_df2['review_count']
 join_df2.head()
 
 
-# In[22]:
+# In[631]:
 
 
 # sum up the (rating * review_count) by neighborhood
@@ -267,7 +267,7 @@ nt_raterev2.columns = ['ntaname','rate_rev']
 nt_raterev2.head()
 
 
-# In[23]:
+# In[632]:
 
 
 # merge to the neighborhood geodataframe
@@ -282,7 +282,7 @@ group_nt_gdf2.head()
 
 # ### The creation of Boba Index...
 
-# In[24]:
+# In[633]:
 
 
 group_nt_gdf2['boba_index'] = (
@@ -300,7 +300,7 @@ group_nt_gdf2['boba_index'] = (
 group_nt_gdf2.head()
 
 
-# In[25]:
+# In[634]:
 
 
 # create a choropleth map of Baba Index in NYC neighborhoods
@@ -320,13 +320,13 @@ for x, y, label in zip(top_rated.label_geometry.x, top_rated.label_geometry.y, t
 ax.set_axis_off()
 
 
-# In[26]:
+# In[635]:
 
 
 group_nt_gdf2.sort_values("boba_index", ascending=False).dropna()[0:10]
 
 
-# In[27]:
+# In[636]:
 
 
 group_nt_gdf2.describe()

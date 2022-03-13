@@ -75,6 +75,11 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/bubble-tea-title-img.jpg" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Searching for Boba</h1>
@@ -372,6 +377,12 @@
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\datal\anaconda3\envs\boba-nyc\lib\site-packages\pyproj\__init__.py:89: UserWarning: pyproj unable to set database path.
+  _pyproj_global_context_initialize()
 </pre></div>
 </div>
 </div>
@@ -884,8 +895,53 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>EPSG:4326
-EPSG:4326
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">CRSError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_15564</span>\<span class="mf">3558824444.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># re-project neighborhood data</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">neighborhoods</span> <span class="o">=</span> <span class="n">neighborhoods</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s1">&#39;EPSG:4326&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># open the boba dataframe as geo data frame using the lat-long info in the data</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">neighborhoods</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">gpd</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">latitude</span><span class="p">))</span>
+
+<span class="nn">~\anaconda3\envs\boba-nyc\lib\site-packages\geopandas\geodataframe.py</span> in <span class="ni">to_crs</span><span class="nt">(self, crs, epsg, inplace)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1273</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1274</span>             <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="ne">-&gt; </span><span class="mi">1275</span>         <span class="n">geom</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="n">crs</span><span class="p">,</span> <span class="n">epsg</span><span class="o">=</span><span class="n">epsg</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1276</span>         <span class="n">df</span><span class="o">.</span><span class="n">geometry</span> <span class="o">=</span> <span class="n">geom</span>
+<span class="g g-Whitespace">   </span><span class="mi">1277</span>         <span class="n">df</span><span class="o">.</span><span class="n">crs</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">crs</span>
+
+<span class="nn">~\anaconda3\envs\boba-nyc\lib\site-packages\geopandas\geoseries.py</span> in <span class="ni">to_crs</span><span class="nt">(self, crs, epsg)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1118</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1119</span><span class="s2">         return GeoSeries(</span>
+<span class="ne">-&gt; </span><span class="mi">1120</span><span class="s2">             self.values.to_crs(crs=crs, epsg=epsg), index=self.index, name=self.name</span>
+<span class="g g-Whitespace">   </span><span class="mi">1121</span><span class="s2">         )</span>
+<span class="g g-Whitespace">   </span><span class="mi">1122</span><span class="s2"> </span>
+
+<span class="nn">~\anaconda3\envs\boba-nyc\lib\site-packages\geopandas\array.py</span> in <span class="ni">to_crs</span><span class="nt">(self, crs, epsg)</span>
+<span class="g g-Whitespace">    </span><span class="mi">766</span><span class="s2">             )</span>
+<span class="g g-Whitespace">    </span><span class="mi">767</span><span class="s2">         if crs is not None:</span>
+<span class="ne">--&gt; </span><span class="mi">768</span><span class="s2">             crs = CRS.from_user_input(crs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">769</span><span class="s2">         elif epsg is not None:</span>
+<span class="g g-Whitespace">    </span><span class="mi">770</span><span class="s2">             crs = CRS.from_epsg(epsg)</span>
+
+<span class="nn">~\anaconda3\envs\boba-nyc\lib\site-packages\pyproj\crs\crs.py</span> in <span class="ni">from_user_input</span><span class="nt">(cls, value, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">477</span><span class="s2">         if isinstance(value, cls):</span>
+<span class="g g-Whitespace">    </span><span class="mi">478</span><span class="s2">             return value</span>
+<span class="ne">--&gt; </span><span class="mi">479</span><span class="s2">         return cls(value, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">480</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">481</span><span class="s2">     def get_geod(self) -&gt; Optional[Geod]:</span>
+
+<span class="nn">~\anaconda3\envs\boba-nyc\lib\site-packages\pyproj\crs\crs.py</span> in <span class="ni">__init__</span><span class="nt">(self, projparams, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">324</span><span class="s2">             self._local.crs = projparams</span>
+<span class="g g-Whitespace">    </span><span class="mi">325</span><span class="s2">         else:</span>
+<span class="ne">--&gt; </span><span class="mi">326</span><span class="s2">             self._local.crs = _CRS(self.srs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">327</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">328</span><span class="s2">     @property</span>
+
+<span class="nn">pyproj\_crs.pyx</span> in <span class="ni">pyproj._crs._CRS.__init__</span><span class="nt">()</span>
+
+<span class="ne">CRSError</span>: Invalid projection: EPSG:4326: (Internal Proj Error: proj_create: no database context specified)
 </pre></div>
 </div>
 </div>
@@ -1405,9 +1461,9 @@ EPSG:4326
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\datal\AppData\Local\Temp\ipykernel_34320\2953681496.py:2: UserWarning: Geometry is in a geographic CRS. Results from &#39;centroid&#39; are likely incorrect. Use &#39;GeoSeries.to_crs()&#39; to re-project geometries to a projected CRS before this operation.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ho/opt/anaconda3/envs/pyv37/lib/python3.7/site-packages/ipykernel_launcher.py:2: UserWarning: Geometry is in a geographic CRS. Results from &#39;centroid&#39; are likely incorrect. Use &#39;GeoSeries.to_crs()&#39; to re-project geometries to a projected CRS before this operation.
 
-  group_nt_gdf[&#39;label_geometry&#39;] = group_nt_gdf[&#39;geometry&#39;].centroid
+  
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -1613,7 +1669,7 @@ EPSG:4326
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x19f84d9fd60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fe3e25b46d0&gt;
 </pre></div>
 </div>
 <img alt="_images/boba-maps-nyc_17_1.png" src="_images/boba-maps-nyc_17_1.png" />

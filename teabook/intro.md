@@ -17,7 +17,7 @@
 
 - The ___website___ for this repo can be found here: [boba-nyc.datalife.nyc](https://boba-nyc.datalife.nyc)
 
-![cover-photo](teabook/busineses-per-neighborhood.png)
+![cover-photo](businesses-per-neighborhood.png)
 
 ## Table of Contents
 
@@ -198,6 +198,10 @@ You can view these notebooks through your browser by clicking _View_ under the _
 ### CC-licensed materials
 
 - [File:Matcha green tea.jpg](https://commons.wikimedia.org/wiki/File:Matcha_green_tea.jpg) by [BubbleManiaCZ](https://commons.wikimedia.org/w/index.php?title=User:BubbleManiaCZ&action=edit&redlink=1) is under the [Creative Commons](https://en.wikipedia.org/wiki/en:Creative_Commons) [Attribution-Share Alike 3.0 Unported](https://creativecommons.org/licenses/by-sa/3.0/deed.en) license.
+
+### Images
+
+[Bubble Tea Logo: Photo at ViVi Bubble Tea - 49 Bayard St, New York, NY 10013](https://vivibubbletea.com/)
 
 ### Cheatsheets
 

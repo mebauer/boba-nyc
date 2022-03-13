@@ -305,7 +305,7 @@ plt.tight_layout()
 plt.savefig('busineses-per-neighborhood.png', dpi=200)
 
 
-# In[31]:
+# In[37]:
 
 
 fig, ax = plt.subplots(figsize=(10, 6))

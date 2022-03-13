@@ -17,7 +17,7 @@
 
 - The ___website___ for this repo can be found here: [boba-nyc.datalife.nyc](https://boba-nyc.datalife.nyc)
 
-![cover-photo](busineses-per-neighborhood.png)
+![cover-photo](teabook/busineses-per-neighborhood.png)
 
 ## Table of Contents
 
@@ -72,10 +72,20 @@ This project recommends beginner-level proficiency with Python and is focused on
 5. Install requirements
 
     ```bash
-    conda env create -f environment.yml
+    conda env create -f environment_detail.yml
     ```
 
 ## Other Commands
+
+### Conda
+
+[Managing environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
+
+[conda issues # 4339: Exporting clean environment to environment.yml](https://github.com/conda/conda/issues/4339)
+
+```bash
+conda env export --from-history | grep -v "prefix" > environment.yml
+```
 
 ### Git
 
@@ -101,7 +111,7 @@ _upstream/master_: name of remote parent (orginal) repo branch
 ```bash
 git fetch upstream
 git checkout main
-git fetch upstream/master
+git merge upstream/master
 ```
 
 ### Jupyter Book

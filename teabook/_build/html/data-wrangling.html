@@ -137,7 +137,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="boba-maps-nyc.html">
-   Boba Maps of NYC
+   Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API
   </a>
  </li>
 </ul>
@@ -280,6 +280,11 @@
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inspecting-categories">
+   Inspecting categories
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#clip-shops-within-nyc">
    Clip shops within NYC
   </a>
@@ -335,6 +340,11 @@
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inspecting-categories">
+   Inspecting categories
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#clip-shops-within-nyc">
    Clip shops within NYC
   </a>
@@ -380,9 +390,9 @@
 
 <span class="c1"># saving yelp api key as an environment variable</span>
 <span class="n">API_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;yelp_api&#39;</span><span class="p">)</span>
-<span class="c1"># if API_KEY is None:</span>
-<span class="c1">#     config = AutoConfig(search_path = &#39;.&#39;)</span>
-<span class="c1">#     API_KEY = config(&#39;YELP_API&#39;)</span>
+<span class="k">if</span> <span class="n">API_KEY</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">AutoConfig</span><span class="p">(</span><span class="n">search_path</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+    <span class="n">API_KEY</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s1">&#39;YELP_API&#39;</span><span class="p">)</span>
 
 <span class="c1"># empty list to place our data for each page</span>
 <span class="n">lst</span> <span class="o">=</span> <span class="p">[]</span>
@@ -449,42 +459,16 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>initial offset number: 0
-exception: &#39;businesses&#39;
-exit loop.
-</pre></div>
-</div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_47348</span>\<span class="mf">462497479.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">49</span> 
-<span class="g g-Whitespace">     </span><span class="mi">50</span> <span class="c1"># concatenate all pages to one dataframe and reset index</span>
-<span class="ne">---&gt; </span><span class="mi">51</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span> 
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_46488</span>\<span class="mf">901021496.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">API_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;yelp_api&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="k">if</span> <span class="n">API_KEY</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">----&gt; </span><span class="mi">8</span>     <span class="n">config</span> <span class="o">=</span> <span class="n">AutoConfig</span><span class="p">(</span><span class="n">search_path</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">API_KEY</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s1">&#39;YELP_API&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> 
 
-<span class="nn">~\anaconda3\envs\boba-nyc\lib\site-packages\pandas\util\_decorators.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">309</span>                     <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">310</span>                 <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">311</span>             <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">312</span> 
-<span class="g g-Whitespace">    </span><span class="mi">313</span>         <span class="k">return</span> <span class="n">wrapper</span>
-
-<span class="nn">~\anaconda3\envs\boba-nyc\lib\site-packages\pandas\core\reshape\concat.py</span> in <span class="ni">concat</span><span class="nt">(objs, axis, join, ignore_index, keys, levels, names, verify_integrity, sort, copy)</span>
-<span class="g g-Whitespace">    </span><span class="mi">344</span>     <span class="ne">ValueError</span><span class="p">:</span> <span class="n">Indexes</span> <span class="n">have</span> <span class="n">overlapping</span> <span class="n">values</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">345</span>     <span class="s2">&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">346</span><span class="s2">     op = _Concatenator(</span>
-<span class="g g-Whitespace">    </span><span class="mi">347</span><span class="s2">         objs,</span>
-<span class="g g-Whitespace">    </span><span class="mi">348</span><span class="s2">         axis=axis,</span>
-
-<span class="nn">~\anaconda3\envs\boba-nyc\lib\site-packages\pandas\core\reshape\concat.py</span> in <span class="ni">__init__</span><span class="nt">(self, objs, axis, join, keys, levels, names, ignore_index, verify_integrity, copy, sort)</span>
-<span class="g g-Whitespace">    </span><span class="mi">401</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">402</span><span class="s2">         if len(objs) == 0:</span>
-<span class="ne">--&gt; </span><span class="mi">403</span><span class="s2">             raise ValueError(&quot;No objects to concatenate&quot;)</span>
-<span class="g g-Whitespace">    </span><span class="mi">404</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">405</span><span class="s2">         if keys is None:</span>
-
-<span class="ne">ValueError</span>: No objects to concatenate
+<span class="ne">NameError</span>: name &#39;AutoConfig&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -529,73 +513,16 @@ exit loop.
       <th>rating</th>
       <th>coordinates</th>
       <th>transactions</th>
-      <th>price</th>
       <th>location</th>
       <th>phone</th>
       <th>display_phone</th>
       <th>distance</th>
+      <th>price</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>Q3fmTHT7zilDWtfzLK9lMA</td>
-      <td>truedan-new-york-3</td>
-      <td>Truedan</td>
-      <td>https://s3-media2.fl.yelpcdn.com/bphoto/BmUZXO...</td>
-      <td>False</td>
-      <td>https://www.yelp.com/biz/truedan-new-york-3?ad...</td>
-      <td>99</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
-      <td>4.5</td>
-      <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
-      <td>[pickup, delivery]</td>
-      <td>$$</td>
-      <td>{'address1': '208 Grand St', 'address2': None,...</td>
-      <td>+16465592886</td>
-      <td>(646) 559-2886</td>
-      <td>1535.241614</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>7-bx74TooPuZKZDNW4WFcQ</td>
-      <td>chun-yang-tea-new-york</td>
-      <td>Chun Yang Tea</td>
-      <td>https://s3-media1.fl.yelpcdn.com/bphoto/JrGwrZ...</td>
-      <td>False</td>
-      <td>https://www.yelp.com/biz/chun-yang-tea-new-yor...</td>
-      <td>91</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
-      <td>4.5</td>
-      <td>{'latitude': 40.71617, 'longitude': -73.9971}</td>
-      <td>[pickup, delivery]</td>
-      <td>$$</td>
-      <td>{'address1': '26B Elizabeth St', 'address2': '...</td>
-      <td>+12124200123</td>
-      <td>(212) 420-0123</td>
-      <td>1212.877370</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3aypSFXLfkAL4dhHVFobKg</td>
-      <td>lazy-sundaes-new-york-6</td>
-      <td>Lazy Sundaes</td>
-      <td>https://s3-media3.fl.yelpcdn.com/bphoto/kEfCYC...</td>
-      <td>False</td>
-      <td>https://www.yelp.com/biz/lazy-sundaes-new-york...</td>
-      <td>32</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
-      <td>4.5</td>
-      <td>{'latitude': 40.720597, 'longitude': -73.984539}</td>
-      <td>[pickup, delivery]</td>
-      <td>$$</td>
-      <td>{'address1': '23 Clinton St', 'address2': None...</td>
-      <td></td>
-      <td></td>
-      <td>1877.016204</td>
-    </tr>
-    <tr>
-      <th>3</th>
       <td>bVJQEeRNi34-3XN_F1AZEg</td>
       <td>xing-fu-tang-new-york</td>
       <td>Xing Fu Tang</td>
@@ -607,30 +534,87 @@ exit loop.
       <td>4.5</td>
       <td>{'latitude': 40.7288, 'longitude': -73.98775}</td>
       <td>[pickup, delivery]</td>
-      <td>NaN</td>
       <td>{'address1': '133 2nd Ave', 'address2': '', 'a...</td>
       <td></td>
       <td></td>
       <td>2656.450427</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3aypSFXLfkAL4dhHVFobKg</td>
+      <td>lazy-sundaes-new-york-6</td>
+      <td>Lazy Sundaes</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/kEfCYC...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/lazy-sundaes-new-york...</td>
+      <td>32</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.720597, 'longitude': -73.984539}</td>
+      <td>[pickup, delivery]</td>
+      <td>{'address1': '23 Clinton St', 'address2': None...</td>
+      <td></td>
+      <td></td>
+      <td>1877.016204</td>
+      <td>$$</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Q3fmTHT7zilDWtfzLK9lMA</td>
+      <td>truedan-new-york-3</td>
+      <td>Truedan</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/BmUZXO...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/truedan-new-york-3?ad...</td>
+      <td>99</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
+      <td>[pickup, delivery]</td>
+      <td>{'address1': '208 Grand St', 'address2': None,...</td>
+      <td>+16465592886</td>
+      <td>(646) 559-2886</td>
+      <td>1535.241614</td>
+      <td>$$</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>nndSS7va9wFlBYzA3zv1nw</td>
+      <td>ojbk-tea-shop-brooklyn-2</td>
+      <td>OJBK Tea Shop</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/TOjiM7...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/ojbk-tea-shop-brookly...</td>
+      <td>26</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.69395, 'longitude': -73.96369}</td>
+      <td>[pickup, delivery]</td>
+      <td>{'address1': '525 Myrtle Ave', 'address2': '',...</td>
+      <td>+17185763047</td>
+      <td>(718) 576-3047</td>
+      <td>2879.927001</td>
+      <td>$</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>zupVwJAFYkHDwrsQd2ktXA</td>
-      <td>fiftylan-union-square-new-york-3</td>
-      <td>FIFTYLAN Union Square</td>
-      <td>https://s3-media3.fl.yelpcdn.com/bphoto/UIwR20...</td>
+      <td>FKjAriOhhGZJSlkqrk8zWg</td>
+      <td>i-milky-沐白-new-york-3</td>
+      <td>I’Milky 沐白</td>
+      <td>https://s3-media4.fl.yelpcdn.com/bphoto/D04UPg...</td>
       <td>False</td>
-      <td>https://www.yelp.com/biz/fiftylan-union-square...</td>
-      <td>60</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
-      <td>4.0</td>
-      <td>{'latitude': 40.735516, 'longitude': -73.989191}</td>
+      <td>https://www.yelp.com/biz/i-milky-%E6%B2%90%E7%...</td>
+      <td>260</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7513413, 'longitude': -73.9864...</td>
       <td>[pickup, delivery]</td>
-      <td>NaN</td>
-      <td>{'address1': '32 Union Square E', 'address2': ...</td>
-      <td>+16467670085</td>
-      <td>(646) 767-0085</td>
-      <td>3367.900728</td>
+      <td>{'address1': '992 6th Ave', 'address2': '', 'a...</td>
+      <td>+12122396712</td>
+      <td>(212) 239-6712</td>
+      <td>5160.340089</td>
+      <td>$</td>
     </tr>
   </tbody>
 </table>
@@ -673,11 +657,11 @@ exit loop.
       <th>rating</th>
       <th>coordinates</th>
       <th>transactions</th>
-      <th>price</th>
       <th>location</th>
       <th>phone</th>
       <th>display_phone</th>
       <th>distance</th>
+      <th>price</th>
     </tr>
   </thead>
   <tbody>
@@ -694,11 +678,11 @@ exit loop.
       <td>3.5</td>
       <td>{'latitude': 40.759357, 'longitude': -73.830396}</td>
       <td>[pickup, delivery]</td>
-      <td>NaN</td>
       <td>{'address1': '135-52 Roosevelt Ave', 'address2...</td>
       <td></td>
       <td></td>
       <td>15054.917573</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>549</th>
@@ -713,11 +697,11 @@ exit loop.
       <td>1.0</td>
       <td>{'latitude': 40.71781, 'longitude': -73.99795}</td>
       <td>[]</td>
-      <td>NaN</td>
       <td>{'address1': '122 Mulberry St', 'address2': No...</td>
       <td>+12129666206</td>
       <td>(212) 966-6206</td>
       <td>1414.238245</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>550</th>
@@ -732,11 +716,11 @@ exit loop.
       <td>4.0</td>
       <td>{'latitude': 40.7613116, 'longitude': -73.8308...</td>
       <td>[]</td>
-      <td>NaN</td>
       <td>{'address1': '37-11 Main St', 'address2': '', ...</td>
       <td></td>
       <td></td>
       <td>15147.410738</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>551</th>
@@ -751,11 +735,11 @@ exit loop.
       <td>3.5</td>
       <td>{'latitude': 40.7587509, 'longitude': -73.830162}</td>
       <td>[]</td>
-      <td>$</td>
       <td>{'address1': '135-36 40th Rd', 'address2': '',...</td>
       <td></td>
       <td></td>
       <td>15045.970192</td>
+      <td>$</td>
     </tr>
     <tr>
       <th>552</th>
@@ -770,11 +754,11 @@ exit loop.
       <td>3.5</td>
       <td>{'latitude': 40.7585, 'longitude': -73.83064}</td>
       <td>[]</td>
-      <td>$</td>
       <td>{'address1': '135-24 40th Rd', 'address2': '',...</td>
       <td>+17188869200</td>
       <td>(718) 886-9200</td>
       <td>14997.842205</td>
+      <td>$</td>
     </tr>
   </tbody>
 </table>
@@ -804,11 +788,11 @@ Data columns (total 16 columns):
  8   rating         553 non-null    float64
  9   coordinates    553 non-null    object 
  10  transactions   553 non-null    object 
- 11  price          334 non-null    object 
- 12  location       553 non-null    object 
- 13  phone          553 non-null    object 
- 14  display_phone  553 non-null    object 
- 15  distance       553 non-null    float64
+ 11  location       553 non-null    object 
+ 12  phone          553 non-null    object 
+ 13  display_phone  553 non-null    object 
+ 14  distance       553 non-null    float64
+ 15  price          334 non-null    object 
 dtypes: bool(1), float64(2), int64(1), object(12)
 memory usage: 65.5+ KB
 </pre></div>
@@ -825,16 +809,16 @@ memory usage: 65.5+ KB
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gong Cha                  37
 Kung Fu Tea               34
-ViVi Bubble Tea           21
+ViVi Bubble Tea           20
 Möge Tee                  10
 CoCo Fresh Tea &amp; Juice     8
                           ..
-98K                        1
-Off The Bone               1
-Modern Tea Shop            1
-The TeaCompany Cafe        1
-Bobaly                     1
-Name: name, Length: 367, dtype: int64
+Brew Memories              1
+Dragon Bing                1
+Hug a Mug Coffee &amp; Tea     1
+Yummy Boba Desserts        1
+Zai&#39;s Dessertery           1
+Name: name, Length: 368, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -849,24 +833,24 @@ Name: name, Length: 367, dtype: int64
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gong Cha                       37
 Kung Fu Tea                    34
-ViVi Bubble Tea                21
+ViVi Bubble Tea                20
 Möge Tee                       10
 CoCo Fresh Tea &amp; Juice          8
 Vivi Bubble Tea                 6
 Coco Fresh Tea &amp; Juice          6
-Real Fruit Bubble Tea           5
 Tiger Sugar                     5
-TBaar                           4
-Chun Yang Tea                   4
+Real Fruit Bubble Tea           5
 Meet Fresh                      4
 Banhmigos                       4
+Chun Yang Tea                   4
 Hawa Smoothies &amp; Bubble Tea     4
-Yaya Tea Garden                 3
-Tbaar                           3
-Tornado Crepe                   3
+TBaar                           4
+Hanco&#39;s                         3
 Yi Fang Taiwan Fruit Tea        3
-Yifang Taiwan Fruit Tea         3
+Lazy Sundaes                    3
 Mi Tea                          3
+Tbaar                           3
+Waffle &amp; Bubble                 3
 Name: name, dtype: int64
 </pre></div>
 </div>
@@ -883,10 +867,10 @@ Name: name, dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      [{&#39;alias&#39;: &#39;bubbletea&#39;, &#39;title&#39;: &#39;Bubble Tea&#39;}]
-1      [{&#39;alias&#39;: &#39;bubbletea&#39;, &#39;title&#39;: &#39;Bubble Tea&#39;}]
-2    [{&#39;alias&#39;: &#39;bubbletea&#39;, &#39;title&#39;: &#39;Bubble Tea&#39;}...
+1    [{&#39;alias&#39;: &#39;bubbletea&#39;, &#39;title&#39;: &#39;Bubble Tea&#39;}...
+2      [{&#39;alias&#39;: &#39;bubbletea&#39;, &#39;title&#39;: &#39;Bubble Tea&#39;}]
 3      [{&#39;alias&#39;: &#39;bubbletea&#39;, &#39;title&#39;: &#39;Bubble Tea&#39;}]
-4      [{&#39;alias&#39;: &#39;bubbletea&#39;, &#39;title&#39;: &#39;Bubble Tea&#39;}]
+4    [{&#39;alias&#39;: &#39;bubbletea&#39;, &#39;title&#39;: &#39;Bubble Tea&#39;}...
 Name: categories, dtype: object
 </pre></div>
 </div>
@@ -932,14 +916,14 @@ Name: categories, dtype: object
     <tr>
       <th>1</th>
       <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>{'alias': 'desserts', 'title': 'Desserts'}</td>
+      <td>{'alias': 'shavedice', 'title': 'Shaved Ice'}</td>
     </tr>
     <tr>
       <th>2</th>
       <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
-      <td>{'alias': 'desserts', 'title': 'Desserts'}</td>
-      <td>{'alias': 'shavedice', 'title': 'Shaved Ice'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
@@ -950,8 +934,8 @@ Name: categories, dtype: object
     <tr>
       <th>4</th>
       <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>{'alias': 'taiwanese', 'title': 'Taiwanese'}</td>
+      <td>{'alias': 'juicebars', 'title': 'Juice Bars &amp; ...</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1037,14 +1021,14 @@ Name: categories, dtype: object
     <tr>
       <th>1</th>
       <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>{'alias': 'desserts', 'title': 'Desserts'}</td>
+      <td>{'alias': 'shavedice', 'title': 'Shaved Ice'}</td>
     </tr>
     <tr>
       <th>2</th>
       <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
-      <td>{'alias': 'desserts', 'title': 'Desserts'}</td>
-      <td>{'alias': 'shavedice', 'title': 'Shaved Ice'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
@@ -1055,8 +1039,8 @@ Name: categories, dtype: object
     <tr>
       <th>4</th>
       <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>{'alias': 'taiwanese', 'title': 'Taiwanese'}</td>
+      <td>{'alias': 'juicebars', 'title': 'Juice Bars &amp; ...</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1114,7 +1098,7 @@ Name: categories, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of unique bubble tea shops: 367
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of unique bubble tea shops: 368
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -1153,7 +1137,7 @@ Name: categories, dtype: object
     <tr>
       <th>2</th>
       <td>ViVi Bubble Tea</td>
-      <td>21</td>
+      <td>20</td>
     </tr>
     <tr>
       <th>3</th>
@@ -1171,33 +1155,33 @@ Name: categories, dtype: object
       <td>...</td>
     </tr>
     <tr>
-      <th>362</th>
-      <td>98K</td>
-      <td>1</td>
-    </tr>
-    <tr>
       <th>363</th>
-      <td>Off The Bone</td>
+      <td>Brew Memories</td>
       <td>1</td>
     </tr>
     <tr>
       <th>364</th>
-      <td>Modern Tea Shop</td>
+      <td>Dragon Bing</td>
       <td>1</td>
     </tr>
     <tr>
       <th>365</th>
-      <td>The TeaCompany Cafe</td>
+      <td>Hug a Mug Coffee &amp; Tea</td>
       <td>1</td>
     </tr>
     <tr>
       <th>366</th>
-      <td>Bobaly</td>
+      <td>Yummy Boba Desserts</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>367</th>
+      <td>Zai's Dessertery</td>
       <td>1</td>
     </tr>
   </tbody>
 </table>
-<p>367 rows × 2 columns</p>
+<p>368 rows × 2 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1253,7 +1237,7 @@ Name: categories, dtype: object
     <tr>
       <th>2</th>
       <td>ViVi Bubble Tea</td>
-      <td>21</td>
+      <td>20</td>
       <td>vivibubbletea</td>
     </tr>
     <tr>
@@ -1280,16 +1264,16 @@ Name: categories, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vivibubbletea           3
-yifangtaiwanfruittea    3
-tbaar                   3
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>yifangtaiwanfruittea    3
 jooyteashoppe           3
-mr.wish                 2
-pokébowlstation         2
+tbaar                   3
+vivibubbletea           3
 cocofreshtea&amp;juice      2
-tigersugar              2
+pokébowlstation         2
 yomie&#39;sricexyogurt      2
-harmony                 1
+mr.wish                 2
+tigersugar              2
+corndogunion            1
 Name: name_lower, dtype: int64
 </pre></div>
 </div>
@@ -1310,15 +1294,15 @@ Name: name_lower, dtype: int64
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>these places have dulicate entries:
 
-vivibubbletea
 yifangtaiwanfruittea
-tbaar
 jooyteashoppe
-mr.wish
-pokébowlstation
+tbaar
+vivibubbletea
 cocofreshtea&amp;juice
-tigersugar
+pokébowlstation
 yomie&#39;sricexyogurt
+mr.wish
+tigersugar
 </pre></div>
 </div>
 </div>
@@ -1370,28 +1354,22 @@ yomie&#39;sricexyogurt
       <td>cocofreshtea&amp;juice</td>
     </tr>
     <tr>
-      <th>164</th>
-      <td>JOOY TEA SHOPPE</td>
-      <td>1</td>
-      <td>jooyteashoppe</td>
-    </tr>
-    <tr>
-      <th>145</th>
+      <th>354</th>
       <td>JOOY Tea Shoppe</td>
       <td>1</td>
       <td>jooyteashoppe</td>
     </tr>
     <tr>
-      <th>102</th>
+      <th>227</th>
       <td>Jooy Tea Shoppe</td>
       <td>1</td>
       <td>jooyteashoppe</td>
     </tr>
     <tr>
-      <th>316</th>
-      <td>Mr.Wish</td>
+      <th>99</th>
+      <td>JOOY TEA SHOPPE</td>
       <td>1</td>
-      <td>mr.wish</td>
+      <td>jooyteashoppe</td>
     </tr>
     <tr>
       <th>21</th>
@@ -1400,51 +1378,57 @@ yomie&#39;sricexyogurt
       <td>mr.wish</td>
     </tr>
     <tr>
-      <th>35</th>
-      <td>PokéBowl Station</td>
-      <td>2</td>
-      <td>pokébowlstation</td>
+      <th>64</th>
+      <td>Mr.Wish</td>
+      <td>1</td>
+      <td>mr.wish</td>
     </tr>
     <tr>
-      <th>97</th>
+      <th>320</th>
       <td>Pokébowl Station</td>
       <td>1</td>
       <td>pokébowlstation</td>
     </tr>
     <tr>
-      <th>9</th>
+      <th>49</th>
+      <td>PokéBowl Station</td>
+      <td>2</td>
+      <td>pokébowlstation</td>
+    </tr>
+    <tr>
+      <th>13</th>
       <td>TBaar</td>
       <td>4</td>
       <td>tbaar</td>
     </tr>
     <tr>
-      <th>15</th>
+      <th>18</th>
       <td>Tbaar</td>
       <td>3</td>
       <td>tbaar</td>
     </tr>
     <tr>
-      <th>299</th>
+      <th>130</th>
       <td>T Baar</td>
       <td>1</td>
       <td>tbaar</td>
     </tr>
     <tr>
-      <th>289</th>
-      <td>TIGER SUGAR</td>
-      <td>1</td>
-      <td>tigersugar</td>
-    </tr>
-    <tr>
-      <th>8</th>
+      <th>7</th>
       <td>Tiger Sugar</td>
       <td>5</td>
       <td>tigersugar</td>
     </tr>
     <tr>
+      <th>81</th>
+      <td>TIGER SUGAR</td>
+      <td>1</td>
+      <td>tigersugar</td>
+    </tr>
+    <tr>
       <th>2</th>
       <td>ViVi Bubble Tea</td>
-      <td>21</td>
+      <td>20</td>
       <td>vivibubbletea</td>
     </tr>
     <tr>
@@ -1454,37 +1438,37 @@ yomie&#39;sricexyogurt
       <td>vivibubbletea</td>
     </tr>
     <tr>
-      <th>95</th>
+      <th>97</th>
       <td>ViVi Bubble tea</td>
       <td>1</td>
       <td>vivibubbletea</td>
     </tr>
     <tr>
-      <th>18</th>
+      <th>24</th>
       <td>Yifang Taiwan Fruit Tea</td>
       <td>3</td>
       <td>yifangtaiwanfruittea</td>
     </tr>
     <tr>
-      <th>17</th>
+      <th>15</th>
       <td>Yi Fang Taiwan Fruit Tea</td>
       <td>3</td>
       <td>yifangtaiwanfruittea</td>
     </tr>
     <tr>
-      <th>34</th>
+      <th>29</th>
       <td>YiFang Taiwan Fruit Tea</td>
       <td>2</td>
       <td>yifangtaiwanfruittea</td>
     </tr>
     <tr>
-      <th>111</th>
+      <th>340</th>
       <td>Yomie's Rice x Yogurt</td>
       <td>1</td>
       <td>yomie'sricexyogurt</td>
     </tr>
     <tr>
-      <th>176</th>
+      <th>328</th>
       <td>Yomie's Rice X Yogurt</td>
       <td>1</td>
       <td>yomie'sricexyogurt</td>
@@ -1548,28 +1532,22 @@ yomie&#39;sricexyogurt
       <td>CoCo Fresh Tea &amp; Juice</td>
     </tr>
     <tr>
-      <th>164</th>
-      <td>JOOY TEA SHOPPE</td>
-      <td>1</td>
-      <td>JOOY Tea Shop</td>
-    </tr>
-    <tr>
-      <th>145</th>
+      <th>354</th>
       <td>JOOY Tea Shoppe</td>
       <td>1</td>
       <td>JOOY Tea Shop</td>
     </tr>
     <tr>
-      <th>102</th>
+      <th>227</th>
       <td>Jooy Tea Shoppe</td>
       <td>1</td>
       <td>JOOY Tea Shop</td>
     </tr>
     <tr>
-      <th>316</th>
-      <td>Mr.Wish</td>
+      <th>99</th>
+      <td>JOOY TEA SHOPPE</td>
       <td>1</td>
-      <td>mr.wish</td>
+      <td>JOOY Tea Shop</td>
     </tr>
     <tr>
       <th>21</th>
@@ -1578,51 +1556,57 @@ yomie&#39;sricexyogurt
       <td>mr.wish</td>
     </tr>
     <tr>
-      <th>35</th>
-      <td>PokéBowl Station</td>
-      <td>2</td>
-      <td>PokéBowl Station</td>
+      <th>64</th>
+      <td>Mr.Wish</td>
+      <td>1</td>
+      <td>mr.wish</td>
     </tr>
     <tr>
-      <th>97</th>
+      <th>320</th>
       <td>Pokébowl Station</td>
       <td>1</td>
       <td>PokéBowl Station</td>
     </tr>
     <tr>
-      <th>9</th>
+      <th>49</th>
+      <td>PokéBowl Station</td>
+      <td>2</td>
+      <td>PokéBowl Station</td>
+    </tr>
+    <tr>
+      <th>13</th>
       <td>TBaar</td>
       <td>4</td>
       <td>TBaar</td>
     </tr>
     <tr>
-      <th>15</th>
+      <th>18</th>
       <td>Tbaar</td>
       <td>3</td>
       <td>TBaar</td>
     </tr>
     <tr>
-      <th>299</th>
+      <th>130</th>
       <td>T Baar</td>
       <td>1</td>
       <td>TBaar</td>
     </tr>
     <tr>
-      <th>289</th>
-      <td>TIGER SUGAR</td>
-      <td>1</td>
-      <td>tigersugar</td>
-    </tr>
-    <tr>
-      <th>8</th>
+      <th>7</th>
       <td>Tiger Sugar</td>
       <td>5</td>
       <td>tigersugar</td>
     </tr>
     <tr>
+      <th>81</th>
+      <td>TIGER SUGAR</td>
+      <td>1</td>
+      <td>tigersugar</td>
+    </tr>
+    <tr>
       <th>2</th>
       <td>ViVi Bubble Tea</td>
-      <td>21</td>
+      <td>20</td>
       <td>Vivi Bubble Tea</td>
     </tr>
     <tr>
@@ -1632,37 +1616,37 @@ yomie&#39;sricexyogurt
       <td>Vivi Bubble Tea</td>
     </tr>
     <tr>
-      <th>95</th>
+      <th>97</th>
       <td>ViVi Bubble tea</td>
       <td>1</td>
       <td>Vivi Bubble Tea</td>
     </tr>
     <tr>
-      <th>18</th>
+      <th>24</th>
       <td>Yifang Taiwan Fruit Tea</td>
       <td>3</td>
       <td>Yi Fang Taiwan Fruit Tea</td>
     </tr>
     <tr>
-      <th>17</th>
+      <th>15</th>
       <td>Yi Fang Taiwan Fruit Tea</td>
       <td>3</td>
       <td>Yi Fang Taiwan Fruit Tea</td>
     </tr>
     <tr>
-      <th>34</th>
+      <th>29</th>
       <td>YiFang Taiwan Fruit Tea</td>
       <td>2</td>
       <td>Yi Fang Taiwan Fruit Tea</td>
     </tr>
     <tr>
-      <th>111</th>
+      <th>340</th>
       <td>Yomie's Rice x Yogurt</td>
       <td>1</td>
       <td>Yomie's Rice X Yogurt</td>
     </tr>
     <tr>
-      <th>176</th>
+      <th>328</th>
       <td>Yomie's Rice X Yogurt</td>
       <td>1</td>
       <td>Yomie's Rice X Yogurt</td>
@@ -1683,18 +1667,18 @@ yomie&#39;sricexyogurt
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;CoCo Fresh Tea &amp; Juice&#39;: &#39;CoCo Fresh Tea &amp; Juice&#39;,
  &#39;Coco Fresh Tea &amp; Juice&#39;: &#39;CoCo Fresh Tea &amp; Juice&#39;,
- &#39;JOOY TEA SHOPPE&#39;: &#39;JOOY Tea Shop&#39;,
  &#39;JOOY Tea Shoppe&#39;: &#39;JOOY Tea Shop&#39;,
  &#39;Jooy Tea Shoppe&#39;: &#39;JOOY Tea Shop&#39;,
- &#39;Mr.Wish&#39;: &#39;mr.wish&#39;,
+ &#39;JOOY TEA SHOPPE&#39;: &#39;JOOY Tea Shop&#39;,
  &#39;Mr. Wish&#39;: &#39;mr.wish&#39;,
- &#39;PokéBowl Station&#39;: &#39;PokéBowl Station&#39;,
+ &#39;Mr.Wish&#39;: &#39;mr.wish&#39;,
  &#39;Pokébowl Station&#39;: &#39;PokéBowl Station&#39;,
+ &#39;PokéBowl Station&#39;: &#39;PokéBowl Station&#39;,
  &#39;TBaar&#39;: &#39;TBaar&#39;,
  &#39;Tbaar&#39;: &#39;TBaar&#39;,
  &#39;T Baar&#39;: &#39;TBaar&#39;,
- &#39;TIGER SUGAR&#39;: &#39;tigersugar&#39;,
  &#39;Tiger Sugar&#39;: &#39;tigersugar&#39;,
+ &#39;TIGER SUGAR&#39;: &#39;tigersugar&#39;,
  &#39;ViVi Bubble Tea&#39;: &#39;Vivi Bubble Tea&#39;,
  &#39;Vivi Bubble Tea&#39;: &#39;Vivi Bubble Tea&#39;,
  &#39;ViVi Bubble tea&#39;: &#39;Vivi Bubble Tea&#39;,
@@ -1746,73 +1730,16 @@ yomie&#39;sricexyogurt
       <th>rating</th>
       <th>coordinates</th>
       <th>transactions</th>
-      <th>price</th>
       <th>location</th>
       <th>phone</th>
       <th>display_phone</th>
       <th>distance</th>
+      <th>price</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>Q3fmTHT7zilDWtfzLK9lMA</td>
-      <td>truedan-new-york-3</td>
-      <td>Truedan</td>
-      <td>https://s3-media2.fl.yelpcdn.com/bphoto/BmUZXO...</td>
-      <td>False</td>
-      <td>https://www.yelp.com/biz/truedan-new-york-3?ad...</td>
-      <td>99</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
-      <td>4.5</td>
-      <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
-      <td>[pickup, delivery]</td>
-      <td>$$</td>
-      <td>{'address1': '208 Grand St', 'address2': None,...</td>
-      <td>+16465592886</td>
-      <td>(646) 559-2886</td>
-      <td>1535.241614</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>7-bx74TooPuZKZDNW4WFcQ</td>
-      <td>chun-yang-tea-new-york</td>
-      <td>Chun Yang Tea</td>
-      <td>https://s3-media1.fl.yelpcdn.com/bphoto/JrGwrZ...</td>
-      <td>False</td>
-      <td>https://www.yelp.com/biz/chun-yang-tea-new-yor...</td>
-      <td>91</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
-      <td>4.5</td>
-      <td>{'latitude': 40.71617, 'longitude': -73.9971}</td>
-      <td>[pickup, delivery]</td>
-      <td>$$</td>
-      <td>{'address1': '26B Elizabeth St', 'address2': '...</td>
-      <td>+12124200123</td>
-      <td>(212) 420-0123</td>
-      <td>1212.877370</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3aypSFXLfkAL4dhHVFobKg</td>
-      <td>lazy-sundaes-new-york-6</td>
-      <td>Lazy Sundaes</td>
-      <td>https://s3-media3.fl.yelpcdn.com/bphoto/kEfCYC...</td>
-      <td>False</td>
-      <td>https://www.yelp.com/biz/lazy-sundaes-new-york...</td>
-      <td>32</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
-      <td>4.5</td>
-      <td>{'latitude': 40.720597, 'longitude': -73.984539}</td>
-      <td>[pickup, delivery]</td>
-      <td>$$</td>
-      <td>{'address1': '23 Clinton St', 'address2': None...</td>
-      <td></td>
-      <td></td>
-      <td>1877.016204</td>
-    </tr>
-    <tr>
-      <th>3</th>
       <td>bVJQEeRNi34-3XN_F1AZEg</td>
       <td>xing-fu-tang-new-york</td>
       <td>Xing Fu Tang</td>
@@ -1824,30 +1751,87 @@ yomie&#39;sricexyogurt
       <td>4.5</td>
       <td>{'latitude': 40.7288, 'longitude': -73.98775}</td>
       <td>[pickup, delivery]</td>
-      <td>NaN</td>
       <td>{'address1': '133 2nd Ave', 'address2': '', 'a...</td>
       <td></td>
       <td></td>
       <td>2656.450427</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3aypSFXLfkAL4dhHVFobKg</td>
+      <td>lazy-sundaes-new-york-6</td>
+      <td>Lazy Sundaes</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/kEfCYC...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/lazy-sundaes-new-york...</td>
+      <td>32</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.720597, 'longitude': -73.984539}</td>
+      <td>[pickup, delivery]</td>
+      <td>{'address1': '23 Clinton St', 'address2': None...</td>
+      <td></td>
+      <td></td>
+      <td>1877.016204</td>
+      <td>$$</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Q3fmTHT7zilDWtfzLK9lMA</td>
+      <td>truedan-new-york-3</td>
+      <td>Truedan</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/BmUZXO...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/truedan-new-york-3?ad...</td>
+      <td>99</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
+      <td>[pickup, delivery]</td>
+      <td>{'address1': '208 Grand St', 'address2': None,...</td>
+      <td>+16465592886</td>
+      <td>(646) 559-2886</td>
+      <td>1535.241614</td>
+      <td>$$</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>nndSS7va9wFlBYzA3zv1nw</td>
+      <td>ojbk-tea-shop-brooklyn-2</td>
+      <td>OJBK Tea Shop</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/TOjiM7...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/ojbk-tea-shop-brookly...</td>
+      <td>26</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.69395, 'longitude': -73.96369}</td>
+      <td>[pickup, delivery]</td>
+      <td>{'address1': '525 Myrtle Ave', 'address2': '',...</td>
+      <td>+17185763047</td>
+      <td>(718) 576-3047</td>
+      <td>2879.927001</td>
+      <td>$</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>zupVwJAFYkHDwrsQd2ktXA</td>
-      <td>fiftylan-union-square-new-york-3</td>
-      <td>FIFTYLAN Union Square</td>
-      <td>https://s3-media3.fl.yelpcdn.com/bphoto/UIwR20...</td>
+      <td>FKjAriOhhGZJSlkqrk8zWg</td>
+      <td>i-milky-沐白-new-york-3</td>
+      <td>I’Milky 沐白</td>
+      <td>https://s3-media4.fl.yelpcdn.com/bphoto/D04UPg...</td>
       <td>False</td>
-      <td>https://www.yelp.com/biz/fiftylan-union-square...</td>
-      <td>60</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
-      <td>4.0</td>
-      <td>{'latitude': 40.735516, 'longitude': -73.989191}</td>
+      <td>https://www.yelp.com/biz/i-milky-%E6%B2%90%E7%...</td>
+      <td>260</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7513413, 'longitude': -73.9864...</td>
       <td>[pickup, delivery]</td>
-      <td>NaN</td>
-      <td>{'address1': '32 Union Square E', 'address2': ...</td>
-      <td>+16467670085</td>
-      <td>(646) 767-0085</td>
-      <td>3367.900728</td>
+      <td>{'address1': '992 6th Ave', 'address2': '', 'a...</td>
+      <td>+12122396712</td>
+      <td>(212) 239-6712</td>
+      <td>5160.340089</td>
+      <td>$</td>
     </tr>
   </tbody>
 </table>
@@ -1862,28 +1846,156 @@ yomie&#39;sricexyogurt
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gong Cha                       37
 Kung Fu Tea                    34
-Vivi Bubble Tea                28
+Vivi Bubble Tea                27
 CoCo Fresh Tea &amp; Juice         14
 Möge Tee                       10
-Yi Fang Taiwan Fruit Tea        8
 TBaar                           8
+Yi Fang Taiwan Fruit Tea        8
 tigersugar                      6
 Real Fruit Bubble Tea           5
-Meet Fresh                      4
 Banhmigos                       4
+Meet Fresh                      4
 mr.wish                         4
 Chun Yang Tea                   4
 Hawa Smoothies &amp; Bubble Tea     4
 Waffle &amp; Bubble                 3
-Teazzi Tea Shop                 3
-PokéBowl Station                3
-Yaya Tea Garden                 3
-Tornado Crepe                   3
+Lazy Sundaes                    3
+Mi Tea                          3
 Jupioca                         3
+Hanco&#39;s                         3
+JOOY Tea Shop                   3
 Name: name, dtype: int64
 </pre></div>
 </div>
 </div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="inspecting-categories">
+<h1>Inspecting categories<a class="headerlink" href="#inspecting-categories" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;categories&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        [{&#39;alias&#39;: &#39;bubbletea&#39;, &#39;title&#39;: &#39;Bubble Tea&#39;}]
+1      [{&#39;alias&#39;: &#39;bubbletea&#39;, &#39;title&#39;: &#39;Bubble Tea&#39;}...
+2        [{&#39;alias&#39;: &#39;bubbletea&#39;, &#39;title&#39;: &#39;Bubble Tea&#39;}]
+3        [{&#39;alias&#39;: &#39;bubbletea&#39;, &#39;title&#39;: &#39;Bubble Tea&#39;}]
+4      [{&#39;alias&#39;: &#39;bubbletea&#39;, &#39;title&#39;: &#39;Bubble Tea&#39;}...
+                             ...                        
+548      [{&#39;alias&#39;: &#39;bubbletea&#39;, &#39;title&#39;: &#39;Bubble Tea&#39;}]
+549    [{&#39;alias&#39;: &#39;desserts&#39;, &#39;title&#39;: &#39;Desserts&#39;}, {...
+550    [{&#39;alias&#39;: &#39;bubbletea&#39;, &#39;title&#39;: &#39;Bubble Tea&#39;}...
+551      [{&#39;alias&#39;: &#39;bubbletea&#39;, &#39;title&#39;: &#39;Bubble Tea&#39;}]
+552    [{&#39;alias&#39;: &#39;bakeries&#39;, &#39;title&#39;: &#39;Bakeries&#39;}, {...
+Name: categories, Length: 553, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;categories&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>{'alias': 'desserts', 'title': 'Desserts'}</td>
+      <td>{'alias': 'shavedice', 'title': 'Shaved Ice'}</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>{'alias': 'taiwanese', 'title': 'Taiwanese'}</td>
+      <td>{'alias': 'juicebars', 'title': 'Juice Bars &amp; ...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>548</th>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>549</th>
+      <td>{'alias': 'desserts', 'title': 'Desserts'}</td>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>{'alias': 'cafes', 'title': 'Cafes'}</td>
+    </tr>
+    <tr>
+      <th>550</th>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>{'alias': 'juicebars', 'title': 'Juice Bars &amp; ...</td>
+      <td>{'alias': 'coffee', 'title': 'Coffee &amp; Tea'}</td>
+    </tr>
+    <tr>
+      <th>551</th>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>552</th>
+      <td>{'alias': 'bakeries', 'title': 'Bakeries'}</td>
+      <td>{'alias': 'chinese', 'title': 'Chinese'}</td>
+      <td>{'alias': 'bubbletea', 'title': 'Bubble Tea'}</td>
+    </tr>
+  </tbody>
+</table>
+<p>553 rows × 3 columns</p>
+</div></div></div>
 </div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="clip-shops-within-nyc">
@@ -1931,11 +2043,11 @@ Name: name, dtype: int64
       <th>rating</th>
       <th>coordinates</th>
       <th>transactions</th>
-      <th>price</th>
       <th>location</th>
       <th>phone</th>
       <th>display_phone</th>
       <th>distance</th>
+      <th>price</th>
       <th>latitude</th>
       <th>longitude</th>
       <th>geometry</th>
@@ -1944,72 +2056,6 @@ Name: name, dtype: int64
   <tbody>
     <tr>
       <th>0</th>
-      <td>Q3fmTHT7zilDWtfzLK9lMA</td>
-      <td>truedan-new-york-3</td>
-      <td>Truedan</td>
-      <td>https://s3-media2.fl.yelpcdn.com/bphoto/BmUZXO...</td>
-      <td>False</td>
-      <td>https://www.yelp.com/biz/truedan-new-york-3?ad...</td>
-      <td>99</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
-      <td>4.5</td>
-      <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
-      <td>[pickup, delivery]</td>
-      <td>$$</td>
-      <td>{'address1': '208 Grand St', 'address2': None,...</td>
-      <td>+16465592886</td>
-      <td>(646) 559-2886</td>
-      <td>1535.241614</td>
-      <td>40.719174</td>
-      <td>-73.996220</td>
-      <td>POINT (-73.99622 40.71917)</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>7-bx74TooPuZKZDNW4WFcQ</td>
-      <td>chun-yang-tea-new-york</td>
-      <td>Chun Yang Tea</td>
-      <td>https://s3-media1.fl.yelpcdn.com/bphoto/JrGwrZ...</td>
-      <td>False</td>
-      <td>https://www.yelp.com/biz/chun-yang-tea-new-yor...</td>
-      <td>91</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
-      <td>4.5</td>
-      <td>{'latitude': 40.71617, 'longitude': -73.9971}</td>
-      <td>[pickup, delivery]</td>
-      <td>$$</td>
-      <td>{'address1': '26B Elizabeth St', 'address2': '...</td>
-      <td>+12124200123</td>
-      <td>(212) 420-0123</td>
-      <td>1212.877370</td>
-      <td>40.716170</td>
-      <td>-73.997100</td>
-      <td>POINT (-73.99710 40.71617)</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3aypSFXLfkAL4dhHVFobKg</td>
-      <td>lazy-sundaes-new-york-6</td>
-      <td>Lazy Sundaes</td>
-      <td>https://s3-media3.fl.yelpcdn.com/bphoto/kEfCYC...</td>
-      <td>False</td>
-      <td>https://www.yelp.com/biz/lazy-sundaes-new-york...</td>
-      <td>32</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
-      <td>4.5</td>
-      <td>{'latitude': 40.720597, 'longitude': -73.984539}</td>
-      <td>[pickup, delivery]</td>
-      <td>$$</td>
-      <td>{'address1': '23 Clinton St', 'address2': None...</td>
-      <td></td>
-      <td></td>
-      <td>1877.016204</td>
-      <td>40.720597</td>
-      <td>-73.984539</td>
-      <td>POINT (-73.98454 40.72060)</td>
-    </tr>
-    <tr>
-      <th>3</th>
       <td>bVJQEeRNi34-3XN_F1AZEg</td>
       <td>xing-fu-tang-new-york</td>
       <td>Xing Fu Tang</td>
@@ -2021,36 +2067,102 @@ Name: name, dtype: int64
       <td>4.5</td>
       <td>{'latitude': 40.7288, 'longitude': -73.98775}</td>
       <td>[pickup, delivery]</td>
-      <td>NaN</td>
       <td>{'address1': '133 2nd Ave', 'address2': '', 'a...</td>
       <td></td>
       <td></td>
       <td>2656.450427</td>
+      <td>NaN</td>
       <td>40.728800</td>
       <td>-73.987750</td>
       <td>POINT (-73.98775 40.72880)</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>zupVwJAFYkHDwrsQd2ktXA</td>
-      <td>fiftylan-union-square-new-york-3</td>
-      <td>FIFTYLAN Union Square</td>
-      <td>https://s3-media3.fl.yelpcdn.com/bphoto/UIwR20...</td>
+      <th>1</th>
+      <td>3aypSFXLfkAL4dhHVFobKg</td>
+      <td>lazy-sundaes-new-york-6</td>
+      <td>Lazy Sundaes</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/kEfCYC...</td>
       <td>False</td>
-      <td>https://www.yelp.com/biz/fiftylan-union-square...</td>
-      <td>60</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
-      <td>4.0</td>
-      <td>{'latitude': 40.735516, 'longitude': -73.989191}</td>
+      <td>https://www.yelp.com/biz/lazy-sundaes-new-york...</td>
+      <td>32</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.720597, 'longitude': -73.984539}</td>
       <td>[pickup, delivery]</td>
-      <td>NaN</td>
-      <td>{'address1': '32 Union Square E', 'address2': ...</td>
-      <td>+16467670085</td>
-      <td>(646) 767-0085</td>
-      <td>3367.900728</td>
-      <td>40.735516</td>
-      <td>-73.989191</td>
-      <td>POINT (-73.98919 40.73552)</td>
+      <td>{'address1': '23 Clinton St', 'address2': None...</td>
+      <td></td>
+      <td></td>
+      <td>1877.016204</td>
+      <td>$$</td>
+      <td>40.720597</td>
+      <td>-73.984539</td>
+      <td>POINT (-73.98454 40.72060)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Q3fmTHT7zilDWtfzLK9lMA</td>
+      <td>truedan-new-york-3</td>
+      <td>Truedan</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/BmUZXO...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/truedan-new-york-3?ad...</td>
+      <td>99</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
+      <td>[pickup, delivery]</td>
+      <td>{'address1': '208 Grand St', 'address2': None,...</td>
+      <td>+16465592886</td>
+      <td>(646) 559-2886</td>
+      <td>1535.241614</td>
+      <td>$$</td>
+      <td>40.719174</td>
+      <td>-73.996220</td>
+      <td>POINT (-73.99622 40.71917)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>nndSS7va9wFlBYzA3zv1nw</td>
+      <td>ojbk-tea-shop-brooklyn-2</td>
+      <td>OJBK Tea Shop</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/TOjiM7...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/ojbk-tea-shop-brookly...</td>
+      <td>26</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.69395, 'longitude': -73.96369}</td>
+      <td>[pickup, delivery]</td>
+      <td>{'address1': '525 Myrtle Ave', 'address2': '',...</td>
+      <td>+17185763047</td>
+      <td>(718) 576-3047</td>
+      <td>2879.927001</td>
+      <td>$</td>
+      <td>40.693950</td>
+      <td>-73.963690</td>
+      <td>POINT (-73.96369 40.69395)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>FKjAriOhhGZJSlkqrk8zWg</td>
+      <td>i-milky-沐白-new-york-3</td>
+      <td>I’Milky 沐白</td>
+      <td>https://s3-media4.fl.yelpcdn.com/bphoto/D04UPg...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/i-milky-%E6%B2%90%E7%...</td>
+      <td>260</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7513413, 'longitude': -73.9864...</td>
+      <td>[pickup, delivery]</td>
+      <td>{'address1': '992 6th Ave', 'address2': '', 'a...</td>
+      <td>+12122396712</td>
+      <td>(212) 239-6712</td>
+      <td>5160.340089</td>
+      <td>$</td>
+      <td>40.751341</td>
+      <td>-73.986447</td>
+      <td>POINT (-73.98645 40.75134)</td>
     </tr>
   </tbody>
 </table>
@@ -2153,7 +2265,7 @@ Name: name, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/data-wrangling_29_0.png" src="_images/data-wrangling_29_0.png" />
+<img alt="_images/data-wrangling_32_0.png" src="_images/data-wrangling_32_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2212,11 +2324,11 @@ number of columns: 19
       <th>rating</th>
       <th>coordinates</th>
       <th>transactions</th>
-      <th>price</th>
       <th>location</th>
       <th>phone</th>
       <th>display_phone</th>
       <th>distance</th>
+      <th>price</th>
       <th>latitude</th>
       <th>longitude</th>
       <th>geometry</th>
@@ -2225,72 +2337,6 @@ number of columns: 19
   <tbody>
     <tr>
       <th>0</th>
-      <td>Q3fmTHT7zilDWtfzLK9lMA</td>
-      <td>truedan-new-york-3</td>
-      <td>Truedan</td>
-      <td>https://s3-media2.fl.yelpcdn.com/bphoto/BmUZXO...</td>
-      <td>False</td>
-      <td>https://www.yelp.com/biz/truedan-new-york-3?ad...</td>
-      <td>99</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
-      <td>4.5</td>
-      <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
-      <td>[pickup, delivery]</td>
-      <td>$$</td>
-      <td>{'address1': '208 Grand St', 'address2': None,...</td>
-      <td>+16465592886</td>
-      <td>(646) 559-2886</td>
-      <td>1535.241614</td>
-      <td>40.719174</td>
-      <td>-73.996220</td>
-      <td>POINT (-73.99622 40.71917)</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>7-bx74TooPuZKZDNW4WFcQ</td>
-      <td>chun-yang-tea-new-york</td>
-      <td>Chun Yang Tea</td>
-      <td>https://s3-media1.fl.yelpcdn.com/bphoto/JrGwrZ...</td>
-      <td>False</td>
-      <td>https://www.yelp.com/biz/chun-yang-tea-new-yor...</td>
-      <td>91</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
-      <td>4.5</td>
-      <td>{'latitude': 40.71617, 'longitude': -73.9971}</td>
-      <td>[pickup, delivery]</td>
-      <td>$$</td>
-      <td>{'address1': '26B Elizabeth St', 'address2': '...</td>
-      <td>+12124200123</td>
-      <td>(212) 420-0123</td>
-      <td>1212.877370</td>
-      <td>40.716170</td>
-      <td>-73.997100</td>
-      <td>POINT (-73.99710 40.71617)</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3aypSFXLfkAL4dhHVFobKg</td>
-      <td>lazy-sundaes-new-york-6</td>
-      <td>Lazy Sundaes</td>
-      <td>https://s3-media3.fl.yelpcdn.com/bphoto/kEfCYC...</td>
-      <td>False</td>
-      <td>https://www.yelp.com/biz/lazy-sundaes-new-york...</td>
-      <td>32</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
-      <td>4.5</td>
-      <td>{'latitude': 40.720597, 'longitude': -73.984539}</td>
-      <td>[pickup, delivery]</td>
-      <td>$$</td>
-      <td>{'address1': '23 Clinton St', 'address2': None...</td>
-      <td></td>
-      <td></td>
-      <td>1877.016204</td>
-      <td>40.720597</td>
-      <td>-73.984539</td>
-      <td>POINT (-73.98454 40.72060)</td>
-    </tr>
-    <tr>
-      <th>3</th>
       <td>bVJQEeRNi34-3XN_F1AZEg</td>
       <td>xing-fu-tang-new-york</td>
       <td>Xing Fu Tang</td>
@@ -2302,36 +2348,102 @@ number of columns: 19
       <td>4.5</td>
       <td>{'latitude': 40.7288, 'longitude': -73.98775}</td>
       <td>[pickup, delivery]</td>
-      <td>NaN</td>
       <td>{'address1': '133 2nd Ave', 'address2': '', 'a...</td>
       <td></td>
       <td></td>
       <td>2656.450427</td>
+      <td>NaN</td>
       <td>40.728800</td>
       <td>-73.987750</td>
       <td>POINT (-73.98775 40.72880)</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>zupVwJAFYkHDwrsQd2ktXA</td>
-      <td>fiftylan-union-square-new-york-3</td>
-      <td>FIFTYLAN Union Square</td>
-      <td>https://s3-media3.fl.yelpcdn.com/bphoto/UIwR20...</td>
+      <th>1</th>
+      <td>3aypSFXLfkAL4dhHVFobKg</td>
+      <td>lazy-sundaes-new-york-6</td>
+      <td>Lazy Sundaes</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/kEfCYC...</td>
       <td>False</td>
-      <td>https://www.yelp.com/biz/fiftylan-union-square...</td>
-      <td>60</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
-      <td>4.0</td>
-      <td>{'latitude': 40.735516, 'longitude': -73.989191}</td>
+      <td>https://www.yelp.com/biz/lazy-sundaes-new-york...</td>
+      <td>32</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.720597, 'longitude': -73.984539}</td>
       <td>[pickup, delivery]</td>
-      <td>NaN</td>
-      <td>{'address1': '32 Union Square E', 'address2': ...</td>
-      <td>+16467670085</td>
-      <td>(646) 767-0085</td>
-      <td>3367.900728</td>
-      <td>40.735516</td>
-      <td>-73.989191</td>
-      <td>POINT (-73.98919 40.73552)</td>
+      <td>{'address1': '23 Clinton St', 'address2': None...</td>
+      <td></td>
+      <td></td>
+      <td>1877.016204</td>
+      <td>$$</td>
+      <td>40.720597</td>
+      <td>-73.984539</td>
+      <td>POINT (-73.98454 40.72060)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Q3fmTHT7zilDWtfzLK9lMA</td>
+      <td>truedan-new-york-3</td>
+      <td>Truedan</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/BmUZXO...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/truedan-new-york-3?ad...</td>
+      <td>99</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
+      <td>[pickup, delivery]</td>
+      <td>{'address1': '208 Grand St', 'address2': None,...</td>
+      <td>+16465592886</td>
+      <td>(646) 559-2886</td>
+      <td>1535.241614</td>
+      <td>$$</td>
+      <td>40.719174</td>
+      <td>-73.996220</td>
+      <td>POINT (-73.99622 40.71917)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>nndSS7va9wFlBYzA3zv1nw</td>
+      <td>ojbk-tea-shop-brooklyn-2</td>
+      <td>OJBK Tea Shop</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/TOjiM7...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/ojbk-tea-shop-brookly...</td>
+      <td>26</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.69395, 'longitude': -73.96369}</td>
+      <td>[pickup, delivery]</td>
+      <td>{'address1': '525 Myrtle Ave', 'address2': '',...</td>
+      <td>+17185763047</td>
+      <td>(718) 576-3047</td>
+      <td>2879.927001</td>
+      <td>$</td>
+      <td>40.693950</td>
+      <td>-73.963690</td>
+      <td>POINT (-73.96369 40.69395)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>FKjAriOhhGZJSlkqrk8zWg</td>
+      <td>i-milky-沐白-new-york-3</td>
+      <td>I’Milky 沐白</td>
+      <td>https://s3-media4.fl.yelpcdn.com/bphoto/D04UPg...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/i-milky-%E6%B2%90%E7%...</td>
+      <td>260</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7513413, 'longitude': -73.9864...</td>
+      <td>[pickup, delivery]</td>
+      <td>{'address1': '992 6th Ave', 'address2': '', 'a...</td>
+      <td>+12122396712</td>
+      <td>(212) 239-6712</td>
+      <td>5160.340089</td>
+      <td>$</td>
+      <td>40.751341</td>
+      <td>-73.986447</td>
+      <td>POINT (-73.98645 40.75134)</td>
     </tr>
   </tbody>
 </table>
@@ -2352,7 +2464,7 @@ number of columns: 19
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/data-wrangling_32_0.png" src="_images/data-wrangling_32_0.png" />
+<img alt="_images/data-wrangling_35_0.png" src="_images/data-wrangling_35_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2370,160 +2482,6 @@ number of columns: 19
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>alias</th>
-      <th>name</th>
-      <th>image_url</th>
-      <th>is_closed</th>
-      <th>url</th>
-      <th>review_count</th>
-      <th>categories</th>
-      <th>rating</th>
-      <th>coordinates</th>
-      <th>transactions</th>
-      <th>price</th>
-      <th>location</th>
-      <th>phone</th>
-      <th>display_phone</th>
-      <th>distance</th>
-      <th>latitude</th>
-      <th>longitude</th>
-      <th>geometry</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Q3fmTHT7zilDWtfzLK9lMA</td>
-      <td>truedan-new-york-3</td>
-      <td>Truedan</td>
-      <td>https://s3-media2.fl.yelpcdn.com/bphoto/BmUZXO...</td>
-      <td>False</td>
-      <td>https://www.yelp.com/biz/truedan-new-york-3?ad...</td>
-      <td>99</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
-      <td>4.5</td>
-      <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
-      <td>['pickup', 'delivery']</td>
-      <td>$$</td>
-      <td>{'address1': '208 Grand St', 'address2': None,...</td>
-      <td>1.646559e+10</td>
-      <td>(646) 559-2886</td>
-      <td>1535.241614</td>
-      <td>40.719174</td>
-      <td>-73.996220</td>
-      <td>POINT (-73.9962197 40.7191742)</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>7-bx74TooPuZKZDNW4WFcQ</td>
-      <td>chun-yang-tea-new-york</td>
-      <td>Chun Yang Tea</td>
-      <td>https://s3-media1.fl.yelpcdn.com/bphoto/JrGwrZ...</td>
-      <td>False</td>
-      <td>https://www.yelp.com/biz/chun-yang-tea-new-yor...</td>
-      <td>91</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
-      <td>4.5</td>
-      <td>{'latitude': 40.71617, 'longitude': -73.9971}</td>
-      <td>['pickup', 'delivery']</td>
-      <td>$$</td>
-      <td>{'address1': '26B Elizabeth St', 'address2': '...</td>
-      <td>1.212420e+10</td>
-      <td>(212) 420-0123</td>
-      <td>1212.877370</td>
-      <td>40.716170</td>
-      <td>-73.997100</td>
-      <td>POINT (-73.9971 40.71617)</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3aypSFXLfkAL4dhHVFobKg</td>
-      <td>lazy-sundaes-new-york-6</td>
-      <td>Lazy Sundaes</td>
-      <td>https://s3-media3.fl.yelpcdn.com/bphoto/kEfCYC...</td>
-      <td>False</td>
-      <td>https://www.yelp.com/biz/lazy-sundaes-new-york...</td>
-      <td>32</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
-      <td>4.5</td>
-      <td>{'latitude': 40.720597, 'longitude': -73.984539}</td>
-      <td>['pickup', 'delivery']</td>
-      <td>$$</td>
-      <td>{'address1': '23 Clinton St', 'address2': None...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1877.016204</td>
-      <td>40.720597</td>
-      <td>-73.984539</td>
-      <td>POINT (-73.984539 40.720597)</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>bVJQEeRNi34-3XN_F1AZEg</td>
-      <td>xing-fu-tang-new-york</td>
-      <td>Xing Fu Tang</td>
-      <td>https://s3-media2.fl.yelpcdn.com/bphoto/cyFHFE...</td>
-      <td>False</td>
-      <td>https://www.yelp.com/biz/xing-fu-tang-new-york...</td>
-      <td>91</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
-      <td>4.5</td>
-      <td>{'latitude': 40.7288, 'longitude': -73.98775}</td>
-      <td>['pickup', 'delivery']</td>
-      <td>NaN</td>
-      <td>{'address1': '133 2nd Ave', 'address2': '', 'a...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>2656.450427</td>
-      <td>40.728800</td>
-      <td>-73.987750</td>
-      <td>POINT (-73.98775000000001 40.7288)</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>zupVwJAFYkHDwrsQd2ktXA</td>
-      <td>fiftylan-union-square-new-york-3</td>
-      <td>FIFTYLAN Union Square</td>
-      <td>https://s3-media3.fl.yelpcdn.com/bphoto/UIwR20...</td>
-      <td>False</td>
-      <td>https://www.yelp.com/biz/fiftylan-union-square...</td>
-      <td>60</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
-      <td>4.0</td>
-      <td>{'latitude': 40.735516, 'longitude': -73.989191}</td>
-      <td>['pickup', 'delivery']</td>
-      <td>NaN</td>
-      <td>{'address1': '32 Union Square E', 'address2': ...</td>
-      <td>1.646767e+10</td>
-      <td>(646) 767-0085</td>
-      <td>3367.900728</td>
-      <td>40.735516</td>
-      <td>-73.989191</td>
-      <td>POINT (-73.98919100000001 40.735516)</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 </div>
 

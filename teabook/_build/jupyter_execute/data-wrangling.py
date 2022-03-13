@@ -32,9 +32,9 @@ import requests
 
 # saving yelp api key as an environment variable
 API_KEY = os.environ.get('yelp_api')
-# if API_KEY is None:
-#     config = AutoConfig(search_path = '.')
-#     API_KEY = config('YELP_API')
+if API_KEY is None:
+    config = AutoConfig(search_path = '.')
+    API_KEY = config('YELP_API')
 
 # empty list to place our data for each page
 lst = []
@@ -101,35 +101,35 @@ if df['id'].is_unique == False:
 
 # # Inspect data
 
-# In[117]:
+# In[3]:
 
 
 # preview first five rows
 df.head()
 
 
-# In[118]:
+# In[4]:
 
 
 # preview last five rows
 df.tail()
 
 
-# In[119]:
+# In[5]:
 
 
 # preview column datatypes and non-null counts
 df.info()
 
 
-# In[120]:
+# In[6]:
 
 
 # return count of unique values of bubble tea shops
 df['name'].value_counts()
 
 
-# In[121]:
+# In[7]:
 
 
 # return top 20 count of unique values of bubble tea shops
@@ -138,19 +138,19 @@ df['name'].value_counts().head(20)
 
 # # Inspect categories
 
-# In[122]:
+# In[8]:
 
 
 df['categories'].head()
 
 
-# In[123]:
+# In[9]:
 
 
 df['categories'].apply(pd.Series)
 
 
-# In[124]:
+# In[10]:
 
 
 categories_df = df['categories'].apply(pd.Series)
@@ -161,7 +161,7 @@ categories_df
 
 # # Check for duplicates
 
-# In[125]:
+# In[11]:
 
 
 # identify number of unique bubble tea shop entries
@@ -172,7 +172,7 @@ print('number of unique bubble tea shops: {}'.format(len(names_counts)))
 names_counts
 
 
-# In[126]:
+# In[12]:
 
 
 # check for duplicates - white spaces, mispellings, etc
@@ -185,14 +185,14 @@ names_counts = pd.concat([names_counts, pd.Series(lst).rename('name_lower')], ax
 names_counts.head()    
 
 
-# In[127]:
+# In[13]:
 
 
 # there are duplicate entries
 names_counts['name_lower'].value_counts().head(10)
 
 
-# In[128]:
+# In[14]:
 
 
 # return list of duplicate entries that need to be replaced
@@ -204,7 +204,7 @@ for dup in duplicates.to_list():
     print(dup)  
 
 
-# In[129]:
+# In[15]:
 
 
 names_counts = (names_counts.loc[names_counts['name_lower'].isin(duplicates.to_list())]
@@ -213,7 +213,7 @@ names_counts = (names_counts.loc[names_counts['name_lower'].isin(duplicates.to_l
 names_counts
 
 
-# In[130]:
+# In[16]:
 
 
 # a dictionary of formatted names (lower & remove white spice) and new names to be returned
@@ -230,7 +230,7 @@ names_counts['name_lower'] = names_counts['name_lower'].replace(new_names)
 names_counts
 
 
-# In[131]:
+# In[17]:
 
 
 # a dictionary of old and new names to be returned
@@ -239,7 +239,7 @@ replace_duplicates = dict(zip(names_counts['name'], names_counts['name_lower']))
 replace_duplicates
 
 
-# In[132]:
+# In[18]:
 
 
 # replace old and new names to original dataframe
@@ -248,15 +248,29 @@ df['name'] = df['name'].replace(replace_duplicates)
 df.head()
 
 
-# In[133]:
+# In[19]:
 
 
 df['name'].value_counts().head(20)
 
 
+# # Inspecting categories
+
+# In[20]:
+
+
+df['categories']
+
+
+# In[21]:
+
+
+df['categories'].apply(pd.Series)
+
+
 # # Clip shops within NYC
 
-# In[134]:
+# In[22]:
 
 
 # explode coordinates to create an individual column
@@ -269,7 +283,7 @@ gdf = gpd.GeoDataFrame(gdf, crs=4326,
 gdf.head()
 
 
-# In[135]:
+# In[23]:
 
 
 # read in boroughs shapefile to return only bubble tea shops within nyc
@@ -279,7 +293,7 @@ boro_gdf = gpd.read_file(url)
 boro_gdf.head()
 
 
-# In[136]:
+# In[24]:
 
 
 # plot bubble tea shops and boroughs
@@ -294,7 +308,7 @@ plt.ylabel('lat')
 plt.tight_layout()
 
 
-# In[137]:
+# In[25]:
 
 
 # clip bubble tea shops that are within the five boroughs
@@ -305,14 +319,14 @@ rows, columns = gdf.shape
 print('number of rows: {}\nnumber of columns: {}'.format(rows, columns))
 
 
-# In[138]:
+# In[26]:
 
 
 # preview dataframe
 gdf.head()
 
 
-# In[139]:
+# In[27]:
 
 
 fig, ax = plt.subplots(figsize=(8, 8))
@@ -326,14 +340,14 @@ plt.ylabel('lat')
 plt.tight_layout()
 
 
-# In[140]:
+# In[28]:
 
 
 # # save file
 # gdf.to_csv('boba-nyc.csv', index=False)
 
 
-# In[141]:
+# In[29]:
 
 
 # # sanity check

@@ -104,6 +104,10 @@ names_counts = df['name'].value_counts().reset_index()
 names_counts = names_counts.rename(columns={'index':'name', 'name':'counts'})
 
 print('number of unique bubble tea shops: {}'.format(len(names_counts)))
+# save file
+name_counts_file_path = '../teaapp/name_counts.csv'
+names_counts.to_csv(name_counts_file_path)
+# view dataframe
 names_counts
 
 
@@ -305,7 +309,7 @@ plt.tight_layout()
 plt.savefig('busineses-per-neighborhood.png', dpi=200)
 
 
-# In[37]:
+# In[31]:
 
 
 fig, ax = plt.subplots(figsize=(10, 6))

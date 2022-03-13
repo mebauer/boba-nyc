@@ -239,13 +239,13 @@ neighborhoods = neighborhoods.to_crs('EPSG:4326')
 neighborhoods.crs
 
 
-# In[27]:
+# In[26]:
 
 
 df.head()
 
 
-# In[28]:
+# In[27]:
 
 
 gdf = gpd.GeoDataFrame(df, crs=4326,
@@ -254,7 +254,7 @@ gdf = gpd.GeoDataFrame(df, crs=4326,
 gdf.head()
 
 
-# In[29]:
+# In[28]:
 
 
 join_df = gpd.sjoin(gdf, 
@@ -264,7 +264,7 @@ join_df = gpd.sjoin(gdf,
 join_df.head()
 
 
-# In[30]:
+# In[29]:
 
 
 join_df = join_df.groupby(by=['ntaname', 'shape_area'])['id'].count().sort_values(ascending=False)
@@ -276,7 +276,7 @@ join_df['counts_squaremile'] = join_df['counts'] / 27878400
 join_df.head()
 
 
-# In[31]:
+# In[30]:
 
 
 fig, ax = plt.subplots(figsize=(10, 6))
@@ -294,7 +294,7 @@ plt.tight_layout()
 plt.savefig('busineses-per-neighborhood.png', dpi=200)
 
 
-# In[32]:
+# In[31]:
 
 
 fig, ax = plt.subplots(figsize=(10, 6))

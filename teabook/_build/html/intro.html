@@ -136,7 +136,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="boba-maps-nyc.html">
-   Maps
+   Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API
   </a>
  </li>
 </ul>
@@ -261,6 +261,11 @@
    Other Commands
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conda">
+     Conda
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#git">
      Git
@@ -420,6 +425,11 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conda">
+     Conda
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#git">
      Git
     </a>
@@ -550,7 +560,7 @@
 <li><p>The <em><strong>notebooks</strong></em> can be found in the <a class="reference external" href="https://github.com/mebauer/boba-nyc/tree/master/teabook">teabook</a> folder.</p></li>
 <li><p>The <em><strong>website</strong></em> for this repo can be found here: <a class="reference external" href="https://boba-nyc.datalife.nyc">boba-nyc.datalife.nyc</a></p></li>
 </ul>
-<p><img alt="cover-photo" src="_images/busineses-per-neighborhood.png" /></p>
+<p><img alt="cover-photo" src="teabook/busineses-per-neighborhood.png" /></p>
 </div>
 <div class="section" id="table-of-contents">
 <h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
@@ -601,7 +611,7 @@
 </div>
 </li>
 <li><p>Install requirements</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda env create -f environment.yml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda env create -f environment_detail.yml
 </pre></div>
 </div>
 </li>
@@ -609,6 +619,14 @@
 </div>
 <div class="section" id="other-commands">
 <h2>Other Commands<a class="headerlink" href="#other-commands" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="conda">
+<h3>Conda<a class="headerlink" href="#conda" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">Managing environments</a></p>
+<p><a class="reference external" href="https://github.com/conda/conda/issues/4339">conda issues # 4339: Exporting clean environment to environment.yml</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda env <span class="nb">export</span> --from-history <span class="p">|</span> grep -v <span class="s2">&quot;prefix&quot;</span> &gt; environment.yml
+</pre></div>
+</div>
+</div>
 <div class="section" id="git">
 <h3>Git<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://git-scm.com/docs/git-push">Git - git-push Documentation</a></p>
@@ -626,7 +644,7 @@ git remote -v
 <em>upstream/master</em>: name of remote parent (orginal) repo branch</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git fetch upstream
 git checkout main
-git fetch upstream/master
+git merge upstream/master
 </pre></div>
 </div>
 </div>

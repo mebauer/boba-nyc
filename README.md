@@ -77,6 +77,16 @@ This project recommends beginner-level proficiency with Python and is focused on
 
 ## Other Commands
 
+### Conda
+
+[Managing environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
+
+[conda issues # 4339: Exporting clean environment to environment.yml](https://github.com/conda/conda/issues/4339)
+
+```bash
+conda env export --from-history | grep -v "prefix" > environment.yml
+```
+
 ### Git
 
 [Git - git-push Documentation](https://git-scm.com/docs/git-push)
@@ -101,7 +111,7 @@ _upstream/master_: name of remote parent (orginal) repo branch
 ```bash
 git fetch upstream
 git checkout main
-git fetch upstream/master
+git merge upstream/master
 ```
 
 ### Jupyter Book

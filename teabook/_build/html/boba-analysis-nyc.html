@@ -53,7 +53,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Maps" href="boba-maps-nyc.html" />
+    <link rel="next" title="Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API" href="boba-maps-nyc.html" />
     <link rel="prev" title="Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API" href="data-wrangling.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -137,7 +137,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="boba-maps-nyc.html">
-   Maps
+   Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API
   </a>
  </li>
 </ul>
@@ -222,13 +222,18 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/mebauer/boba-nyc/master?urlpath=tree/teabook/boba-analysis-nyc.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/mebauer/boba-nyc/yaml_file/v2/gh/mebauer/boba-nyc/master?urlpath=tree/teabook/boba-analysis-nyc.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
                     alt="Interact on binder">Binder</button></a>
         
         
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/mebauer/boba-nyc/blob/master/teabook/boba-analysis-nyc.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
         
         
     </div>
@@ -262,31 +267,35 @@
 <p>Exploratory Data Analysis</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # imports for Google Colab Sessions</span>
+<span class="c1"># !apt install gdal-bin python-gdal python3-gdal </span>
+<span class="c1"># # Install rtree - Geopandas requirment</span>
+<span class="c1"># !apt install python3-rtree </span>
+<span class="c1"># # Install Geopandas</span>
+<span class="c1"># !pip install git+git://github.com/geopandas/geopandas.git</span>
+<span class="c1"># # Install descartes - Geopandas requirment</span>
+<span class="c1"># !pip install descartes </span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">color_codes</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\datal\anaconda3\envs\boba-nyc\lib\site-packages\pyproj\__init__.py:89: UserWarning: pyproj unable to set database path.
-  _pyproj_global_context_initialize()
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read in data and preview first five rows</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;boba-nyc.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># google colab path to data</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/mebauer/boba-nyc/master/teabook/boba-nyc.csv&#39;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 
+<span class="c1"># # local path to data</span>
+<span class="c1"># df = pd.read_csv(&#39;boba-nyc.csv&#39;)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1486,9 +1495,9 @@ memory usage: 58.7+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\datal\AppData\Local\Temp\ipykernel_14304\1422840523.py:9: UserWarning: Glyph 27792 (\N{CJK UNIFIED IDEOGRAPH-6C90}) missing from current font.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\datal\AppData\Local\Temp\ipykernel_35856\1422840523.py:9: UserWarning: Glyph 27792 (\N{CJK UNIFIED IDEOGRAPH-6C90}) missing from current font.
   plt.tight_layout()
-C:\Users\datal\AppData\Local\Temp\ipykernel_14304\1422840523.py:9: UserWarning: Glyph 30333 (\N{CJK UNIFIED IDEOGRAPH-767D}) missing from current font.
+C:\Users\datal\AppData\Local\Temp\ipykernel_35856\1422840523.py:9: UserWarning: Glyph 30333 (\N{CJK UNIFIED IDEOGRAPH-767D}) missing from current font.
   plt.tight_layout()
 C:\Users\datal\anaconda3\envs\boba-nyc\lib\site-packages\IPython\core\pylabtools.py:151: UserWarning: Glyph 27792 (\N{CJK UNIFIED IDEOGRAPH-6C90}) missing from current font.
   fig.canvas.print_figure(bytes_io, **kw)
@@ -1966,51 +1975,17 @@ Datum: WGS84
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">CRSError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_14304</span>\<span class="mf">3555093168.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">neighborhoods</span> <span class="o">=</span> <span class="n">neighborhoods</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s1">&#39;EPSG:4326&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">neighborhoods</span><span class="o">.</span><span class="n">crs</span>
-
-<span class="nn">~\anaconda3\envs\boba-nyc\lib\site-packages\geopandas\geodataframe.py</span> in <span class="ni">to_crs</span><span class="nt">(self, crs, epsg, inplace)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1273</span>         <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1274</span>             <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="ne">-&gt; </span><span class="mi">1275</span>         <span class="n">geom</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="n">crs</span><span class="p">,</span> <span class="n">epsg</span><span class="o">=</span><span class="n">epsg</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1276</span>         <span class="n">df</span><span class="o">.</span><span class="n">geometry</span> <span class="o">=</span> <span class="n">geom</span>
-<span class="g g-Whitespace">   </span><span class="mi">1277</span>         <span class="n">df</span><span class="o">.</span><span class="n">crs</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">crs</span>
-
-<span class="nn">~\anaconda3\envs\boba-nyc\lib\site-packages\geopandas\geoseries.py</span> in <span class="ni">to_crs</span><span class="nt">(self, crs, epsg)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1118</span>         <span class="s2">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1119</span><span class="s2">         return GeoSeries(</span>
-<span class="ne">-&gt; </span><span class="mi">1120</span><span class="s2">             self.values.to_crs(crs=crs, epsg=epsg), index=self.index, name=self.name</span>
-<span class="g g-Whitespace">   </span><span class="mi">1121</span><span class="s2">         )</span>
-<span class="g g-Whitespace">   </span><span class="mi">1122</span><span class="s2"> </span>
-
-<span class="nn">~\anaconda3\envs\boba-nyc\lib\site-packages\geopandas\array.py</span> in <span class="ni">to_crs</span><span class="nt">(self, crs, epsg)</span>
-<span class="g g-Whitespace">    </span><span class="mi">766</span><span class="s2">             )</span>
-<span class="g g-Whitespace">    </span><span class="mi">767</span><span class="s2">         if crs is not None:</span>
-<span class="ne">--&gt; </span><span class="mi">768</span><span class="s2">             crs = CRS.from_user_input(crs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">769</span><span class="s2">         elif epsg is not None:</span>
-<span class="g g-Whitespace">    </span><span class="mi">770</span><span class="s2">             crs = CRS.from_epsg(epsg)</span>
-
-<span class="nn">~\anaconda3\envs\boba-nyc\lib\site-packages\pyproj\crs\crs.py</span> in <span class="ni">from_user_input</span><span class="nt">(cls, value, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">477</span><span class="s2">         if isinstance(value, cls):</span>
-<span class="g g-Whitespace">    </span><span class="mi">478</span><span class="s2">             return value</span>
-<span class="ne">--&gt; </span><span class="mi">479</span><span class="s2">         return cls(value, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">480</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">481</span><span class="s2">     def get_geod(self) -&gt; Optional[Geod]:</span>
-
-<span class="nn">~\anaconda3\envs\boba-nyc\lib\site-packages\pyproj\crs\crs.py</span> in <span class="ni">__init__</span><span class="nt">(self, projparams, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">324</span><span class="s2">             self._local.crs = projparams</span>
-<span class="g g-Whitespace">    </span><span class="mi">325</span><span class="s2">         else:</span>
-<span class="ne">--&gt; </span><span class="mi">326</span><span class="s2">             self._local.crs = _CRS(self.srs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">327</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">328</span><span class="s2">     @property</span>
-
-<span class="nn">pyproj\_crs.pyx</span> in <span class="ni">pyproj._crs._CRS.__init__</span><span class="nt">()</span>
-
-<span class="ne">CRSError</span>: Invalid projection: EPSG:4326: (Internal Proj Error: proj_create: no database context specified)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Geographic 2D CRS: EPSG:4326&gt;
+Name: WGS 84
+Axis Info [ellipsoidal]:
+- Lat[north]: Geodetic latitude (degree)
+- Lon[east]: Geodetic longitude (degree)
+Area of Use:
+- name: World.
+- bounds: (-180.0, -90.0, 180.0, 90.0)
+Datum: World Geodetic System 1984 ensemble
+- Ellipsoid: WGS 84
+- Prime Meridian: Greenwich
 </pre></div>
 </div>
 </div>
@@ -2064,50 +2039,6 @@ Datum: WGS84
   <tbody>
     <tr>
       <th>0</th>
-      <td>7-bx74TooPuZKZDNW4WFcQ</td>
-      <td>chun-yang-tea-new-york</td>
-      <td>Chun Yang Tea</td>
-      <td>https://s3-media1.fl.yelpcdn.com/bphoto/JrGwrZ...</td>
-      <td>False</td>
-      <td>https://www.yelp.com/biz/chun-yang-tea-new-yor...</td>
-      <td>91</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
-      <td>4.5</td>
-      <td>{'latitude': 40.71617, 'longitude': -73.9971}</td>
-      <td>['delivery', 'pickup']</td>
-      <td>$$</td>
-      <td>{'address1': '26B Elizabeth St', 'address2': '...</td>
-      <td>1.212420e+10</td>
-      <td>(212) 420-0123</td>
-      <td>1212.877370</td>
-      <td>40.716170</td>
-      <td>-73.997100</td>
-      <td>POINT (-73.9971 40.71617)</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>bVJQEeRNi34-3XN_F1AZEg</td>
-      <td>xing-fu-tang-new-york</td>
-      <td>Xing Fu Tang</td>
-      <td>https://s3-media2.fl.yelpcdn.com/bphoto/cyFHFE...</td>
-      <td>False</td>
-      <td>https://www.yelp.com/biz/xing-fu-tang-new-york...</td>
-      <td>91</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
-      <td>4.5</td>
-      <td>{'latitude': 40.7288, 'longitude': -73.98775}</td>
-      <td>['delivery', 'pickup']</td>
-      <td>NaN</td>
-      <td>{'address1': '133 2nd Ave', 'address2': '', 'a...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>2656.450427</td>
-      <td>40.728800</td>
-      <td>-73.987750</td>
-      <td>POINT (-73.98775000000001 40.7288)</td>
-    </tr>
-    <tr>
-      <th>2</th>
       <td>Q3fmTHT7zilDWtfzLK9lMA</td>
       <td>truedan-new-york-3</td>
       <td>Truedan</td>
@@ -2118,7 +2049,7 @@ Datum: WGS84
       <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
       <td>4.5</td>
       <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
-      <td>['delivery', 'pickup']</td>
+      <td>['pickup', 'delivery']</td>
       <td>$$</td>
       <td>{'address1': '208 Grand St', 'address2': None,...</td>
       <td>1.646559e+10</td>
@@ -2129,48 +2060,92 @@ Datum: WGS84
       <td>POINT (-73.9962197 40.7191742)</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>DjKAV1M7HWGGyzsfqUrcFw</td>
-      <td>debutea-new-york</td>
-      <td>Debutea</td>
-      <td>https://s3-media2.fl.yelpcdn.com/bphoto/Jwr2Ta...</td>
+      <th>1</th>
+      <td>7-bx74TooPuZKZDNW4WFcQ</td>
+      <td>chun-yang-tea-new-york</td>
+      <td>Chun Yang Tea</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/JrGwrZ...</td>
       <td>False</td>
-      <td>https://www.yelp.com/biz/debutea-new-york?adju...</td>
-      <td>260</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
-      <td>4.0</td>
-      <td>{'latitude': 40.729188, 'longitude': -73.9993244}</td>
-      <td>['delivery', 'pickup']</td>
+      <td>https://www.yelp.com/biz/chun-yang-tea-new-yor...</td>
+      <td>91</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.71617, 'longitude': -73.9971}</td>
+      <td>['pickup', 'delivery']</td>
       <td>$$</td>
-      <td>{'address1': '217 Thompson St', 'address2': No...</td>
-      <td>1.646767e+10</td>
-      <td>(646) 767-0147</td>
-      <td>2673.947019</td>
-      <td>40.729188</td>
-      <td>-73.999324</td>
-      <td>POINT (-73.99932440000001 40.729188)</td>
+      <td>{'address1': '26B Elizabeth St', 'address2': '...</td>
+      <td>1.212420e+10</td>
+      <td>(212) 420-0123</td>
+      <td>1212.877370</td>
+      <td>40.716170</td>
+      <td>-73.997100</td>
+      <td>POINT (-73.9971 40.71617)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3aypSFXLfkAL4dhHVFobKg</td>
+      <td>lazy-sundaes-new-york-6</td>
+      <td>Lazy Sundaes</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/kEfCYC...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/lazy-sundaes-new-york...</td>
+      <td>32</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.720597, 'longitude': -73.984539}</td>
+      <td>['pickup', 'delivery']</td>
+      <td>$$</td>
+      <td>{'address1': '23 Clinton St', 'address2': None...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1877.016204</td>
+      <td>40.720597</td>
+      <td>-73.984539</td>
+      <td>POINT (-73.984539 40.720597)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>bVJQEeRNi34-3XN_F1AZEg</td>
+      <td>xing-fu-tang-new-york</td>
+      <td>Xing Fu Tang</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/cyFHFE...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/xing-fu-tang-new-york...</td>
+      <td>91</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7288, 'longitude': -73.98775}</td>
+      <td>['pickup', 'delivery']</td>
+      <td>NaN</td>
+      <td>{'address1': '133 2nd Ave', 'address2': '', 'a...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2656.450427</td>
+      <td>40.728800</td>
+      <td>-73.987750</td>
+      <td>POINT (-73.98775000000001 40.7288)</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>wusuW7VDDWEGKfOBbm2k_g</td>
-      <td>xing-fu-tang-flushing</td>
-      <td>Xing Fu Tang</td>
-      <td>https://s3-media1.fl.yelpcdn.com/bphoto/VXbn9_...</td>
+      <td>zupVwJAFYkHDwrsQd2ktXA</td>
+      <td>fiftylan-union-square-new-york-3</td>
+      <td>FIFTYLAN Union Square</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/UIwR20...</td>
       <td>False</td>
-      <td>https://www.yelp.com/biz/xing-fu-tang-flushing...</td>
-      <td>372</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>https://www.yelp.com/biz/fiftylan-union-square...</td>
+      <td>60</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
       <td>4.0</td>
-      <td>{'latitude': 40.75816, 'longitude': -73.82982}</td>
-      <td>['delivery', 'pickup']</td>
-      <td>$</td>
-      <td>{'address1': '40-52 Main St', 'address2': None...</td>
-      <td>1.347369e+10</td>
-      <td>(347) 368-6886</td>
-      <td>15042.453771</td>
-      <td>40.758160</td>
-      <td>-73.829820</td>
-      <td>POINT (-73.82982 40.75816)</td>
+      <td>{'latitude': 40.735516, 'longitude': -73.989191}</td>
+      <td>['pickup', 'delivery']</td>
+      <td>NaN</td>
+      <td>{'address1': '32 Union Square E', 'address2': ...</td>
+      <td>1.646767e+10</td>
+      <td>(646) 767-0085</td>
+      <td>3367.900728</td>
+      <td>40.735516</td>
+      <td>-73.989191</td>
+      <td>POINT (-73.98919100000001 40.735516)</td>
     </tr>
   </tbody>
 </table>
@@ -2228,50 +2203,6 @@ Datum: WGS84
   <tbody>
     <tr>
       <th>0</th>
-      <td>7-bx74TooPuZKZDNW4WFcQ</td>
-      <td>chun-yang-tea-new-york</td>
-      <td>Chun Yang Tea</td>
-      <td>https://s3-media1.fl.yelpcdn.com/bphoto/JrGwrZ...</td>
-      <td>False</td>
-      <td>https://www.yelp.com/biz/chun-yang-tea-new-yor...</td>
-      <td>91</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
-      <td>4.5</td>
-      <td>{'latitude': 40.71617, 'longitude': -73.9971}</td>
-      <td>['delivery', 'pickup']</td>
-      <td>$$</td>
-      <td>{'address1': '26B Elizabeth St', 'address2': '...</td>
-      <td>1.212420e+10</td>
-      <td>(212) 420-0123</td>
-      <td>1212.877370</td>
-      <td>40.716170</td>
-      <td>-73.997100</td>
-      <td>POINT (-73.99710 40.71617)</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>bVJQEeRNi34-3XN_F1AZEg</td>
-      <td>xing-fu-tang-new-york</td>
-      <td>Xing Fu Tang</td>
-      <td>https://s3-media2.fl.yelpcdn.com/bphoto/cyFHFE...</td>
-      <td>False</td>
-      <td>https://www.yelp.com/biz/xing-fu-tang-new-york...</td>
-      <td>91</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
-      <td>4.5</td>
-      <td>{'latitude': 40.7288, 'longitude': -73.98775}</td>
-      <td>['delivery', 'pickup']</td>
-      <td>NaN</td>
-      <td>{'address1': '133 2nd Ave', 'address2': '', 'a...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>2656.450427</td>
-      <td>40.728800</td>
-      <td>-73.987750</td>
-      <td>POINT (-73.98775 40.72880)</td>
-    </tr>
-    <tr>
-      <th>2</th>
       <td>Q3fmTHT7zilDWtfzLK9lMA</td>
       <td>truedan-new-york-3</td>
       <td>Truedan</td>
@@ -2282,7 +2213,7 @@ Datum: WGS84
       <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
       <td>4.5</td>
       <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
-      <td>['delivery', 'pickup']</td>
+      <td>['pickup', 'delivery']</td>
       <td>$$</td>
       <td>{'address1': '208 Grand St', 'address2': None,...</td>
       <td>1.646559e+10</td>
@@ -2293,48 +2224,92 @@ Datum: WGS84
       <td>POINT (-73.99622 40.71917)</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>DjKAV1M7HWGGyzsfqUrcFw</td>
-      <td>debutea-new-york</td>
-      <td>Debutea</td>
-      <td>https://s3-media2.fl.yelpcdn.com/bphoto/Jwr2Ta...</td>
+      <th>1</th>
+      <td>7-bx74TooPuZKZDNW4WFcQ</td>
+      <td>chun-yang-tea-new-york</td>
+      <td>Chun Yang Tea</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/JrGwrZ...</td>
       <td>False</td>
-      <td>https://www.yelp.com/biz/debutea-new-york?adju...</td>
-      <td>260</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
-      <td>4.0</td>
-      <td>{'latitude': 40.729188, 'longitude': -73.9993244}</td>
-      <td>['delivery', 'pickup']</td>
+      <td>https://www.yelp.com/biz/chun-yang-tea-new-yor...</td>
+      <td>91</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.71617, 'longitude': -73.9971}</td>
+      <td>['pickup', 'delivery']</td>
       <td>$$</td>
-      <td>{'address1': '217 Thompson St', 'address2': No...</td>
-      <td>1.646767e+10</td>
-      <td>(646) 767-0147</td>
-      <td>2673.947019</td>
-      <td>40.729188</td>
-      <td>-73.999324</td>
-      <td>POINT (-73.99932 40.72919)</td>
+      <td>{'address1': '26B Elizabeth St', 'address2': '...</td>
+      <td>1.212420e+10</td>
+      <td>(212) 420-0123</td>
+      <td>1212.877370</td>
+      <td>40.716170</td>
+      <td>-73.997100</td>
+      <td>POINT (-73.99710 40.71617)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3aypSFXLfkAL4dhHVFobKg</td>
+      <td>lazy-sundaes-new-york-6</td>
+      <td>Lazy Sundaes</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/kEfCYC...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/lazy-sundaes-new-york...</td>
+      <td>32</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.720597, 'longitude': -73.984539}</td>
+      <td>['pickup', 'delivery']</td>
+      <td>$$</td>
+      <td>{'address1': '23 Clinton St', 'address2': None...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1877.016204</td>
+      <td>40.720597</td>
+      <td>-73.984539</td>
+      <td>POINT (-73.98454 40.72060)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>bVJQEeRNi34-3XN_F1AZEg</td>
+      <td>xing-fu-tang-new-york</td>
+      <td>Xing Fu Tang</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/cyFHFE...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/xing-fu-tang-new-york...</td>
+      <td>91</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
+      <td>4.5</td>
+      <td>{'latitude': 40.7288, 'longitude': -73.98775}</td>
+      <td>['pickup', 'delivery']</td>
+      <td>NaN</td>
+      <td>{'address1': '133 2nd Ave', 'address2': '', 'a...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2656.450427</td>
+      <td>40.728800</td>
+      <td>-73.987750</td>
+      <td>POINT (-73.98775 40.72880)</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>wusuW7VDDWEGKfOBbm2k_g</td>
-      <td>xing-fu-tang-flushing</td>
-      <td>Xing Fu Tang</td>
-      <td>https://s3-media1.fl.yelpcdn.com/bphoto/VXbn9_...</td>
+      <td>zupVwJAFYkHDwrsQd2ktXA</td>
+      <td>fiftylan-union-square-new-york-3</td>
+      <td>FIFTYLAN Union Square</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/UIwR20...</td>
       <td>False</td>
-      <td>https://www.yelp.com/biz/xing-fu-tang-flushing...</td>
-      <td>372</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>https://www.yelp.com/biz/fiftylan-union-square...</td>
+      <td>60</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
       <td>4.0</td>
-      <td>{'latitude': 40.75816, 'longitude': -73.82982}</td>
-      <td>['delivery', 'pickup']</td>
-      <td>$</td>
-      <td>{'address1': '40-52 Main St', 'address2': None...</td>
-      <td>1.347369e+10</td>
-      <td>(347) 368-6886</td>
-      <td>15042.453771</td>
-      <td>40.758160</td>
-      <td>-73.829820</td>
-      <td>POINT (-73.82982 40.75816)</td>
+      <td>{'latitude': 40.735516, 'longitude': -73.989191}</td>
+      <td>['pickup', 'delivery']</td>
+      <td>NaN</td>
+      <td>{'address1': '32 Union Square E', 'address2': ...</td>
+      <td>1.646767e+10</td>
+      <td>(646) 767-0085</td>
+      <td>3367.900728</td>
+      <td>40.735516</td>
+      <td>-73.989191</td>
+      <td>POINT (-73.98919 40.73552)</td>
     </tr>
   </tbody>
 </table>
@@ -2351,6 +2326,10 @@ Datum: WGS84
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\datal\anaconda3\envs\boba-nyc\lib\site-packages\IPython\core\interactiveshell.py:3377: FutureWarning: The `op` parameter is deprecated and will be removed in a future release. Please use the `predicate` parameter instead.
+  if (await self.run_code(code, result,  async_=asy)):
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2395,123 +2374,123 @@ Datum: WGS84
   <tbody>
     <tr>
       <th>0</th>
-      <td>7-bx74TooPuZKZDNW4WFcQ</td>
-      <td>chun-yang-tea-new-york</td>
-      <td>Chun Yang Tea</td>
-      <td>https://s3-media1.fl.yelpcdn.com/bphoto/JrGwrZ...</td>
+      <td>Q3fmTHT7zilDWtfzLK9lMA</td>
+      <td>truedan-new-york-3</td>
+      <td>Truedan</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/BmUZXO...</td>
       <td>False</td>
-      <td>https://www.yelp.com/biz/chun-yang-tea-new-yor...</td>
-      <td>91</td>
+      <td>https://www.yelp.com/biz/truedan-new-york-3?ad...</td>
+      <td>99</td>
       <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
       <td>4.5</td>
-      <td>{'latitude': 40.71617, 'longitude': -73.9971}</td>
+      <td>{'latitude': 40.7191742, 'longitude': -73.9962...</td>
       <td>...</td>
-      <td>-73.997100</td>
-      <td>POINT (-73.99710 40.71617)</td>
-      <td>88</td>
+      <td>-73.996220</td>
+      <td>POINT (-73.99622 40.71917)</td>
+      <td>94</td>
       <td>1.0</td>
       <td>Manhattan</td>
       <td>061</td>
-      <td>MN27</td>
-      <td>Chinatown</td>
-      <td>1.450188e+07</td>
-      <td>20786.254332</td>
+      <td>MN24</td>
+      <td>SoHo-TriBeCa-Civic Center-Little Italy</td>
+      <td>2.503268e+07</td>
+      <td>26855.031527</td>
     </tr>
     <tr>
-      <th>5</th>
-      <td>zyiauY6dhZa8WVmLQ83M2A</td>
-      <td>miss-du-s-tea-shop-new-york</td>
-      <td>Miss Du’s Tea Shop</td>
-      <td>https://s3-media2.fl.yelpcdn.com/bphoto/u7dMJK...</td>
+      <th>16</th>
+      <td>DbhBca8LzskjS0B-L4QfZg</td>
+      <td>tiger-sugar-new-york</td>
+      <td>tigersugar</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/5wNVyj...</td>
       <td>False</td>
-      <td>https://www.yelp.com/biz/miss-du-s-tea-shop-ne...</td>
-      <td>57</td>
-      <td>[{'alias': 'coffee', 'title': 'Coffee &amp; Tea'},...</td>
-      <td>4.5</td>
-      <td>{'latitude': 40.71489, 'longitude': -73.99856}</td>
-      <td>...</td>
-      <td>-73.998560</td>
-      <td>POINT (-73.99856 40.71489)</td>
-      <td>88</td>
-      <td>1.0</td>
-      <td>Manhattan</td>
-      <td>061</td>
-      <td>MN27</td>
-      <td>Chinatown</td>
-      <td>1.450188e+07</td>
-      <td>20786.254332</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>3aypSFXLfkAL4dhHVFobKg</td>
-      <td>lazy-sundaes-new-york-6</td>
-      <td>Lazy Sundaes</td>
-      <td>https://s3-media3.fl.yelpcdn.com/bphoto/kEfCYC...</td>
-      <td>False</td>
-      <td>https://www.yelp.com/biz/lazy-sundaes-new-york...</td>
-      <td>32</td>
-      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
-      <td>4.5</td>
-      <td>{'latitude': 40.720597, 'longitude': -73.984539}</td>
-      <td>...</td>
-      <td>-73.984539</td>
-      <td>POINT (-73.98454 40.72060)</td>
-      <td>88</td>
-      <td>1.0</td>
-      <td>Manhattan</td>
-      <td>061</td>
-      <td>MN27</td>
-      <td>Chinatown</td>
-      <td>1.450188e+07</td>
-      <td>20786.254332</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>3ZIRnbaanUuYCeTll3Bs-w</td>
-      <td>wu-qi-my-tea-new-york-2</td>
-      <td>Wu Qi My Tea</td>
-      <td>https://s3-media4.fl.yelpcdn.com/bphoto/GoUQtq...</td>
-      <td>False</td>
-      <td>https://www.yelp.com/biz/wu-qi-my-tea-new-york...</td>
-      <td>11</td>
+      <td>https://www.yelp.com/biz/tiger-sugar-new-york?...</td>
+      <td>515</td>
       <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}]</td>
       <td>4.0</td>
-      <td>{'latitude': 40.715181, 'longitude': -73.997787}</td>
+      <td>{'latitude': 40.717891007822274, 'longitude': ...</td>
       <td>...</td>
-      <td>-73.997787</td>
-      <td>POINT (-73.99779 40.71518)</td>
-      <td>88</td>
+      <td>-73.999780</td>
+      <td>POINT (-73.99978 40.71789)</td>
+      <td>94</td>
       <td>1.0</td>
       <td>Manhattan</td>
       <td>061</td>
-      <td>MN27</td>
-      <td>Chinatown</td>
-      <td>1.450188e+07</td>
-      <td>20786.254332</td>
+      <td>MN24</td>
+      <td>SoHo-TriBeCa-Civic Center-Little Italy</td>
+      <td>2.503268e+07</td>
+      <td>26855.031527</td>
     </tr>
     <tr>
-      <th>32</th>
-      <td>AYjVpQ5jYz5gJJqXh_B_CA</td>
-      <td>teado-tea-shop-new-york-6</td>
-      <td>Teado Tea Shop</td>
-      <td>https://s3-media1.fl.yelpcdn.com/bphoto/e21Z-A...</td>
+      <th>29</th>
+      <td>bxCjNLVDQggNTbpviV0RMw</td>
+      <td>lazy-sundaes-new-york-4</td>
+      <td>Lazy Sundaes</td>
+      <td>https://s3-media3.fl.yelpcdn.com/bphoto/iDul5E...</td>
       <td>False</td>
-      <td>https://www.yelp.com/biz/teado-tea-shop-new-yo...</td>
-      <td>428</td>
-      <td>[{'alias': 'coffee', 'title': 'Coffee &amp; Tea'},...</td>
-      <td>4.5</td>
-      <td>{'latitude': 40.7172143, 'longitude': -73.9949...</td>
+      <td>https://www.yelp.com/biz/lazy-sundaes-new-york...</td>
+      <td>65</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.0</td>
+      <td>{'latitude': 40.7189689, 'longitude': -74.0006...</td>
       <td>...</td>
-      <td>-73.994962</td>
-      <td>POINT (-73.99496 40.71721)</td>
-      <td>88</td>
+      <td>-74.000677</td>
+      <td>POINT (-74.00068 40.71897)</td>
+      <td>94</td>
       <td>1.0</td>
       <td>Manhattan</td>
       <td>061</td>
-      <td>MN27</td>
-      <td>Chinatown</td>
-      <td>1.450188e+07</td>
-      <td>20786.254332</td>
+      <td>MN24</td>
+      <td>SoHo-TriBeCa-Civic Center-Little Italy</td>
+      <td>2.503268e+07</td>
+      <td>26855.031527</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>jsJdz6pvyYZjtut9vkUwBw</td>
+      <td>yaya-tea-grand-new-york-2</td>
+      <td>Yaya Tea Grand</td>
+      <td>https://s3-media2.fl.yelpcdn.com/bphoto/iutBCc...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/yaya-tea-grand-new-yo...</td>
+      <td>295</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>4.0</td>
+      <td>{'latitude': 40.7192268371582, 'longitude': -7...</td>
+      <td>...</td>
+      <td>-73.996277</td>
+      <td>POINT (-73.99628 40.71923)</td>
+      <td>94</td>
+      <td>1.0</td>
+      <td>Manhattan</td>
+      <td>061</td>
+      <td>MN24</td>
+      <td>SoHo-TriBeCa-Civic Center-Little Italy</td>
+      <td>2.503268e+07</td>
+      <td>26855.031527</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>uge-Lp_kY1J6Z4CzzceULw</td>
+      <td>honestea-new-york</td>
+      <td>Honestea</td>
+      <td>https://s3-media1.fl.yelpcdn.com/bphoto/77X7Xd...</td>
+      <td>False</td>
+      <td>https://www.yelp.com/biz/honestea-new-york?adj...</td>
+      <td>104</td>
+      <td>[{'alias': 'bubbletea', 'title': 'Bubble Tea'}...</td>
+      <td>3.5</td>
+      <td>{'latitude': 40.71789, 'longitude': -73.99692}</td>
+      <td>...</td>
+      <td>-73.996920</td>
+      <td>POINT (-73.99692 40.71789)</td>
+      <td>94</td>
+      <td>1.0</td>
+      <td>Manhattan</td>
+      <td>061</td>
+      <td>MN24</td>
+      <td>SoHo-TriBeCa-Civic Center-Little Italy</td>
+      <td>2.503268e+07</td>
+      <td>26855.031527</td>
     </tr>
   </tbody>
 </table>
@@ -2524,7 +2503,7 @@ Datum: WGS84
 <span class="n">join_df</span> <span class="o">=</span> <span class="n">join_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 
 <span class="n">join_df</span> <span class="o">=</span> <span class="n">join_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span><span class="s1">&#39;counts&#39;</span><span class="p">})</span>
-<span class="n">join_df</span><span class="p">[</span><span class="s1">&#39;counts_squaremile&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">join_df</span><span class="p">[</span><span class="s1">&#39;counts&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">27878400</span>
+<span class="n">join_df</span><span class="p">[</span><span class="s1">&#39;counts_squaremile&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">join_df</span><span class="p">[</span><span class="s1">&#39;counts&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">join_df</span><span class="p">[</span><span class="s1">&#39;shape_area&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">27878400</span><span class="p">)</span>
 
 <span class="n">join_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -2561,35 +2540,35 @@ Datum: WGS84
       <td>Flushing</td>
       <td>3.786424e+07</td>
       <td>40</td>
-      <td>1.434803e-06</td>
+      <td>29.450898</td>
     </tr>
     <tr>
       <th>1</th>
       <td>Chinatown</td>
       <td>1.450188e+07</td>
       <td>28</td>
-      <td>1.004362e-06</td>
+      <td>53.827184</td>
     </tr>
     <tr>
       <th>2</th>
       <td>Sunset Park East</td>
       <td>2.711007e+07</td>
       <td>23</td>
-      <td>8.250115e-07</td>
+      <td>23.651849</td>
     </tr>
     <tr>
       <th>3</th>
       <td>Hunters Point-Sunnyside-West Maspeth</td>
       <td>1.024191e+08</td>
       <td>19</td>
-      <td>6.815312e-07</td>
+      <td>5.171787</td>
     </tr>
     <tr>
       <th>4</th>
       <td>Elmhurst</td>
       <td>3.267480e+07</td>
       <td>17</td>
-      <td>6.097911e-07</td>
+      <td>14.504535</td>
     </tr>
   </tbody>
 </table>
@@ -2598,15 +2577,16 @@ Datum: WGS84
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">join_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;counts&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 
 <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;counts&quot;</span><span class="p">,</span> 
             <span class="n">y</span><span class="o">=</span><span class="s2">&quot;ntaname&quot;</span><span class="p">,</span> 
-            <span class="n">data</span><span class="o">=</span><span class="n">join_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span> 
+            <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> 
             <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Most bubble tea locations per neighborhood in NYC&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;neighborhood&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;count per square mile&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;busineses-per-neighborhood.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
@@ -2620,13 +2600,16 @@ Datum: WGS84
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">join_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;counts_squaremile&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 
 <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;counts_squaremile&quot;</span><span class="p">,</span> 
             <span class="n">y</span><span class="o">=</span><span class="s2">&quot;ntaname&quot;</span><span class="p">,</span> 
-            <span class="n">data</span><span class="o">=</span><span class="n">join_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span> 
+            <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> 
             <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Most bubble tea locations per neighborhood square mile in NYC&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Most bubble tea locations per square mile by neighborhood in NYC&#39;</span><span class="p">,</span> 
+             <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+             <span class="n">y</span><span class="o">=</span><span class="mf">.96</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">.60</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;neighborhood&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;count per square mile&#39;</span><span class="p">)</span>
 
@@ -2676,7 +2659,7 @@ Datum: WGS84
     <a class='right-next' id="next-link" href="boba-maps-nyc.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Maps</p>
+        <p class="prev-next-title">Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

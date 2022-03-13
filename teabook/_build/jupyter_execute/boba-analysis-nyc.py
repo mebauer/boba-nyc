@@ -7,13 +7,20 @@
 # In[1]:
 
 
+# # imports for Google Colab Sessions
+# !apt install gdal-bin python-gdal python3-gdal 
+# # Install rtree - Geopandas requirment
+# !apt install python3-rtree 
+# # Install Geopandas
+# !pip install git+git://github.com/geopandas/geopandas.git
+# # Install descartes - Geopandas requirment
+# !pip install descartes 
+
 import pandas as pd
 import numpy as np
 import geopandas as gpd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import requests
-from PIL import Image
 
 get_ipython().run_line_magic('matplotlib', 'inline')
 sns.set(color_codes=True)
@@ -22,9 +29,12 @@ sns.set(color_codes=True)
 # In[2]:
 
 
-# read in data and preview first five rows
-df = pd.read_csv('boba-nyc.csv')
+# google colab path to data
+url = 'https://raw.githubusercontent.com/mebauer/boba-nyc/master/teabook/boba-nyc.csv'
+df = pd.read_csv(url)
 
+# # local path to data
+# df = pd.read_csv('boba-nyc.csv')
 df.head()
 
 
@@ -239,13 +249,13 @@ neighborhoods = neighborhoods.to_crs('EPSG:4326')
 neighborhoods.crs
 
 
-# In[27]:
+# In[26]:
 
 
 df.head()
 
 
-# In[28]:
+# In[27]:
 
 
 gdf = gpd.GeoDataFrame(df, crs=4326,
@@ -254,7 +264,7 @@ gdf = gpd.GeoDataFrame(df, crs=4326,
 gdf.head()
 
 
-# In[29]:
+# In[28]:
 
 
 join_df = gpd.sjoin(gdf, 
@@ -264,47 +274,51 @@ join_df = gpd.sjoin(gdf,
 join_df.head()
 
 
-# In[30]:
+# In[29]:
 
 
 join_df = join_df.groupby(by=['ntaname', 'shape_area'])['id'].count().sort_values(ascending=False)
 join_df = join_df.reset_index()
 
 join_df = join_df.rename(columns={'id':'counts'})
-join_df['counts_squaremile'] = join_df['counts'] / 27878400
+join_df['counts_squaremile'] = join_df['counts'] / (join_df['shape_area'] / 27878400)
 
 join_df.head()
+
+
+# In[30]:
+
+
+fig, ax = plt.subplots(figsize=(10, 6))
+data = join_df.sort_values(by='counts', ascending=False).head(20)
+
+sns.barplot(x="counts", 
+            y="ntaname", 
+            data=data, 
+            ax=ax)
+
+plt.title('Most bubble tea locations per neighborhood in NYC', fontsize=15)
+plt.ylabel('neighborhood')
+plt.xlabel('count')
+
+plt.tight_layout()
+plt.savefig('busineses-per-neighborhood.png', dpi=200)
 
 
 # In[31]:
 
 
 fig, ax = plt.subplots(figsize=(10, 6))
-
-sns.barplot(x="counts", 
-            y="ntaname", 
-            data=join_df.head(20), 
-            ax=ax)
-
-plt.title('Most bubble tea locations per neighborhood in NYC', fontsize=15)
-plt.ylabel('neighborhood')
-plt.xlabel('count per square mile')
-
-plt.tight_layout()
-plt.savefig('busineses-per-neighborhood.png', dpi=200)
-
-
-# In[32]:
-
-
-fig, ax = plt.subplots(figsize=(10, 6))
+data = join_df.sort_values(by='counts_squaremile', ascending=False).head(20)
 
 sns.barplot(x="counts_squaremile", 
             y="ntaname", 
-            data=join_df.head(20), 
+            data=data, 
             ax=ax)
 
-plt.title('Most bubble tea locations per neighborhood square mile in NYC', fontsize=15)
+plt.suptitle('Most bubble tea locations per square mile by neighborhood in NYC', 
+             fontsize=15,
+             y=.96, x=.60)
 plt.ylabel('neighborhood')
 plt.xlabel('count per square mile')
 

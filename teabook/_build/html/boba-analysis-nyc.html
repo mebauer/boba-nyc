@@ -227,7 +227,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/mebauer/boba-nyc/master?urlpath=tree/teabook/boba-analysis-nyc.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/datalifenyc/boba-nyc/HEAD/v2/gh/mebauer/boba-nyc/master?urlpath=tree/teabook/boba-analysis-nyc.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -1226,6 +1226,10 @@ memory usage: 58.7+ KB
 <span class="n">names_counts</span> <span class="o">=</span> <span class="n">names_counts</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;counts&#39;</span><span class="p">})</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number of unique bubble tea shops: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names_counts</span><span class="p">)))</span>
+<span class="c1"># save file</span>
+<span class="n">name_counts_file_path</span> <span class="o">=</span> <span class="s1">&#39;../teaapp/name_counts.csv&#39;</span>
+<span class="n">names_counts</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">name_counts_file_path</span><span class="p">)</span>
+<span class="c1"># view dataframe</span>
 <span class="n">names_counts</span>
 </pre></div>
 </div>
@@ -1506,9 +1510,9 @@ memory usage: 58.7+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\datal\AppData\Local\Temp\ipykernel_48780\1422840523.py:9: UserWarning: Glyph 27792 (\N{CJK UNIFIED IDEOGRAPH-6C90}) missing from current font.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\datal\AppData\Local\Temp\ipykernel_43152\1422840523.py:9: UserWarning: Glyph 27792 (\N{CJK UNIFIED IDEOGRAPH-6C90}) missing from current font.
   plt.tight_layout()
-C:\Users\datal\AppData\Local\Temp\ipykernel_48780\1422840523.py:9: UserWarning: Glyph 30333 (\N{CJK UNIFIED IDEOGRAPH-767D}) missing from current font.
+C:\Users\datal\AppData\Local\Temp\ipykernel_43152\1422840523.py:9: UserWarning: Glyph 30333 (\N{CJK UNIFIED IDEOGRAPH-767D}) missing from current font.
   plt.tight_layout()
 C:\Users\datal\anaconda3\envs\boba-nyc\lib\site-packages\IPython\core\pylabtools.py:151: UserWarning: Glyph 27792 (\N{CJK UNIFIED IDEOGRAPH-6C90}) missing from current font.
   fig.canvas.print_figure(bytes_io, **kw)
@@ -1988,7 +1992,7 @@ Datum: WGS84
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">CRSError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_48780</span>\<span class="mf">3555093168.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_43152</span>\<span class="mf">3555093168.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">neighborhoods</span> <span class="o">=</span> <span class="n">neighborhoods</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s1">&#39;EPSG:4326&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> 
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">neighborhoods</span><span class="o">.</span><span class="n">crs</span>
@@ -2371,6 +2375,10 @@ Datum: WGS84
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\datal\anaconda3\envs\boba-nyc\lib\site-packages\IPython\core\interactiveshell.py:3377: FutureWarning: The `op` parameter is deprecated and will be removed in a future release. Please use the `predicate` parameter instead.
+  if (await self.run_code(code, result,  async_=asy)):
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {

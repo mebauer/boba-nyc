@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Obsessed with Boba? Analyzing Bubble Tea Shops in NYC Using the Yelp Fusion API
-# ### Boba Maps of NYC
+# # Boba Maps of NYC
+# ### Best NYC Neighborhoods for Boba Lovers?
 
 # In[1]:
 
@@ -49,7 +49,7 @@ df.describe()
 df.describe(include=['O']).T
 
 
-# ## Map boba data for NYC neighborhoods
+# ## Map Boba Data for NYC Neighborhoods
 
 # In[6]:
 
@@ -240,7 +240,7 @@ group_nt_gdf.sort_values("rating", ascending=False).dropna()[0:10]
 
 # ## NYC Neighborhood Boba Index
 # 
-# ### - that take into account counts of reviews and counts of boba shops in the neighborhood?
+# ### that take into account counts of reviews and counts of boba shops in the neighborhood?
 
 # In[20]:
 
@@ -287,7 +287,7 @@ group_nt_gdf2 = group_nt_gdf2.merge(nt_raterev2, how='left', left_on='ntaname', 
 group_nt_gdf2.head()
 
 
-# ### The creation of Boba Index...
+# ### The Creation of Boba Index...
 
 # In[25]:
 

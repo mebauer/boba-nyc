@@ -13,6 +13,8 @@
 
 [Event RSVP](https://2022.open-data.nyc/event/obsessed-with-boba-analyzing-bubble-tea-shops-in-nyc-using-the-yelp-fusion-api/)  
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/datalifenyc/boba-nyc/HEAD)
+
 - The ___notebooks___ can be found in the [teabook](https://github.com/mebauer/boba-nyc/tree/master/teabook) folder.
 
 - The ___website___ for this repo can be found here: [boba-nyc.datalife.nyc](https://boba-nyc.datalife.nyc)

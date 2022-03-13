@@ -17,7 +17,7 @@
 
 - The ___website___ for this repo can be found here: [boba-nyc.datalife.nyc](https://boba-nyc.datalife.nyc)
 
-![cover-photo](busineses-per-neighborhood.png)
+![cover-photo](teabook/busineses-per-neighborhood.png)
 
 ## Table of Contents
 
